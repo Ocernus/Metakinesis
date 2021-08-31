@@ -19,7 +19,9 @@ public class Movement : MonoBehaviour
     public bool rotationIsSet;
 
     public float movementMultiplier = 1;
-    
+
+    public AudioSource jumpSound;
+    public AudioSource stepSound;
 
     private bool controlledMovementAllowed;
     private bool shouldSnapRotation;
@@ -120,6 +122,7 @@ public class Movement : MonoBehaviour
         {
             vVel.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
             swordAttack.ExternalReset();
+            jumpSound.Play();
         }
     }
 
@@ -186,5 +189,8 @@ public class Movement : MonoBehaviour
         rotationIsSet = false;
     }
 
-
+    public void Step()
+    {
+        stepSound.Play();
+    }
 }
