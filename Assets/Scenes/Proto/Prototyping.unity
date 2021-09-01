@@ -11209,7 +11209,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.001, y: 0.01, z: 0.001}
+  m_Size: {x: 0.005, y: 0.01, z: 0.005}
   m_Center: {x: 0, y: 0.005, z: 0}
 --- !u!1 &573857236
 GameObject:
@@ -21725,7 +21725,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 980814753}
-  m_LocalRotation: {x: -0.047130264, y: -0.0000000021362487, z: 2.497428e-10, w: 0.99888873}
+  m_LocalRotation: {x: -0.047130268, y: -0.0000000015326282, z: 1.7917523e-10, w: 0.99888873}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -24445,7 +24445,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1115296086}
-  m_LocalRotation: {x: 0.057355, y: -1e-45, z: -0, w: 0.99835384}
+  m_LocalRotation: {x: 0.057355016, y: 0.000000029078063, z: -0.0000000065303043, w: 0.99835384}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -26068,6 +26068,7 @@ MonoBehaviour:
   maxHits: 1
   particle: {fileID: 7706843092669318976, guid: 8a433be222168534e9f7e3ba9832f906, type: 3}
   pickupTrigger: {fileID: 5698075398914506797}
+  breakSound: {fileID: 2831866188565159760, guid: db4f3eb64176eaf41b54b2dad0ece1ae, type: 3}
 --- !u!4 &1215274689
 Transform:
   m_ObjectHideFlags: 0
@@ -30645,7 +30646,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1375970115}
-  m_LocalRotation: {x: 0.039185982, y: 0.0000000042135078, z: -8.660702e-10, w: 0.99923193}
+  m_LocalRotation: {x: 0.039185982, y: -0.0000000030229343, z: 6.2135247e-10, w: 0.99923193}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -34986,7 +34987,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1566018614}
-  m_LocalRotation: {x: 0.1206646, y: 0.000000004270166, z: -5.1905036e-10, w: 0.99269336}
+  m_LocalRotation: {x: 0.1206646, y: -0.0000000030635834, z: 3.7238693e-10, w: 0.99269336}
   m_LocalPosition: {x: 0, y: 3, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -35442,7 +35443,7 @@ MonoBehaviour:
   rotationSpeed: 1
   rotationIsSet: 0
   movementMultiplier: 1
-  coyoteTimeMax: 0.1
+  coyoteTimeMax: 0.05
   jumpSound: {fileID: 113754718}
   stepSound: {fileID: 1707883065}
   landSound: {fileID: 1246768237}
@@ -35803,7 +35804,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sheathTimeMax: 1
   moveLockTimeMax: 1
-  damageTimeMax: 0.5
+  damageTimeMax: 0.4
   damageTimeMid: 0.1
   slashAttackVolume: {fileID: 565392952}
   swordSwingSound: {fileID: 1035090669}
@@ -52515,30 +52516,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3628898821437247346, guid: 5ca9f83b4eb162444bf1ed97b505920d, type: 3}
-      propertyPath: ambushTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3628898821437247346, guid: 5ca9f83b4eb162444bf1ed97b505920d, type: 3}
-      propertyPath: attackRange
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3628898821437247351, guid: 5ca9f83b4eb162444bf1ed97b505920d, type: 3}
       propertyPath: m_Name
       value: Bogling
       objectReference: {fileID: 0}
-    - target: {fileID: 5809957074136748745, guid: 5ca9f83b4eb162444bf1ed97b505920d, type: 3}
-      propertyPath: maxHits
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5809957074136748745, guid: 5ca9f83b4eb162444bf1ed97b505920d, type: 3}
-      propertyPath: flinchTime
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5809957074136748745, guid: 5ca9f83b4eb162444bf1ed97b505920d, type: 3}
-      propertyPath: deathTime
-      value: 2
-      objectReference: {fileID: 0}
+    - target: {fileID: 4937554957410381535, guid: 5ca9f83b4eb162444bf1ed97b505920d, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b5397405a3743874aae679c130d94cff, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ca9f83b4eb162444bf1ed97b505920d, type: 3}
 --- !u!114 &2115315912 stripped
@@ -52969,6 +52954,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin Pickup
       objectReference: {fileID: 0}
+    - target: {fileID: 7112748639632955166, guid: 336daf56874c78f48999350e9aac8f57, type: 3}
+      propertyPath: soundObject
+      value: 
+      objectReference: {fileID: 2831866188565159760, guid: 32cfa0fd9e738fc428c532a5e697ed42, type: 3}
     - target: {fileID: 8730910286974553594, guid: 336daf56874c78f48999350e9aac8f57, type: 3}
       propertyPath: m_Mesh
       value: 

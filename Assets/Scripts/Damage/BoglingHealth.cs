@@ -8,6 +8,9 @@ public class BoglingHealth : Damageable
     public float flinchTime;
     public float deathTime;
     public GameObject particle;
+    public AudioSource damageSound;
+    public AudioSource deathSound;
+
     Animator anim;
     BoglingBehavior behavior;
 
@@ -21,12 +24,14 @@ public class BoglingHealth : Damageable
     {
         base.TakeDamage(amount);
         maxHits -= amount;
+        damageSound.Play();
         if (particle) Instantiate(particle, transform.position, transform.rotation);
         anim.SetTrigger("Damage");
 
         if (maxHits <= 0)
         {
             behavior.HaltAllAction();
+            deathSound.Play();
             Destroy(gameObject, deathTime);
         }
         else StartCoroutine(FlinchTimer());

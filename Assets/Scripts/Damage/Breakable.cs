@@ -7,6 +7,7 @@ public class Breakable : Damageable
     public int maxHits;
     public GameObject particle;
     public Collider pickupTrigger;
+    public GameObject breakSound;
 
     private void Start()
     {
@@ -18,6 +19,7 @@ public class Breakable : Damageable
         base.TakeDamage(amount);
         maxHits -= amount;
         Instantiate(particle, transform.position, transform.rotation);
+        Instantiate(breakSound, transform.position, transform.rotation);
         if (maxHits <= 0)
         {
             pickupTrigger.enabled = true;
