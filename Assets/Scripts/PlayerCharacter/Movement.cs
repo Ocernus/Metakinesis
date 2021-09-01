@@ -20,8 +20,12 @@ public class Movement : MonoBehaviour
 
     public float movementMultiplier = 1;
 
+    private float coyoteTime;
+    public float coyoteTimeMax;
+
     public AudioSource jumpSound;
     public AudioSource stepSound;
+    public AudioSource landSound;
 
     private bool controlledMovementAllowed;
     private bool shouldSnapRotation;
@@ -53,6 +57,15 @@ public class Movement : MonoBehaviour
     private JumpCollider jumpCollider;
     private SwordAttack swordAttack;
 
+    public enum States
+    {
+        onGround,
+        inAir,
+
+    }
+
+    public States state;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -63,20 +76,7 @@ public class Movement : MonoBehaviour
         swordAttack = GetComponent<SwordAttack>();
 
         controlledMovementAllowed = true;
-    }
-
-    public void OnCharacterMovement(InputAction.CallbackContext value)
-    {
-        rawInputMovement = value.ReadValue<Vector2>();
-    }
-
-    public void OnCharacterJump(InputAction.CallbackContext value)
-    {
-        if (value.started)
-        {
-            Jump();
-        }
-    }
+    }    
 
     void Update()
     {
@@ -94,13 +94,10 @@ public class Movement : MonoBehaviour
         hDir = ((camForward * rawInputMovement.y) + (camRight * rawInputMovement.x)).normalized;
         hVel = hDir * speed * movementMultiplier;
 
-        grounded = controller.isGrounded;
-        if (grounded && vVel.y < 0)
-        {
-            vVel.y = 0f;
-
-        }
+        
         vVel.y += gravity * Time.deltaTime;
+
+
 
         if (controlledMovementAllowed) controller.Move((hVel + vVel) * Time.deltaTime);
 
@@ -114,6 +111,55 @@ public class Movement : MonoBehaviour
         anim.SetFloat("MoveVelocity", currentSpeed / speed);        
         anim.SetFloat("MoveX", Vector3.Dot(transform.right, hDir));
         anim.SetFloat("MoveZ", Vector3.Dot(transform.forward, hDir));
+
+        switch (state)
+        {
+            case States.onGround:
+                {
+                    if (!controller.isGrounded)
+                    {
+                        coyoteTime += Time.deltaTime;
+                        if (coyoteTime >= coyoteTimeMax)
+                        {
+                            state = States.inAir;
+                            coyoteTime = 0;
+                            print("state changed to inAir");
+                        }
+                    }
+                    else
+                    {
+                        coyoteTime = 0.0f;
+                        if (vVel.y <0)
+                        {
+                            vVel.y = 0.0f;
+                        }
+                    }
+                }
+                break;
+            case States.inAir:
+                {
+                    if (controller.isGrounded)
+                    {
+                        landSound.Play();
+                        state = States.onGround;
+                        print("state changed to onGround");
+                    }
+                }
+                break;
+        }
+    }
+
+    public void OnCharacterMovement(InputAction.CallbackContext value)
+    {
+        rawInputMovement = value.ReadValue<Vector2>();
+    }
+
+    public void OnCharacterJump(InputAction.CallbackContext value)
+    {
+        if (value.started)
+        {
+            Jump();
+        }
     }
 
     private void Jump()
