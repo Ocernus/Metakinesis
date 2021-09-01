@@ -20,6 +20,8 @@ public class SwordAttack : MonoBehaviour
 
     public GameObject slashAttackVolume;
 
+    public AudioSource swordSwingSound;
+
     EquipmentGraphicsManager equipGraphics;
     Animator anim;
     Movement movement;
@@ -71,9 +73,10 @@ public class SwordAttack : MonoBehaviour
     {
         if (value.started)
         {
-            if (movement.grounded)
+            if (movement.state == Movement.States.onGround)
             {
                 anim.SetTrigger("Slash");
+                swordSwingSound.Play();
                 sheathTimerRunning = true;
                 sheathTimeCurrent = 0;
                 moveLockTimerRunning = true;

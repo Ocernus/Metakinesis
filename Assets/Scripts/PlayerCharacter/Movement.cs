@@ -11,9 +11,6 @@ public class Movement : MonoBehaviour
 
     public float jumpHeight;
     public float gravity;
-
-    public bool grounded;
-
     public float rotationSpeed;
 
     public bool rotationIsSet;
@@ -123,7 +120,6 @@ public class Movement : MonoBehaviour
                         {
                             state = States.inAir;
                             coyoteTime = 0;
-                            print("state changed to inAir");
                         }
                     }
                     else
@@ -142,7 +138,6 @@ public class Movement : MonoBehaviour
                     {
                         landSound.Play();
                         state = States.onGround;
-                        print("state changed to onGround");
                     }
                 }
                 break;
