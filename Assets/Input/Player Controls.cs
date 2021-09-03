@@ -19,14 +19,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
             ""id"": ""d819ce03-2be7-4cb1-ae3e-53a2752bcbff"",
             ""actions"": [
                 {
-                    ""name"": ""Move"",
-                    ""type"": ""Value"",
-                    ""id"": ""7bcca0e0-a479-41dd-87c3-ac78095c5f66"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""Look"",
                     ""type"": ""Value"",
                     ""id"": ""ec9964da-8a2b-42d1-8f29-60e1ae52ac0f"",
@@ -89,20 +81,41 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""MoveX"",
+                    ""type"": ""Value"",
+                    ""id"": ""ac374dd5-a36a-4629-a711-4e4b332f6566"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MoveY"",
+                    ""type"": ""Value"",
+                    ""id"": ""ea57b5bd-7ff0-4519-a5e8-87c7113e9801"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""ded6cb03-a634-4b86-b7c7-2ca0988a28e2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""9070faa0-bb58-4171-8102-062f9d97a483"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""ffc058c5-cee6-4416-971e-5c19df5e80a2"",
-                    ""path"": ""<Gamepad>/leftStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": """",
                     ""id"": ""8947a008-00db-42c2-a6a3-309edffdb780"",
@@ -188,6 +201,50 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Sword Slash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4aa4f6ba-ea63-4036-9b7d-2c1040912f95"",
+                    ""path"": ""<Gamepad>/leftStick/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2c43abe3-fb7b-4763-9ad7-20032ce2bd8a"",
+                    ""path"": ""<Gamepad>/leftStick/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveY"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""150c25e3-285e-48e3-abe4-4a510ef62e4c"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""09e48003-f48e-4038-bf70-896fc877da4c"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -276,13 +333,39 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Menu Control"",
+            ""id"": ""d3506e28-80da-4f2e-89c9-8e8a5753c675"",
+            ""actions"": [
+                {
+                    ""name"": ""Start"",
+                    ""type"": ""Button"",
+                    ""id"": ""10e9d730-a089-4b43-a00b-9eb14f8a8c49"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""a7405be7-1b19-4275-a5cf-200c44e98011"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Start"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
 }");
         // Character Control
         m_CharacterControl = asset.FindActionMap("Character Control", throwIfNotFound: true);
-        m_CharacterControl_Move = m_CharacterControl.FindAction("Move", throwIfNotFound: true);
         m_CharacterControl_Look = m_CharacterControl.FindAction("Look", throwIfNotFound: true);
         m_CharacterControl_Interact = m_CharacterControl.FindAction("Interact", throwIfNotFound: true);
         m_CharacterControl_Jump = m_CharacterControl.FindAction("Jump", throwIfNotFound: true);
@@ -291,12 +374,19 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_CharacterControl_ResetCamera = m_CharacterControl.FindAction("Reset Camera", throwIfNotFound: true);
         m_CharacterControl_TargetCamera = m_CharacterControl.FindAction("Target Camera", throwIfNotFound: true);
         m_CharacterControl_SwordSlash = m_CharacterControl.FindAction("Sword Slash", throwIfNotFound: true);
+        m_CharacterControl_MoveX = m_CharacterControl.FindAction("MoveX", throwIfNotFound: true);
+        m_CharacterControl_MoveY = m_CharacterControl.FindAction("MoveY", throwIfNotFound: true);
+        m_CharacterControl_Sprint = m_CharacterControl.FindAction("Sprint", throwIfNotFound: true);
+        m_CharacterControl_Pause = m_CharacterControl.FindAction("Pause", throwIfNotFound: true);
         // Interactable Control
         m_InteractableControl = asset.FindActionMap("Interactable Control", throwIfNotFound: true);
         m_InteractableControl_Comment = m_InteractableControl.FindAction("Comment", throwIfNotFound: true);
         m_InteractableControl_Cancel = m_InteractableControl.FindAction("Cancel", throwIfNotFound: true);
         m_InteractableControl_OptionA = m_InteractableControl.FindAction("Option A", throwIfNotFound: true);
         m_InteractableControl_OptionB = m_InteractableControl.FindAction("Option B", throwIfNotFound: true);
+        // Menu Control
+        m_MenuControl = asset.FindActionMap("Menu Control", throwIfNotFound: true);
+        m_MenuControl_Start = m_MenuControl.FindAction("Start", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -346,7 +436,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     // Character Control
     private readonly InputActionMap m_CharacterControl;
     private ICharacterControlActions m_CharacterControlActionsCallbackInterface;
-    private readonly InputAction m_CharacterControl_Move;
     private readonly InputAction m_CharacterControl_Look;
     private readonly InputAction m_CharacterControl_Interact;
     private readonly InputAction m_CharacterControl_Jump;
@@ -355,11 +444,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_CharacterControl_ResetCamera;
     private readonly InputAction m_CharacterControl_TargetCamera;
     private readonly InputAction m_CharacterControl_SwordSlash;
+    private readonly InputAction m_CharacterControl_MoveX;
+    private readonly InputAction m_CharacterControl_MoveY;
+    private readonly InputAction m_CharacterControl_Sprint;
+    private readonly InputAction m_CharacterControl_Pause;
     public struct CharacterControlActions
     {
         private @PlayerControls m_Wrapper;
         public CharacterControlActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_CharacterControl_Move;
         public InputAction @Look => m_Wrapper.m_CharacterControl_Look;
         public InputAction @Interact => m_Wrapper.m_CharacterControl_Interact;
         public InputAction @Jump => m_Wrapper.m_CharacterControl_Jump;
@@ -368,6 +460,10 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @ResetCamera => m_Wrapper.m_CharacterControl_ResetCamera;
         public InputAction @TargetCamera => m_Wrapper.m_CharacterControl_TargetCamera;
         public InputAction @SwordSlash => m_Wrapper.m_CharacterControl_SwordSlash;
+        public InputAction @MoveX => m_Wrapper.m_CharacterControl_MoveX;
+        public InputAction @MoveY => m_Wrapper.m_CharacterControl_MoveY;
+        public InputAction @Sprint => m_Wrapper.m_CharacterControl_Sprint;
+        public InputAction @Pause => m_Wrapper.m_CharacterControl_Pause;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -377,9 +473,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_CharacterControlActionsCallbackInterface != null)
             {
-                @Move.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMove;
-                @Move.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMove;
-                @Move.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMove;
                 @Look.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLook;
@@ -404,13 +497,22 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @SwordSlash.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnSwordSlash;
                 @SwordSlash.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnSwordSlash;
                 @SwordSlash.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnSwordSlash;
+                @MoveX.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveX;
+                @MoveX.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveX;
+                @MoveX.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveX;
+                @MoveY.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveY;
+                @MoveY.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveY;
+                @MoveY.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveY;
+                @Sprint.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnSprint;
+                @Sprint.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnSprint;
+                @Sprint.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnSprint;
+                @Pause.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_CharacterControlActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Move.started += instance.OnMove;
-                @Move.performed += instance.OnMove;
-                @Move.canceled += instance.OnMove;
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
@@ -435,6 +537,18 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @SwordSlash.started += instance.OnSwordSlash;
                 @SwordSlash.performed += instance.OnSwordSlash;
                 @SwordSlash.canceled += instance.OnSwordSlash;
+                @MoveX.started += instance.OnMoveX;
+                @MoveX.performed += instance.OnMoveX;
+                @MoveX.canceled += instance.OnMoveX;
+                @MoveY.started += instance.OnMoveY;
+                @MoveY.performed += instance.OnMoveY;
+                @MoveY.canceled += instance.OnMoveY;
+                @Sprint.started += instance.OnSprint;
+                @Sprint.performed += instance.OnSprint;
+                @Sprint.canceled += instance.OnSprint;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -496,9 +610,41 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         }
     }
     public InteractableControlActions @InteractableControl => new InteractableControlActions(this);
+
+    // Menu Control
+    private readonly InputActionMap m_MenuControl;
+    private IMenuControlActions m_MenuControlActionsCallbackInterface;
+    private readonly InputAction m_MenuControl_Start;
+    public struct MenuControlActions
+    {
+        private @PlayerControls m_Wrapper;
+        public MenuControlActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Start => m_Wrapper.m_MenuControl_Start;
+        public InputActionMap Get() { return m_Wrapper.m_MenuControl; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuControlActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuControlActions instance)
+        {
+            if (m_Wrapper.m_MenuControlActionsCallbackInterface != null)
+            {
+                @Start.started -= m_Wrapper.m_MenuControlActionsCallbackInterface.OnStart;
+                @Start.performed -= m_Wrapper.m_MenuControlActionsCallbackInterface.OnStart;
+                @Start.canceled -= m_Wrapper.m_MenuControlActionsCallbackInterface.OnStart;
+            }
+            m_Wrapper.m_MenuControlActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Start.started += instance.OnStart;
+                @Start.performed += instance.OnStart;
+                @Start.canceled += instance.OnStart;
+            }
+        }
+    }
+    public MenuControlActions @MenuControl => new MenuControlActions(this);
     public interface ICharacterControlActions
     {
-        void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
@@ -507,6 +653,10 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnResetCamera(InputAction.CallbackContext context);
         void OnTargetCamera(InputAction.CallbackContext context);
         void OnSwordSlash(InputAction.CallbackContext context);
+        void OnMoveX(InputAction.CallbackContext context);
+        void OnMoveY(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IInteractableControlActions
     {
@@ -514,5 +664,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnCancel(InputAction.CallbackContext context);
         void OnOptionA(InputAction.CallbackContext context);
         void OnOptionB(InputAction.CallbackContext context);
+    }
+    public interface IMenuControlActions
+    {
+        void OnStart(InputAction.CallbackContext context);
     }
 }

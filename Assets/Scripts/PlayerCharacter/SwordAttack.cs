@@ -18,6 +18,10 @@ public class SwordAttack : MonoBehaviour
     private float damageTimeCurrent;
     private bool damageTimerRunning;
 
+    public float inputTimeMax;
+    private float inputTimeCurrent;
+    private bool inputTimerRunning;
+
     public GameObject slashAttackVolume;
 
     public AudioSource swordSwingSound;
@@ -67,27 +71,42 @@ public class SwordAttack : MonoBehaviour
                 slashAttackVolume.SetActive(true);
             }
         }
+
+        if (inputTimerRunning)
+        {
+            if (inputTimeCurrent >= inputTimeMax)
+            {
+                ResetInputTimer();
+            }
+            else inputTimeCurrent += Time.deltaTime;
+        }
     }
 
     public void OnCharacterAttack(InputAction.CallbackContext value)
     {
         if (value.started)
         {
-            if (movement.state == Movement.States.onGround)
+            if (!inputTimerRunning)
             {
-                anim.SetTrigger("Slash");
-                swordSwingSound.Play();
-                sheathTimerRunning = true;
-                sheathTimeCurrent = 0;
-                moveLockTimerRunning = true;
-                moveLockTimeCurrent = 0;
-                damageTimerRunning = true;
-                damageTimeCurrent = 0;
+                if (movement.state == Movement.States.onGround)
+                {
+                    anim.SetTrigger("Slash");
+                    swordSwingSound.Play();
 
-                equipGraphics.ShowSword(true);
-                movement.movementMultiplier = 0;
-                slashAttackVolume.SetActive(false);
-            }            
+                    inputTimerRunning = true;
+                    inputTimeCurrent = 0;
+                    sheathTimerRunning = true;
+                    sheathTimeCurrent = 0;
+                    moveLockTimerRunning = true;
+                    moveLockTimeCurrent = 0;
+                    damageTimerRunning = true;
+                    damageTimeCurrent = 0;
+
+                    equipGraphics.ShowSword(true);
+                    movement.movementMultiplier = 0;
+                    slashAttackVolume.SetActive(false);
+                }
+            }                
         }
     }
 
@@ -112,10 +131,17 @@ public class SwordAttack : MonoBehaviour
         slashAttackVolume.SetActive(false);
     }
 
+    void ResetInputTimer()
+    {
+        inputTimerRunning = false;
+        inputTimeCurrent = 0;
+    }
+
     public void ExternalReset()
     {
         ResetSheathTimer();
         ResetMoveLockTimer();
         ResetDamageTimer();
+        ResetInputTimer();
     }
 }

@@ -6,7 +6,9 @@ using UnityEngine.AI;
 
 public class Movement : MonoBehaviour
 {
-    public float speed;
+    public float walkSpeed;
+    public float sprintSpeedMultiplier;
+    private float performSprint;
     public float agentDistanceTolerance;
 
     public float jumpHeight;
@@ -21,7 +23,7 @@ public class Movement : MonoBehaviour
     public float coyoteTimeMax;
 
     public AudioSource jumpSound;
-    public AudioSource stepSound;
+    public GameObject stepSound;
     public AudioSource landSound;
 
     private bool controlledMovementAllowed;
@@ -34,16 +36,16 @@ public class Movement : MonoBehaviour
     private float inputMagnitude;
     private float currentSpeed;
 
+
     private Transform agentTarget;
 
     private Vector3 previousPosition;
     private Vector3 currentDirection;
 
-    private Vector2 rawInputMovement;
     private Vector3 camForward;
     private Vector3 camRight;
-    private Vector3 hDir;
-    private Vector3 hVel;
+    private Vector3 inputDirection;
+    private Vector3 horizontalPush;
 
     private Vector3 vVel;
 
@@ -88,15 +90,19 @@ public class Movement : MonoBehaviour
         camForward.Normalize();
         camRight.Normalize();
 
-        hDir = ((camForward * rawInputMovement.y) + (camRight * rawInputMovement.x)).normalized;
-        hVel = hDir * speed * movementMultiplier;
+        inputDirection = ((camForward * inputY) + (camRight * inputX)).normalized;
+        inputMagnitude = Mathf.Max(Mathf.Abs(inputY), Mathf.Abs(inputX));
+
+        float sprint = performSprint * sprintSpeedMultiplier;
+        float speed = walkSpeed + (walkSpeed * sprint);
+        horizontalPush = inputDirection * speed;
 
         
         vVel.y += gravity * Time.deltaTime;
 
 
 
-        if (controlledMovementAllowed) controller.Move((hVel + vVel) * Time.deltaTime);
+        if (controlledMovementAllowed) controller.Move((horizontalPush + vVel) * Time.deltaTime);
 
         if (shouldSnapRotation)
         {
@@ -105,9 +111,9 @@ public class Movement : MonoBehaviour
         else RotateCharacter();
 
         anim.SetBool("Airborne", !jumpCollider.ready);
-        anim.SetFloat("MoveVelocity", currentSpeed / speed);        
-        anim.SetFloat("MoveX", Vector3.Dot(transform.right, hDir));
-        anim.SetFloat("MoveZ", Vector3.Dot(transform.forward, hDir));
+        anim.SetFloat("MoveVelocity", speed * inputDirection.magnitude);        
+        anim.SetFloat("MoveX", Vector3.Dot(transform.right, inputDirection));
+        anim.SetFloat("MoveZ", Vector3.Dot(transform.forward, inputDirection));
 
         switch (state)
         {
@@ -144,9 +150,14 @@ public class Movement : MonoBehaviour
         }
     }
 
-    public void OnCharacterMovement(InputAction.CallbackContext value)
+    public void OnMoveX(InputAction.CallbackContext value)
     {
-        rawInputMovement = value.ReadValue<Vector2>();
+        inputX = value.ReadValue<float>();
+    }
+
+    public void OnMoveY(InputAction.CallbackContext value)
+    {
+        inputY = value.ReadValue<float>();
     }
 
     public void OnCharacterJump(InputAction.CallbackContext value)
@@ -154,6 +165,23 @@ public class Movement : MonoBehaviour
         if (value.started)
         {
             Jump();
+        }
+    }
+
+    public void OnSprint(InputAction.CallbackContext value)
+    {
+        if (value.started)
+        {
+            if (state == States.onGround)
+            {
+                performSprint = 1;
+            }
+            else performSprint = 0;
+        }
+
+        if (value.canceled)
+        {
+            performSprint = 0;
         }
     }
 
@@ -232,6 +260,6 @@ public class Movement : MonoBehaviour
 
     public void Step()
     {
-        stepSound.Play();
+        Instantiate(stepSound, transform.position, transform.rotation);
     }
 }

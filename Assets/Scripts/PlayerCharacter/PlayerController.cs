@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     private string actionMapCharacterControl = "Character Control";
     private string actionMapInteractableControl = "Interactable Control";
+    private string actionMapMenuControl = "Menu Control";
 
     private PlayerInput playerInput;
 
@@ -32,5 +33,10 @@ public class PlayerController : MonoBehaviour
     {
         playerInput.SwitchCurrentActionMap(actionMapInteractableControl);
         //print("interactable control enabled");
+    }
+
+    public void EnableMenuControl()
+    {
+        playerInput.SwitchCurrentActionMap(actionMapMenuControl);
     }
 }

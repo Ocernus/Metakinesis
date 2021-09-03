@@ -6,14 +6,6 @@
             "id": "d819ce03-2be7-4cb1-ae3e-53a2752bcbff",
             "actions": [
                 {
-                    "name": "Move",
-                    "type": "Value",
-                    "id": "7bcca0e0-a479-41dd-87c3-ac78095c5f66",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Look",
                     "type": "Value",
                     "id": "ec9964da-8a2b-42d1-8f29-60e1ae52ac0f",
@@ -76,20 +68,41 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press"
+                },
+                {
+                    "name": "MoveX",
+                    "type": "Value",
+                    "id": "ac374dd5-a36a-4629-a711-4e4b332f6566",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MoveY",
+                    "type": "Value",
+                    "id": "ea57b5bd-7ff0-4519-a5e8-87c7113e9801",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Sprint",
+                    "type": "Button",
+                    "id": "ded6cb03-a634-4b86-b7c7-2ca0988a28e2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "9070faa0-bb58-4171-8102-062f9d97a483",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "ffc058c5-cee6-4416-971e-5c19df5e80a2",
-                    "path": "<Gamepad>/leftStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "8947a008-00db-42c2-a6a3-309edffdb780",
@@ -177,6 +190,50 @@
                     "action": "Sword Slash",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4aa4f6ba-ea63-4036-9b7d-2c1040912f95",
+                    "path": "<Gamepad>/leftStick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2c43abe3-fb7b-4763-9ad7-20032ce2bd8a",
+                    "path": "<Gamepad>/leftStick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveY",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "150c25e3-285e-48e3-abe4-4a510ef62e4c",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "09e48003-f48e-4038-bf70-896fc877da4c",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -259,6 +316,33 @@
                     "processors": "",
                     "groups": "",
                     "action": "Option B",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Menu Control",
+            "id": "d3506e28-80da-4f2e-89c9-8e8a5753c675",
+            "actions": [
+                {
+                    "name": "Start",
+                    "type": "Button",
+                    "id": "10e9d730-a089-4b43-a00b-9eb14f8a8c49",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a7405be7-1b19-4275-a5cf-200c44e98011",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Start",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
