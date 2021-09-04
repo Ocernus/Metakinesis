@@ -16,18 +16,13 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
-    private void Start()
-    {
-        paused = false;
-    }
-
     public void OnGamePause(InputAction.CallbackContext value)
     {
         if (value.started)
         {
+            if (!paused) PauseGame();
+            if (paused) UnPauseGame(); 
             paused = !paused;
-            if (paused) PauseGame();
-            if (!paused) UnPauseGame(); 
         }
     }
 
@@ -43,6 +38,14 @@ public class GameManager : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
         PlayerController.instance.EnableCharacterControl();
+    }
+
+    public void DirectUnPause()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1;
+        PlayerController.instance.EnableCharacterControl();
+        paused = false;
     }
 
     public void QuitGame()
