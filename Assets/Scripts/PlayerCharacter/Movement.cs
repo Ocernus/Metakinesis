@@ -58,6 +58,10 @@ public class Movement : MonoBehaviour
     private JumpCollider jumpCollider;
     private SwordAttack swordAttack;
 
+    int layerMask = 1 << 9;
+    private GameObject hitObj;
+    Vector3 newNormal;
+
     public enum States
     {
         onGround,
@@ -81,6 +85,8 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        
+
         currentDirection = controller.velocity;
         currentDirection.y = 0f;
         currentSpeed = currentDirection.magnitude / Time.deltaTime;
@@ -100,11 +106,12 @@ public class Movement : MonoBehaviour
         horizontalPush = inputDirection * speed;
 
         
+
         vVel.y += gravity * Time.deltaTime;
+        Vector3 moveVelocity = vVel + horizontalPush;
+        moveVelocity = AdjustVelocityToSlope(moveVelocity);
 
-
-
-        if (controlledMovementAllowed) controller.Move((horizontalPush + vVel) * Time.deltaTime);
+        if (controlledMovementAllowed) controller.Move((moveVelocity) * Time.deltaTime);
 
         if (shouldSnapRotation)
         {
@@ -112,7 +119,7 @@ public class Movement : MonoBehaviour
         }
         else RotateCharacter();
 
-        anim.SetBool("Airborne", !grounded);
+        anim.SetBool("Airborne", !jumpCollider.ready);
         anim.SetFloat("MoveVelocity", speed * inputDirection.magnitude);        
         anim.SetFloat("MoveX", Vector3.Dot(transform.right, inputDirection));
         anim.SetFloat("MoveZ", Vector3.Dot(transform.forward, inputDirection));
@@ -162,6 +169,24 @@ public class Movement : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    Vector3 AdjustVelocityToSlope(Vector3 velocity)
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.2f, layerMask))
+        {
+            hitObj = hit.transform.gameObject;
+            newNormal = hit.normal;
+            var slopeRotation = Quaternion.FromToRotation(Vector3.up, newNormal);
+            var adjustedVelocity = slopeRotation * velocity;
+            if (adjustedVelocity.y < 0)
+            {
+                return adjustedVelocity;
+            }
+        }
+
+        return velocity;
     }
 
     public void OnMoveX(InputAction.CallbackContext value)
