@@ -18,9 +18,11 @@ public class Movement : MonoBehaviour
     public bool rotationIsSet;
 
     public float movementMultiplier = 1;
-
+    private bool grounded;
     private float coyoteTime;
     public float coyoteTimeMax;
+    private float landTime;
+    public float landTimeMax;
 
     public AudioSource jumpSound;
     public GameObject stepSound;
@@ -110,7 +112,7 @@ public class Movement : MonoBehaviour
         }
         else RotateCharacter();
 
-        anim.SetBool("Airborne", !jumpCollider.ready);
+        anim.SetBool("Airborne", !grounded);
         anim.SetFloat("MoveVelocity", speed * inputDirection.magnitude);        
         anim.SetFloat("MoveX", Vector3.Dot(transform.right, inputDirection));
         anim.SetFloat("MoveZ", Vector3.Dot(transform.forward, inputDirection));
@@ -130,6 +132,7 @@ public class Movement : MonoBehaviour
                     }
                     else
                     {
+                        grounded = true;
                         coyoteTime = 0.0f;
                         if (vVel.y <0)
                         {
@@ -142,8 +145,19 @@ public class Movement : MonoBehaviour
                 {
                     if (controller.isGrounded)
                     {
-                        landSound.Play();
-                        state = States.onGround;
+                        landTime += Time.deltaTime;
+                        if (landTime >= landTimeMax)
+                        {
+                            landSound.Play();
+                            state = States.onGround;
+                            landTime = 0;
+                        }                        
+                    }
+                    else
+                    {
+                        grounded = false;
+                        landTime = 0.0f;
+
                     }
                 }
                 break;
@@ -208,9 +222,9 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            if (currentDirection != Vector3.zero)
+            if (inputDirection != Vector3.zero)
             {
-                transform.rotation = Quaternion.LookRotation(currentDirection);
+                transform.rotation = Quaternion.LookRotation(inputDirection);
             }
             anim.SetFloat("MoveType", 0);
         }        

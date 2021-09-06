@@ -711,7 +711,7 @@ Transform:
   - {fileID: 7714218918056262811}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: -90}
 --- !u!136 &2491915251013408785
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -739,6 +739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 0
+  soundObject: {fileID: 2831866188565159760, guid: 32cfa0fd9e738fc428c532a5e697ed42, type: 3}
 --- !u!1 &8386861285997290855
 GameObject:
   m_ObjectHideFlags: 0
