@@ -11,7 +11,7 @@ public class Breakable : Damageable
 
     private void Start()
     {
-        pickupTrigger.enabled = false;
+        if (pickupTrigger) pickupTrigger.enabled = false;
     }
 
     public override void TakeDamage(int amount)
@@ -22,7 +22,7 @@ public class Breakable : Damageable
         Instantiate(breakSound, transform.position, transform.rotation);
         if (maxHits <= 0)
         {
-            pickupTrigger.enabled = true;
+            if (pickupTrigger) pickupTrigger.enabled = true;
             Destroy(gameObject);
         }
     }
