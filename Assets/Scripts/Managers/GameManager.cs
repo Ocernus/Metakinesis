@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenu;
     bool paused;
 
+    public AudioManager audioManager;
+
     public static GameManager instance;
 
     private void Awake()
