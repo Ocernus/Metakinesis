@@ -18,7 +18,6 @@ public class Movement : MonoBehaviour
     public bool rotationIsSet;
 
     public float movementMultiplier = 1;
-    private bool grounded;
     private float coyoteTime;
     public float coyoteTimeMax;
     private float landTime;
@@ -139,7 +138,6 @@ public class Movement : MonoBehaviour
                     }
                     else
                     {
-                        grounded = true;
                         coyoteTime = 0.0f;
                         if (vVel.y <0)
                         {
@@ -162,9 +160,7 @@ public class Movement : MonoBehaviour
                     }
                     else
                     {
-                        grounded = false;
                         landTime = 0.0f;
-
                     }
                 }
                 break;
