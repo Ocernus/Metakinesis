@@ -20,6 +20,8 @@ public class Inventory : MonoBehaviour
 
     public Dictionary<int, int> items = new Dictionary<int, int>();
 
+    public bool swordEquipped;
+
     public int[] itemIndices;
     
     public static Inventory instance;

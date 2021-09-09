@@ -7,7 +7,9 @@ public class EquipmentGraphicsManager : MonoBehaviour
     public GameObject[] heldSwordParts;
     public GameObject[] sheathedSwordParts;
     public GameObject[] fullArmorUpgrades;
+    public GameObject[] sheathParts;
 
+    public bool swordEquipped;
     public bool swordHeld;
     public bool armorComplete;
 
@@ -34,7 +36,17 @@ public class EquipmentGraphicsManager : MonoBehaviour
 
     public void ShowSword(bool toggle)
     {
-        foreach (GameObject obj in heldSwordParts) obj.SetActive(toggle);
-        foreach (GameObject obj in sheathedSwordParts) obj.SetActive(!toggle);
+        if (swordEquipped)
+        {
+            foreach (GameObject obj in heldSwordParts) obj.SetActive(toggle);
+            foreach (GameObject obj in sheathedSwordParts) obj.SetActive(!toggle);
+        }        
+    }
+
+    public void EquipSword(bool toggle)
+    {
+        swordEquipped = toggle;
+        foreach (GameObject obj in sheathedSwordParts) obj.SetActive(toggle);
+        foreach (GameObject obj in sheathParts) obj.SetActive(toggle);
     }
 }

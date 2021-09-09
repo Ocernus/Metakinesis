@@ -7,12 +7,22 @@ public class SwordPlacement : MonoBehaviour
 {
     public GameObject sword;
 
-    public bool equipped;
+    Movement movement;
+    EquipmentGraphicsManager equipGFX;
+    SwordAttack attack;
+
+    private void Start()
+    {
+        movement = GetComponent<Movement>();
+        equipGFX = GetComponent<EquipmentGraphicsManager>();
+        attack = GetComponent<SwordAttack>();
+    }
 
     public void Drop()
     {
         // Change player graphics and equipped bool
-        equipped = false;
+        equipGFX.EquipSword(false);
+        Inventory.instance.swordEquipped = false;
         sword.transform.position = transform.position;
         sword.SetActive(true);
         print("attempted drop");
@@ -20,15 +30,18 @@ public class SwordPlacement : MonoBehaviour
 
     public void Teleport()
     {
+        movement.PausePlayerControl();
         transform.position = sword.transform.position; // not working
         print("attempted teleport");
         PickUp();//should be done in the attack script
+        movement.ReturnPlayerControl();
     }
 
     public void PickUp()
     {
         sword.SetActive(false);
-        equipped = true;
+        equipGFX.EquipSword(true);
+        Inventory.instance.swordEquipped = true;
         // Change player graphics and equipped bool
         print("attempted pickup");
     }
@@ -37,7 +50,7 @@ public class SwordPlacement : MonoBehaviour
     {
         if (value.started)
         {
-            if (equipped) Drop();
+            if (Inventory.instance.swordEquipped) Drop();
             else Teleport();
         }        
     }

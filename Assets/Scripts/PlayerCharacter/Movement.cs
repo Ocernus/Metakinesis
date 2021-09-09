@@ -284,6 +284,12 @@ public class Movement : MonoBehaviour
         else return false;
     }    
 
+    public void PausePlayerControl()
+    {
+        controlledMovementAllowed = false;
+        controller.enabled = false;
+    }
+
     public void ReturnPlayerControl()
     {
         controlledMovementAllowed = true;

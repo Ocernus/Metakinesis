@@ -86,27 +86,30 @@ public class SwordAttack : MonoBehaviour
     {
         if (value.started)
         {
-            if (!inputTimerRunning)
+            if (Inventory.instance.swordEquipped)
             {
-                if (movement.state == Movement.States.onGround)
+                if (!inputTimerRunning)
                 {
-                    anim.SetTrigger("Slash");
-                    swordSwingSound.Play();
+                    if (movement.state == Movement.States.onGround)
+                    {
+                        anim.SetTrigger("Slash");
+                        swordSwingSound.Play();
 
-                    inputTimerRunning = true;
-                    inputTimeCurrent = 0;
-                    sheathTimerRunning = true;
-                    sheathTimeCurrent = 0;
-                    moveLockTimerRunning = true;
-                    moveLockTimeCurrent = 0;
-                    damageTimerRunning = true;
-                    damageTimeCurrent = 0;
+                        inputTimerRunning = true;
+                        inputTimeCurrent = 0;
+                        sheathTimerRunning = true;
+                        sheathTimeCurrent = 0;
+                        moveLockTimerRunning = true;
+                        moveLockTimeCurrent = 0;
+                        damageTimerRunning = true;
+                        damageTimeCurrent = 0;
 
-                    equipGraphics.ShowSword(true);
-                    movement.movementMultiplier = 0;
-                    slashAttackVolume.SetActive(false);
+                        equipGraphics.ShowSword(true);
+                        movement.movementMultiplier = 0;
+                        slashAttackVolume.SetActive(false);
+                    }
                 }
-            }                
+            }            
         }
     }
 
