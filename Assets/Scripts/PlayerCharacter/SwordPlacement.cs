@@ -46,6 +46,14 @@ public class SwordPlacement : MonoBehaviour
         print("attempted pickup");
     }
 
+    public void ExternalPositionSet(Vector3 position)
+    {
+        equipGFX.EquipSword(false);
+        Inventory.instance.swordEquipped = false;
+        sword.transform.position = position;
+        sword.SetActive(true);
+    }
+
     public void OnSwordPlacementChangeState(InputAction.CallbackContext value)
     {
         if (value.started)

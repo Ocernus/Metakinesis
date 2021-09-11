@@ -13,6 +13,8 @@ public class GuardVision : MonoBehaviour
     public float targetDistance;
     public GameObject mark;
 
+    public Transform imprisonmentPoint;
+    public Transform contrabandPoint;
 
     private void Update()
     {
@@ -20,7 +22,13 @@ public class GuardVision : MonoBehaviour
         {
             LookForTarget(PlayerController.instance.gameObject);
         }
+        else targetCurrentlyVisible = false;
         mark.SetActive(targetCurrentlyVisible);
+        if (targetCurrentlyVisible)
+        {
+            ImprisonPlayer();
+            PlayerController.instance.GetComponent<SwordPlacement>().ExternalPositionSet(contrabandPoint.position);
+        }
     }
 
     public float LookForTarget(GameObject behaviorTarget)
@@ -68,5 +76,13 @@ public class GuardVision : MonoBehaviour
             return (float)System.Math.Round(visionDotProduct, 2);
         }
         else return 0;
+    }
+
+    void ImprisonPlayer()
+    {
+        Movement movement = PlayerController.instance.GetComponent<Movement>();
+        movement.PausePlayerControl();
+        PlayerController.instance.transform.position = imprisonmentPoint.position;
+        movement.ReturnPlayerControl();
     }
 }
