@@ -16,11 +16,11 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        playerInput = GetComponent<PlayerInput>();
     }
 
     private void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
     }
 
     public void EnableCharacterControl()

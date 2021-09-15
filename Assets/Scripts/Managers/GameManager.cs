@@ -9,22 +9,67 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenu;
     bool paused;
 
+
+    [Header("Other Stuff")]
     public AudioManager audioManager;
+
+    public enum GameStates
+    {
+        startScreen,
+        gameplayScreen,
+    }
+
+    public GameStates gameState;
+
 
     public static GameManager instance;
 
     private void Awake()
     {
         instance = this;
+        gameState = GameStates.startScreen;
+    }
+
+    private void Start()
+    {
+        InitializeGame();
+    }
+
+    public void InitializeGame()
+    {
+        CameraManager.instance.heartRoomCam.SetActive(true);
+        PlayerController.instance.gameObject.GetComponent<Movement>().enabled = false;
+        PlayerController.instance.EnableMenuControl();
+    }
+
+    public void ContinueGame()
+    {
+        CameraManager.instance.heartRoomCam.SetActive(false);
+        CameraManager.instance.playerOrbitCam.SetActive(true);
+        PlayerController.instance.gameObject.GetComponent<Movement>().enabled = true;
+        PlayerController.instance.EnableCharacterControl();
+        gameState = GameStates.gameplayScreen;
     }
 
     public void OnGamePause(InputAction.CallbackContext value)
     {
         if (value.started)
         {
-            if (!paused) PauseGame();
-            if (paused) UnPauseGame(); 
-            paused = !paused;
+            switch (gameState)
+            {
+                case GameStates.startScreen:
+                    {
+                        ContinueGame();
+                    }
+                    break;
+                case GameStates.gameplayScreen:
+                    {
+                        if (!paused) PauseGame();
+                        if (paused) UnPauseGame();
+                        paused = !paused;
+                    }
+                    break;
+            }
         }
     }
 
