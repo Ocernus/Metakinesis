@@ -11,6 +11,9 @@ public class Movement : MonoBehaviour
     private float performSprint;
     public float agentDistanceTolerance;
 
+    public float runInputThreshold;
+    public float lerpSpeed;
+
     public float jumpHeight;
     public float gravity;
     public float rotationSpeed;
@@ -100,9 +103,13 @@ public class Movement : MonoBehaviour
         inputDirection = ((camForward * inputY) + (camRight * inputX)).normalized;
         inputMagnitude = Mathf.Max(Mathf.Abs(inputY), Mathf.Abs(inputX));
 
+        if (inputMagnitude >= runInputThreshold) performSprint = 1;
+        else performSprint = 0;
+
         float sprint = performSprint * sprintSpeedMultiplier;
         float speed = walkSpeed + (walkSpeed * sprint);
-        horizontalPush = inputDirection * speed;
+
+        horizontalPush = Vector3.Lerp(controller.velocity, inputDirection * speed, lerpSpeed);
 
         
 
@@ -119,7 +126,7 @@ public class Movement : MonoBehaviour
         else RotateCharacter();
 
         anim.SetBool("Airborne", !jumpCollider.ready);
-        anim.SetFloat("MoveVelocity", speed * inputDirection.magnitude);        
+        anim.SetFloat("MoveVelocity", controller.velocity.magnitude);        
         anim.SetFloat("MoveX", Vector3.Dot(transform.right, inputDirection));
         anim.SetFloat("MoveZ", Vector3.Dot(transform.forward, inputDirection));
 
@@ -205,6 +212,7 @@ public class Movement : MonoBehaviour
 
     public void OnSprint(InputAction.CallbackContext value)
     {
+        /*
         if (value.started)
         {
             if (state == States.onGround)
@@ -218,6 +226,7 @@ public class Movement : MonoBehaviour
         {
             performSprint = 0;
         }
+        */
     }
 
     private void Jump()
