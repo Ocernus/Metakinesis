@@ -15,8 +15,11 @@ public class EquipmentGraphicsManager : MonoBehaviour
 
     public bool triggerRefresh;
 
+    
     void Update()
     {
+        swordEquipped = Inventory.instance.swordEquipped;
+
         if (triggerRefresh)
         {
             ShowSword(swordHeld);
@@ -41,6 +44,12 @@ public class EquipmentGraphicsManager : MonoBehaviour
             foreach (GameObject obj in heldSwordParts) obj.SetActive(toggle);
             foreach (GameObject obj in sheathedSwordParts) obj.SetActive(!toggle);
         }        
+        else
+        {
+            foreach (GameObject obj in heldSwordParts) obj.SetActive(false);
+            foreach (GameObject obj in sheathedSwordParts) obj.SetActive(false);
+            foreach (GameObject obj in sheathParts) obj.SetActive(false);
+        }
     }
 
     public void EquipSword(bool toggle)
