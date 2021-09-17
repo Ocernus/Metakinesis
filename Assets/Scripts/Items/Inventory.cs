@@ -13,6 +13,7 @@ public class Inventory : MonoBehaviour
     sanity-    = 3
     sanity+    = 4
 
+
     */
 
     public ItemAbility[] itemAbilities;

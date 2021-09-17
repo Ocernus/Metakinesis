@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("HUD Stuff")]
+    public GameObject HUD;
+
     [Header("Pause Menu Stuff")]
     public GameObject pauseMenu;
     bool paused;
@@ -49,6 +52,7 @@ public class GameManager : MonoBehaviour
         PlayerController.instance.gameObject.GetComponent<Movement>().enabled = true;
         PlayerController.instance.EnableCharacterControl();
         gameState = GameStates.gameplayScreen;
+        HUD.SetActive(true);
     }
 
     public void OnGamePause(InputAction.CallbackContext value)

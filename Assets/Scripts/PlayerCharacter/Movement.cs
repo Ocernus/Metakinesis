@@ -109,7 +109,7 @@ public class Movement : MonoBehaviour
         float sprint = performSprint * sprintSpeedMultiplier;
         float speed = walkSpeed + (walkSpeed * sprint);
 
-        horizontalPush = Vector3.Lerp(currentDirection, inputDirection * speed, lerpSpeed);
+        horizontalPush = Vector3.Lerp(currentDirection, inputDirection * speed * movementMultiplier, lerpSpeed);
 
         
 
