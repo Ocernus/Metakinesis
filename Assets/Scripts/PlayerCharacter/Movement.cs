@@ -109,9 +109,10 @@ public class Movement : MonoBehaviour
         float sprint = performSprint * sprintSpeedMultiplier;
         float speed = walkSpeed + (walkSpeed * sprint);
 
-        horizontalPush = Vector3.Lerp(currentDirection, inputDirection * speed * movementMultiplier, lerpSpeed);
+        //horizontalPush = Vector3.Lerp(currentDirection, inputDirection * speed * movementMultiplier, lerpSpeed); this was laggy when framerate dipped
+        horizontalPush = inputDirection * speed * movementMultiplier;
 
-        
+
 
         vVel.y += gravity * Time.deltaTime;
         Vector3 moveVelocity = vVel + horizontalPush;

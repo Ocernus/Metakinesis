@@ -12,7 +12,8 @@ public class Inventory : MonoBehaviour
     potion     = 2
     sanity-    = 3
     sanity+    = 4
-
+    ingots     = 5
+    crystals   = 6
 
     */
 
@@ -53,12 +54,49 @@ public class Inventory : MonoBehaviour
 
         items[index] = newValue;
         UpdateUI(index, newValue);
-        print("item " + index + " + " + amount);
+        //print("item " + index + " + " + amount);
     }
 
     void UpdateUI(int index, int value)
     {
-        UIAbilityManager.instance.RefreshItemCount(value);
+        switch (index)
+        {
+            case 0:
+                {
+                    UIPickupDisplayManager.instance.RefreshCoins(value);
+                }
+                break;
+            case 1:
+                {
+
+                }
+                break;
+            case 2:
+                {
+
+                }
+                break;
+            case 3:
+                {
+
+                }
+                break;
+            case 4:
+                {
+
+                }
+                break;
+            case 5:
+                {
+                    UIPickupDisplayManager.instance.RefreshIngots(value);
+                }
+                break;
+            case 6:
+                {
+                    UIPickupDisplayManager.instance.RefreshCrystals(value);
+                }
+                break;
+        }
     }
 
     public void OnPlayerItemAbiltyUse(InputAction.CallbackContext value)

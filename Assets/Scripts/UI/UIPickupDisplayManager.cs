@@ -6,18 +6,28 @@ using TMPro;
 public class UIPickupDisplayManager : MonoBehaviour
 {
     public TextMeshProUGUI coinText;
-    public TextMeshProUGUI metalShardsText;
-    public TextMeshProUGUI cystalShardsText;
+    public TextMeshProUGUI ingotsText;
+    public TextMeshProUGUI crystalsText;
 
-    // Start is called before the first frame update
-    void Start()
+    public static UIPickupDisplayManager instance;
+
+    private void Awake()
     {
-        
+        instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RefreshCoins(int value)
     {
-        
+        coinText.text = value.ToString();
+    }
+
+    public void RefreshIngots(int value)
+    {
+        ingotsText.text = value.ToString();
+    }
+
+    public void RefreshCrystals(int value)
+    {
+        crystalsText.text = value.ToString();
     }
 }

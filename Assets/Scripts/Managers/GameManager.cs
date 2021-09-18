@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Other Stuff")]
     public AudioManager audioManager;
+    public bool simulateNewGame;
 
     public enum GameStates
     {
@@ -30,12 +31,14 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        gameState = GameStates.startScreen;
+        if (simulateNewGame) gameState = GameStates.startScreen;
+        else gameState = GameStates.gameplayScreen;
     }
 
     private void Start()
     {
-        InitializeGame();
+        if (simulateNewGame) InitializeGame();
+        else ContinueGame();
     }
 
     public void InitializeGame()
