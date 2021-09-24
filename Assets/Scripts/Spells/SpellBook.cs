@@ -13,6 +13,12 @@ public class SpellBook : MonoBehaviour
         activeSpell = spells[0];
     }
 
+    public void LearnSpell(int index)
+    {
+        spells[index].learned = true;
+        print("learned " + spells[index].spellName);
+    }
+
     public void OnPlayerSpellAbiltyUse(InputAction.CallbackContext value)
     {
         if (value.started)

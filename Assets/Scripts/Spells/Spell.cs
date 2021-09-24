@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Spell : MonoBehaviour
 {
+    public string spellName;
+    public bool learned;
+
     public virtual void Use()
     {
-        print("placeholder spell used");
+        print("cast " + spellName);
     }
 }
