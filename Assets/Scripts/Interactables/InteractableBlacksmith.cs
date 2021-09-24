@@ -7,6 +7,14 @@ public class InteractableBlacksmith : Interactable
     public int armorCost;
     public int swordCost;
 
+    PlayerHealth health;
+
+    public override void Start()
+    {
+        base.Start();
+        health = playerCharacter.GetComponent<PlayerHealth>();
+    }
+
     public override void ChoiceAInstantReaction()
     {
         Inventory.instance.ChangeItemCount(5, -armorCost);
@@ -14,7 +22,7 @@ public class InteractableBlacksmith : Interactable
 
     public override void ChoiceADelayedReaction()
     {
-        // give next tier of armor
+        health.IncreaseArmor();
         print("got next armor piece");
     }
 
@@ -31,7 +39,7 @@ public class InteractableBlacksmith : Interactable
 
     public override bool ReqCheckA()
     {
-        if (Inventory.instance.items[5] >= armorCost /* && armor not maxed out */) return true;
+        if (Inventory.instance.items[5] >= armorCost && health.armorCurrent < health.armorMax) return true;
         else return false;
     }
 

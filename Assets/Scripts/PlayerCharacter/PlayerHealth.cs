@@ -6,16 +6,20 @@ public class PlayerHealth : Damageable
 {
     public int hitPointsMax;
     public int hitPointsCurrent;
-    public int livesMax;
-    public int livesCurrent;
+    public int armorMax;
+    public int armorCurrent;
     public int regenAmplitude;
     public int regenFrequency;
+
+    public EquipmentGraphicsManager equips;
 
     public AudioSource damageSound;
 
     void Start()
     {
+        equips = GetComponent<EquipmentGraphicsManager>();
         InitializeHealth();
+        InitializeArmor();
         UpdateUI();
     }
 
@@ -26,8 +30,12 @@ public class PlayerHealth : Damageable
 
     void InitializeHealth()
     {
-        hitPointsCurrent = hitPointsMax;
-        livesCurrent = livesMax;
+        hitPointsCurrent = hitPointsMax;        
+    }
+
+    void InitializeArmor()
+    {
+        equips.ShowArmor(armorCurrent);
     }
 
     public override void TakeDamage(int amount)
@@ -39,10 +47,11 @@ public class PlayerHealth : Damageable
             damageSound.Play();
             if (hitPointsCurrent <= 0)
             {
-                if (livesCurrent > 0)
+                if (armorCurrent > 0)
                 {
                     hitPointsCurrent = hitPointsMax;
-                    livesCurrent -= 1;
+                    armorCurrent -= 1;
+                    equips.ShowArmor(armorCurrent);
                 }
                 else print("player died");
             }            
@@ -59,6 +68,13 @@ public class PlayerHealth : Damageable
 
     void UpdateUI()
     {
-        UIHealthManager.instance.UpdateHealthUI(hitPointsCurrent, livesCurrent);
+        UIHealthManager.instance.UpdateHealthUI(hitPointsCurrent, armorCurrent);
+    }
+
+    public void IncreaseArmor()
+    {
+        armorCurrent += 1;
+        equips.ShowArmor(armorCurrent);
+        UpdateUI();
     }
 }

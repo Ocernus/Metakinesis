@@ -36,11 +36,11 @@ public class Interactable : MonoBehaviour
     bool shouldReset;
     bool initTrigger;
 
-    GameObject playerCharacter;
+    protected GameObject playerCharacter;
     Animator anim;
     Movement movement;
        
-    private void Start()
+    public virtual void Start()
     {
         playerCharacter = PlayerController.instance.gameObject;
         anim = playerCharacter.GetComponent<Animator>();
