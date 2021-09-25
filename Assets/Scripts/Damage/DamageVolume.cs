@@ -6,6 +6,8 @@ public class DamageVolume : MonoBehaviour
 {
     public int damage;
     public GameObject owner;
+    public bool dieOnImpact;
+    public GameObject impactEffect;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -17,6 +19,24 @@ public class DamageVolume : MonoBehaviour
                 print("hit " + other.gameObject.name);
                 damageable.TakeDamage(damage);
             }            
-        }                
+        }  
+        if (dieOnImpact && other.gameObject != owner)
+        {
+            SelfDestruct();
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (dieOnImpact && collision.gameObject != owner)
+        {
+            SelfDestruct();
+        }
+    }
+
+    void SelfDestruct()
+    {
+        Instantiate(impactEffect, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }

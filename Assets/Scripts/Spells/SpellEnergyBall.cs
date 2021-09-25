@@ -10,6 +10,7 @@ public class SpellEnergyBall : Spell
     public override void Use()
     {
         base.Use();
-        Instantiate(projectile, launchPoint.position, launchPoint.rotation);
+        GameObject obj = Instantiate(projectile, launchPoint.position, launchPoint.rotation);
+        obj.GetComponent<DamageVolume>().owner = transform.parent.gameObject;
     }
 }
