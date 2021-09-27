@@ -46,8 +46,8 @@ public class Movement : MonoBehaviour
     private Vector3 previousPosition;
     private Vector3 currentDirection;
 
-    private Vector3 camForward;
-    private Vector3 camRight;
+    public Vector3 camForward;
+    public Vector3 camRight;
     private Vector3 inputDirection;
     private Vector3 horizontalPush;
 
