@@ -23,7 +23,7 @@ public class SpellBook : MonoBehaviour
     {
         if (value.started)
         {
-            activeSpell.Use();
+            if (activeSpell.learned) activeSpell.Use();
         }
     }
 }

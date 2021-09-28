@@ -16,7 +16,7 @@ public class DamageVolume : MonoBehaviour
         {
             if (other.gameObject != owner)
             {
-                print("hit " + other.gameObject.name);
+                //print("hit " + other.gameObject.name);
                 damageable.TakeDamage(damage);
             }            
         }  

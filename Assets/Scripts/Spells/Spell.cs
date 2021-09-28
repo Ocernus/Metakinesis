@@ -9,6 +9,5 @@ public class Spell : MonoBehaviour
 
     public virtual void Use()
     {
-        print("cast " + spellName);
     }
 }
