@@ -60,7 +60,7 @@ public class Movement : MonoBehaviour
     private JumpCollider jumpCollider;
     private SwordAttack swordAttack;
 
-    int layerMask = 1 << 9;
+    int layerMask = 1 << 10;
     private GameObject hitObj;
     Vector3 newNormal;
 
@@ -83,6 +83,8 @@ public class Movement : MonoBehaviour
         swordAttack = GetComponent<SwordAttack>();
 
         controlledMovementAllowed = true;
+
+        layerMask = ~layerMask;
     }    
 
     void Update()

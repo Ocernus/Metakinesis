@@ -121,6 +121,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""a6c30df0-c5ae-4617-87ee-3f1fc652b6af"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -266,6 +274,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""SwordPlace"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""23f06bf7-c29d-4013-9385-91ed10b98cc3"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -398,6 +417,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_CharacterControl_Sprint = m_CharacterControl.FindAction("Sprint", throwIfNotFound: true);
         m_CharacterControl_Pause = m_CharacterControl.FindAction("Pause", throwIfNotFound: true);
         m_CharacterControl_SwordPlace = m_CharacterControl.FindAction("SwordPlace", throwIfNotFound: true);
+        m_CharacterControl_Shoot = m_CharacterControl.FindAction("Shoot", throwIfNotFound: true);
         // Interactable Control
         m_InteractableControl = asset.FindActionMap("Interactable Control", throwIfNotFound: true);
         m_InteractableControl_Comment = m_InteractableControl.FindAction("Comment", throwIfNotFound: true);
@@ -469,6 +489,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_CharacterControl_Sprint;
     private readonly InputAction m_CharacterControl_Pause;
     private readonly InputAction m_CharacterControl_SwordPlace;
+    private readonly InputAction m_CharacterControl_Shoot;
     public struct CharacterControlActions
     {
         private @PlayerControls m_Wrapper;
@@ -486,6 +507,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Sprint => m_Wrapper.m_CharacterControl_Sprint;
         public InputAction @Pause => m_Wrapper.m_CharacterControl_Pause;
         public InputAction @SwordPlace => m_Wrapper.m_CharacterControl_SwordPlace;
+        public InputAction @Shoot => m_Wrapper.m_CharacterControl_Shoot;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -534,6 +556,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @SwordPlace.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnSwordPlace;
                 @SwordPlace.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnSwordPlace;
                 @SwordPlace.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnSwordPlace;
+                @Shoot.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnShoot;
+                @Shoot.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnShoot;
+                @Shoot.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnShoot;
             }
             m_Wrapper.m_CharacterControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -577,6 +602,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @SwordPlace.started += instance.OnSwordPlace;
                 @SwordPlace.performed += instance.OnSwordPlace;
                 @SwordPlace.canceled += instance.OnSwordPlace;
+                @Shoot.started += instance.OnShoot;
+                @Shoot.performed += instance.OnShoot;
+                @Shoot.canceled += instance.OnShoot;
             }
         }
     }
@@ -686,6 +714,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnSprint(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnSwordPlace(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
     }
     public interface IInteractableControlActions
     {

@@ -10,10 +10,10 @@ public class AbilityPickup : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        SpellBook spellBook = other.gameObject.GetComponentInChildren<SpellBook>();
-        if (spellBook)
+        Shoot shoot = other.gameObject.GetComponentInChildren<Shoot>();
+        if (shoot)
         {
-            spellBook.LearnSpell(index);
+            shoot.Learn();
             Instantiate(soundObject, transform.position, transform.rotation);
             Destroy(gameObject);
         }

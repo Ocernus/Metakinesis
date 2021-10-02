@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIAbilityManager : MonoBehaviour
 {
-    public TextMeshProUGUI itemCountText;
+    public Image fillImage;
 
     public static UIAbilityManager instance;
 
@@ -14,8 +15,8 @@ public class UIAbilityManager : MonoBehaviour
         instance = this;
     }
 
-    public void RefreshItemCount(int amount)
+    public void UpdateMagicBar(float value)
     {
-        itemCountText.text = amount.ToString();
+        fillImage.fillAmount = value;
     }
 }
