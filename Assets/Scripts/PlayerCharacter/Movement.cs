@@ -6,6 +6,8 @@ using UnityEngine.AI;
 
 public class Movement : MonoBehaviour
 {
+    public int stepCount;
+
     public float walkSpeed;
     public float sprintSpeedMultiplier;
     private float performSprint;
@@ -59,6 +61,7 @@ public class Movement : MonoBehaviour
     private NavMeshAgent agent;
     private JumpCollider jumpCollider;
     private SwordAttack swordAttack;
+    private PlayerMagic magic;
 
     int layerMask = 1 << 10;
     private GameObject hitObj;
@@ -81,6 +84,7 @@ public class Movement : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         jumpCollider = GetComponentInChildren<JumpCollider>();
         swordAttack = GetComponent<SwordAttack>();
+        magic = GetComponentInChildren<PlayerMagic>();
 
         controlledMovementAllowed = true;
 
@@ -313,6 +317,8 @@ public class Movement : MonoBehaviour
 
     public void Step()
     {
+        stepCount += 1;
+        magic.SolveStepCount(1);
         Instantiate(stepSound, transform.position, transform.rotation);
     }
 }

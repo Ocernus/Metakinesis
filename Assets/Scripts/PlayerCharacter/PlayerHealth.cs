@@ -77,4 +77,10 @@ public class PlayerHealth : Damageable
         equips.ShowArmor(armorCurrent);
         UpdateUI();
     }
+
+    public void Heal(int amount)
+    {
+        hitPointsCurrent += Mathf.Min(hitPointsMax - hitPointsCurrent, amount);
+        UpdateUI();
+    }
 }

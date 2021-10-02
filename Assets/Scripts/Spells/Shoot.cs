@@ -34,8 +34,7 @@ public class Shoot : MonoBehaviour
             {
                 
                 if (value.started)
-                {
-                    magic.ChangeValue(-cost);
+                {                    
                     Charge();
                     if (!chargeSound.isPlaying) chargeSound.Play();
                 }
@@ -57,6 +56,7 @@ public class Shoot : MonoBehaviour
     {
         inputHeld = false;
         print(chargeValue);
+        magic.ChangeValue(-cost);
         MakeProjectile();
     }
 

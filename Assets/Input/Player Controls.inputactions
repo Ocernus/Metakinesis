@@ -38,14 +38,6 @@
                     "interactions": "Press"
                 },
                 {
-                    "name": "Spell",
-                    "type": "Button",
-                    "id": "5d34f92c-2248-4c5c-84e3-21976be1a55e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press"
-                },
-                {
                     "name": "Reset Camera",
                     "type": "Button",
                     "id": "5166e352-e93e-46c3-9ce9-d65e01e43866",
@@ -116,6 +108,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press"
+                },
+                {
+                    "name": "Heal",
+                    "type": "Button",
+                    "id": "84b6f580-8160-4abf-b126-5e5e7352bc76",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
@@ -160,17 +160,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Item",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "51339f3b-eed4-4bc4-81f7-dc31e1fcdf96",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Spell",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -265,11 +254,22 @@
                 {
                     "name": "",
                     "id": "23f06bf7-c29d-4013-9385-91ed10b98cc3",
-                    "path": "<Gamepad>/leftTrigger",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0e646f32-3079-4fc1-8311-f2be718b5ff5",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Heal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

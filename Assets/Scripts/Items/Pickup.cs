@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pickup : MonoBehaviour
 {
     public int index;
+    public int magicRechargeAmount;
 
     public GameObject soundObject;
 
@@ -14,6 +15,7 @@ public class Pickup : MonoBehaviour
         if (inventory)
         {
             Inventory.instance.ChangeItemCount(index, 1);
+            other.GetComponentInChildren<PlayerMagic>().SolveCollectionReturns(magicRechargeAmount);
             Instantiate(soundObject, transform.position, transform.rotation);
             Destroy(gameObject);
         }

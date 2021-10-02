@@ -51,14 +51,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": ""Press""
                 },
                 {
-                    ""name"": ""Spell"",
-                    ""type"": ""Button"",
-                    ""id"": ""5d34f92c-2248-4c5c-84e3-21976be1a55e"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
-                },
-                {
                     ""name"": ""Reset Camera"",
                     ""type"": ""Button"",
                     ""id"": ""5166e352-e93e-46c3-9ce9-d65e01e43866"",
@@ -129,6 +121,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Heal"",
+                    ""type"": ""Button"",
+                    ""id"": ""84b6f580-8160-4abf-b126-5e5e7352bc76"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -173,17 +173,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Item"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""51339f3b-eed4-4bc4-81f7-dc31e1fcdf96"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Spell"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -278,11 +267,22 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""23f06bf7-c29d-4013-9385-91ed10b98cc3"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0e646f32-3079-4fc1-8311-f2be718b5ff5"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Heal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -408,7 +408,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_CharacterControl_Interact = m_CharacterControl.FindAction("Interact", throwIfNotFound: true);
         m_CharacterControl_Jump = m_CharacterControl.FindAction("Jump", throwIfNotFound: true);
         m_CharacterControl_Item = m_CharacterControl.FindAction("Item", throwIfNotFound: true);
-        m_CharacterControl_Spell = m_CharacterControl.FindAction("Spell", throwIfNotFound: true);
         m_CharacterControl_ResetCamera = m_CharacterControl.FindAction("Reset Camera", throwIfNotFound: true);
         m_CharacterControl_TargetCamera = m_CharacterControl.FindAction("Target Camera", throwIfNotFound: true);
         m_CharacterControl_SwordSlash = m_CharacterControl.FindAction("Sword Slash", throwIfNotFound: true);
@@ -418,6 +417,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_CharacterControl_Pause = m_CharacterControl.FindAction("Pause", throwIfNotFound: true);
         m_CharacterControl_SwordPlace = m_CharacterControl.FindAction("SwordPlace", throwIfNotFound: true);
         m_CharacterControl_Shoot = m_CharacterControl.FindAction("Shoot", throwIfNotFound: true);
+        m_CharacterControl_Heal = m_CharacterControl.FindAction("Heal", throwIfNotFound: true);
         // Interactable Control
         m_InteractableControl = asset.FindActionMap("Interactable Control", throwIfNotFound: true);
         m_InteractableControl_Comment = m_InteractableControl.FindAction("Comment", throwIfNotFound: true);
@@ -480,7 +480,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_CharacterControl_Interact;
     private readonly InputAction m_CharacterControl_Jump;
     private readonly InputAction m_CharacterControl_Item;
-    private readonly InputAction m_CharacterControl_Spell;
     private readonly InputAction m_CharacterControl_ResetCamera;
     private readonly InputAction m_CharacterControl_TargetCamera;
     private readonly InputAction m_CharacterControl_SwordSlash;
@@ -490,6 +489,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_CharacterControl_Pause;
     private readonly InputAction m_CharacterControl_SwordPlace;
     private readonly InputAction m_CharacterControl_Shoot;
+    private readonly InputAction m_CharacterControl_Heal;
     public struct CharacterControlActions
     {
         private @PlayerControls m_Wrapper;
@@ -498,7 +498,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Interact => m_Wrapper.m_CharacterControl_Interact;
         public InputAction @Jump => m_Wrapper.m_CharacterControl_Jump;
         public InputAction @Item => m_Wrapper.m_CharacterControl_Item;
-        public InputAction @Spell => m_Wrapper.m_CharacterControl_Spell;
         public InputAction @ResetCamera => m_Wrapper.m_CharacterControl_ResetCamera;
         public InputAction @TargetCamera => m_Wrapper.m_CharacterControl_TargetCamera;
         public InputAction @SwordSlash => m_Wrapper.m_CharacterControl_SwordSlash;
@@ -508,6 +507,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Pause => m_Wrapper.m_CharacterControl_Pause;
         public InputAction @SwordPlace => m_Wrapper.m_CharacterControl_SwordPlace;
         public InputAction @Shoot => m_Wrapper.m_CharacterControl_Shoot;
+        public InputAction @Heal => m_Wrapper.m_CharacterControl_Heal;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -529,9 +529,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Item.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnItem;
                 @Item.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnItem;
                 @Item.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnItem;
-                @Spell.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnSpell;
-                @Spell.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnSpell;
-                @Spell.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnSpell;
                 @ResetCamera.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnResetCamera;
                 @ResetCamera.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnResetCamera;
                 @ResetCamera.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnResetCamera;
@@ -559,6 +556,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Shoot.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnShoot;
+                @Heal.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnHeal;
+                @Heal.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnHeal;
+                @Heal.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnHeal;
             }
             m_Wrapper.m_CharacterControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -575,9 +575,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Item.started += instance.OnItem;
                 @Item.performed += instance.OnItem;
                 @Item.canceled += instance.OnItem;
-                @Spell.started += instance.OnSpell;
-                @Spell.performed += instance.OnSpell;
-                @Spell.canceled += instance.OnSpell;
                 @ResetCamera.started += instance.OnResetCamera;
                 @ResetCamera.performed += instance.OnResetCamera;
                 @ResetCamera.canceled += instance.OnResetCamera;
@@ -605,6 +602,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
+                @Heal.started += instance.OnHeal;
+                @Heal.performed += instance.OnHeal;
+                @Heal.canceled += instance.OnHeal;
             }
         }
     }
@@ -705,7 +705,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnItem(InputAction.CallbackContext context);
-        void OnSpell(InputAction.CallbackContext context);
         void OnResetCamera(InputAction.CallbackContext context);
         void OnTargetCamera(InputAction.CallbackContext context);
         void OnSwordSlash(InputAction.CallbackContext context);
@@ -715,6 +714,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnSwordPlace(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnHeal(InputAction.CallbackContext context);
     }
     public interface IInteractableControlActions
     {

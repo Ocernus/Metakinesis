@@ -18,6 +18,7 @@ public class DamageVolume : MonoBehaviour
             {
                 //print("hit " + other.gameObject.name);
                 damageable.TakeDamage(damage);
+                SpecialHitEffect();
             }            
         }  
         if (dieOnImpact && other.gameObject != owner)
@@ -38,5 +39,10 @@ public class DamageVolume : MonoBehaviour
     {
         Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(gameObject);
+    }
+
+    public virtual void SpecialHitEffect()
+    {
+
     }
 }
