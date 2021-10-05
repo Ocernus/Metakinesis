@@ -8,6 +8,7 @@ public class Heal : MonoBehaviour
     public int cost;
     public float rate;
     public int healValue;
+    public bool learned;
 
     public GameObject healEffect;
 
@@ -27,10 +28,13 @@ public class Heal : MonoBehaviour
     {
         if (inputHeld)
         {
-            if (!clockRunning)
+            if (learned)
             {
-                StartCoroutine(HealClock());
-            }
+                if (!clockRunning)
+                {
+                    StartCoroutine(HealClock());
+                }
+            }            
         }
     }
 
@@ -67,5 +71,10 @@ public class Heal : MonoBehaviour
         PerformHeal();
         yield return new WaitForSeconds(rate);
         clockRunning = false;
+    }
+
+    public void Learn()
+    {
+        learned = true;
     }
 }

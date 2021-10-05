@@ -14,6 +14,6 @@ public class ListenerSpecialBehavior : MonoBehaviour
 
     void Update()
     {
-        transform.forward = movement.camForward;
+        if (movement.camForward != Vector3.zero) transform.forward = movement.camForward;
     }
 }

@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
         CameraManager.instance.heartRoomCam.SetActive(true);
         PlayerController.instance.gameObject.GetComponent<Movement>().enabled = false;
         PlayerController.instance.EnableMenuControl();
+        HUD.SetActive(false);
     }
 
     public void ContinueGame()

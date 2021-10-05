@@ -10,13 +10,32 @@ public class AbilityPickup : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Shoot shoot = other.gameObject.GetComponentInChildren<Shoot>();
-        if (shoot)
+        switch (index)
         {
-            shoot.Learn();
-            Instantiate(soundObject, transform.position, transform.rotation);
-            Destroy(gameObject);
+            case 0:
+                {
+                    Shoot shoot = other.gameObject.GetComponentInChildren<Shoot>();
+                    if (shoot)
+                    {
+                        shoot.Learn();
+                        Instantiate(soundObject, transform.position, transform.rotation);
+                        Destroy(gameObject);
+                    }
+                }
+                break;
+            case 1:
+                {
+                    Heal heal = other.gameObject.GetComponentInChildren<Heal>();
+                    if (heal)
+                    {
+                        heal.Learn();
+                        Instantiate(soundObject, transform.position, transform.rotation);
+                        Destroy(gameObject);
+                    }
+                }
+                break;
         }
+        
     }
 
     public virtual void Collect()
