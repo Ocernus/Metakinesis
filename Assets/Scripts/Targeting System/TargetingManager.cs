@@ -38,17 +38,17 @@ public class TargetingManager : MonoBehaviour
     {
         if (value.started)
         {
-            cam.EngageLockOn(activeTarget.cameraTarget.transform);
-            movement.LockRotation();
-            canv.Show(activeTarget.cameraTarget.transform);
+            if (foundTarget)
+            {
+                cam.EngageLockOn(activeTarget.cameraTarget.transform);
+                movement.LockRotation();
+                canv.Show(activeTarget.cameraTarget.transform);
+            }            
         }
 
         if (value.canceled)
         {
-            cam.CancelLockOn();
-            movement.UnlockRotation();
-            canv.Hide(movement.transform);
-            foundTarget = false;
+            CancelLockOn();
         }
     }
 
@@ -64,7 +64,11 @@ public class TargetingManager : MonoBehaviour
         targetCount = targets.Count;
         if (targetCount != 0)
         {
-            if (!foundTarget) FindClosestTarget();
+            FindClosestTarget();
+        }
+        if (targetCount == 0)
+        {
+            if (foundTarget) CancelLockOn();
         }
         
     }
@@ -92,5 +96,14 @@ public class TargetingManager : MonoBehaviour
     private void SetActiveTarget(Transform priority)
     {
         activeTarget = priority.GetComponent<Targetable>();
+    }
+
+    void CancelLockOn()
+    {
+        cam.CancelLockOn();
+        movement.UnlockRotation();
+        canv.Hide(movement.transform);
+        foundTarget = false;
+        activeTarget = null;
     }
 }
