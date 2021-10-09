@@ -18,12 +18,13 @@ public class SwordPlacement : MonoBehaviour
         attack = GetComponent<SwordAttack>();
     }
 
-    public void Drop()
+    public void Drop(Transform dropPoint)
     {
         // Change player graphics and equipped bool
         equipGFX.EquipSword(false);
         Inventory.instance.swordEquipped = false;
-        sword.transform.position = transform.position;
+        UIAbilityManager.instance.ChangeSwordUIState(false);
+        sword.transform.position = dropPoint.position;
         sword.SetActive(true);
         print("attempted drop");
     }
@@ -42,6 +43,7 @@ public class SwordPlacement : MonoBehaviour
         sword.SetActive(false);
         equipGFX.EquipSword(true);
         Inventory.instance.swordEquipped = true;
+        UIAbilityManager.instance.ChangeSwordUIState(true);
         // Change player graphics and equipped bool
         print("attempted pickup");
     }
@@ -53,7 +55,7 @@ public class SwordPlacement : MonoBehaviour
         sword.transform.position = position;
         sword.SetActive(true);
     }
-
+    /*
     public void OnSwordPlacementChangeState(InputAction.CallbackContext value)
     {
         if (value.started)
@@ -62,4 +64,5 @@ public class SwordPlacement : MonoBehaviour
             else Teleport();
         }        
     }
+    */
 }

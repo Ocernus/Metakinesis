@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class UIAbilityManager : MonoBehaviour
 {
+    public GameObject swordIcon;
     public Image fillImage;
 
     public static UIAbilityManager instance;
@@ -18,5 +19,10 @@ public class UIAbilityManager : MonoBehaviour
     public void UpdateMagicBar(float value)
     {
         fillImage.fillAmount = value;
+    }
+
+    public void ChangeSwordUIState(bool toggle)
+    {
+        swordIcon.SetActive(toggle);
     }
 }

@@ -94,14 +94,6 @@
                     "interactions": "Press"
                 },
                 {
-                    "name": "SwordPlace",
-                    "type": "Button",
-                    "id": "c8ee52f2-b1e6-4412-b96b-3aa0170d8bbf",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press"
-                },
-                {
                     "name": "Shoot",
                     "type": "Button",
                     "id": "a6c30df0-c5ae-4617-87ee-3f1fc652b6af",
@@ -237,17 +229,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e03778aa-0ea5-40e5-af99-7441adf8bb7d",
-                    "path": "<Gamepad>/select",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SwordPlace",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

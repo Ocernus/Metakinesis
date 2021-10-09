@@ -54,9 +54,11 @@ public class Interactable : MonoBehaviour
             if (!initiationCheck) 
             {
                 StartCoroutine(InteractionTimer(initialTime));
-                
-                cam.SetActive(true);
-                movement.PerformAgentMove(agentTarget.transform);   
+
+                if (cam) cam.SetActive(true);
+                else print("no cam");
+                if (agentTarget) movement.PerformAgentMove(agentTarget.transform);
+                else print("no agent target");
                 if (movement.rotationIsSet)
                 {
                     initiationCheck = true;
@@ -135,7 +137,7 @@ public class Interactable : MonoBehaviour
 
     //  ENGAGED IN INTERACTABLE
     
-    public void InteractionComment()
+    public virtual void InteractionComment()
     {
         StartCoroutine(InteractionTimer(commentTime)); //
         
@@ -167,8 +169,8 @@ public class Interactable : MonoBehaviour
         StartCoroutine(InteractionTimer(exitTime)); //
         anim.SetTrigger(exitTrigger);
         exitCheck = true;
-        cam.SetActive(false);
-        
+        if (cam) cam.SetActive(false);
+        else print("no cam");
     }
 
     public virtual bool ReqCheckA()
@@ -183,7 +185,7 @@ public class Interactable : MonoBehaviour
 
     // TIMERS
 
-    IEnumerator InteractionTimer(float time)
+    protected IEnumerator InteractionTimer(float time)
     {        
         timerRunning = true;
         yield return new WaitForSeconds(time);
@@ -206,7 +208,7 @@ public class Interactable : MonoBehaviour
 
     //
 
-    void SendUIStrings()
+    public virtual void SendUIStrings()
     {
         UIButtonManager.instance.RefreshEastText(true, eastText);
         UIButtonManager.instance.RefreshSouthText(true, southText);
