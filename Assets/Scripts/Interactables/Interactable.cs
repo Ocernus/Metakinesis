@@ -6,7 +6,6 @@ public class Interactable : MonoBehaviour
 {
     public string placeHolderComment;
 
-    public string initialContextText;
     public string southText;
     public string eastText;
     public string westText;
@@ -218,7 +217,8 @@ public class Interactable : MonoBehaviour
 
     void RefreshInteractability(bool possibility)
     {
-        UIButtonManager.instance.RefreshNorthText(possibility, initialContextText);
+        UIButtonManager.instance.RefreshNorthText(possibility, northText);
+        UIButtonManager.instance.RefreshWestText(possibility, westText);
         if (possibility) playerCharacter.GetComponent<PlayerInteraction>().activeInteractable = this;
         else playerCharacter.GetComponent<PlayerInteraction>().activeInteractable = null; // This could get a little screwy if interactables are too close or overlapping
     }

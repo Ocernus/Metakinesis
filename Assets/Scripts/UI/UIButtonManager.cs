@@ -56,12 +56,12 @@ public class UIButtonManager : MonoBehaviour
         if (contextExists)
         {
             westText.text = context;
-
+            // Update Images
         }
         else
         {
             westText.text = westTextDefaultString;
-
+            // Update Images
         }
     }
 
