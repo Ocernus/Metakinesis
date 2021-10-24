@@ -17,24 +17,26 @@ public class InteractableBlacksmith : Interactable
 
     public override void ChoiceAInstantReaction()
     {
-        Inventory.instance.ChangeItemCount(5, -armorCost);
+        
+        Inventory.instance.ChangeItemCount(5, -swordCost);
     }
 
     public override void ChoiceADelayedReaction()
     {
-        health.IncreaseArmor();
-        print("got next armor piece");
+        // give next tier of sword
+        print("got next sword upgrade");
     }
 
     public override void ChoiceBInstantReaction()
     {
-        Inventory.instance.ChangeItemCount(5, -swordCost);
+        Inventory.instance.ChangeItemCount(5, -armorCost);
     }
 
     public override void ChoiceBDelayedReaction()
     {
-        // give next tier of sword
-        print("got next sword upgrade");
+        
+        health.IncreaseArmor();
+        print("got next armor piece");
     }
 
     public override bool ReqCheckA()

@@ -6,30 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerInteraction : MonoBehaviour
 {
     public Interactable activeInteractable;
-
-    public void OnCharacterInteract(InputAction.CallbackContext value)
-    {
-        if (value.started)
-        {
-            if (activeInteractable)
-            {
-                activeInteractable.InitiateInteraction();
-            }
-
-            else GetComponent<CharacterComments>().FreeComment();
-        }
-    }
-
-    public void OnCharacterCancel(InputAction.CallbackContext value)
-    {
-        if (value.started)
-        {
-            if (activeInteractable)
-            {
-                activeInteractable.InteractionCancel();
-            }
-        }
-    }
+       
 
     public void OnCharacterChooseA(InputAction.CallbackContext value)
     {
@@ -49,17 +26,6 @@ public class PlayerInteraction : MonoBehaviour
             if (activeInteractable)
             {
                 activeInteractable.InteractionChooseB();
-            }
-        }
-    }
-
-    public void OnCharacterComment(InputAction.CallbackContext value)
-    {
-        if (value.started)
-        {
-            if (activeInteractable)
-            {
-                activeInteractable.InteractionComment();
             }
         }
     }

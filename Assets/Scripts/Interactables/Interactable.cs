@@ -6,8 +6,6 @@ public class Interactable : MonoBehaviour
 {
     public string placeHolderComment;
 
-    public string southText;
-    public string eastText;
     public string westText;
     public string northText;
 
@@ -48,6 +46,12 @@ public class Interactable : MonoBehaviour
 
     private void Update()
     {
+        if (volumeCheck)
+        {
+            if (FacingCheck()) RefreshInteractability(true);
+            else RefreshInteractability(false);
+        }
+        /*
         if (interactableEngaged)
         {
             if (!initiationCheck) 
@@ -104,6 +108,7 @@ public class Interactable : MonoBehaviour
                 else RefreshInteractability(false);
             }            
         }
+        */
     }
 
     public virtual void ChoiceAInstantReaction()
@@ -124,24 +129,7 @@ public class Interactable : MonoBehaviour
     public virtual void ChoiceBDelayedReaction()
     {
         //print("placeholder delayed reaction B"); //PFI and possible inventory change
-    }
-
-    // INITIATING INTERACTABLE ENGAGEMENT
-
-    public void InitiateInteraction()
-    {        
-        interactableEngaged = true;
-        
-    }
-
-    //  ENGAGED IN INTERACTABLE
-    
-    public virtual void InteractionComment()
-    {
-        StartCoroutine(InteractionTimer(commentTime)); //
-        
-        print(placeHolderComment);
-    }
+    }   
 
     public void InteractionChooseA()
     {
@@ -161,15 +149,6 @@ public class Interactable : MonoBehaviour
             StartCoroutine(ChoiceBReactionTimer());
             anim.SetTrigger(choiceBTrigger);
         }       
-    }
-
-    public void InteractionCancel()
-    {
-        StartCoroutine(InteractionTimer(exitTime)); //
-        anim.SetTrigger(exitTrigger);
-        exitCheck = true;
-        if (cam) cam.SetActive(false);
-        else print("no cam");
     }
 
     public virtual bool ReqCheckA()
@@ -209,18 +188,20 @@ public class Interactable : MonoBehaviour
 
     public virtual void SendUIStrings()
     {
-        UIButtonManager.instance.RefreshEastText(true, eastText);
-        UIButtonManager.instance.RefreshSouthText(true, southText);
         UIButtonManager.instance.RefreshNorthText(true, northText);
         UIButtonManager.instance.RefreshWestText(true, westText);
     }
 
-    void RefreshInteractability(bool possibility)
+    public virtual void RefreshInteractability(bool possibility)
     {
         UIButtonManager.instance.RefreshNorthText(possibility, northText);
         UIButtonManager.instance.RefreshWestText(possibility, westText);
+        /*
         if (possibility) playerCharacter.GetComponent<PlayerInteraction>().activeInteractable = this;
         else playerCharacter.GetComponent<PlayerInteraction>().activeInteractable = null; // This could get a little screwy if interactables are too close or overlapping
+        */
+        if (possibility) ActionButtonContextManager.instance.activeInteractable = this;
+        else ActionButtonContextManager.instance.activeInteractable = null;
     }
 
     bool FacingCheck()

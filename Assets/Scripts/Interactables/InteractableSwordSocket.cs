@@ -7,8 +7,6 @@ public class InteractableSwordSocket : Interactable
     public bool powered;
     public string poweredCommentText;
     public string poweredContextText;
-    public string poweredSouthText;
-    public string poweredEastText;
     public string poweredWestText;
     public string poweredNorthText;
     public Transform dropPoint;
@@ -23,16 +21,28 @@ public class InteractableSwordSocket : Interactable
 
     public override void SendUIStrings()
     {
-        if (!powered) base.SendUIStrings();
-        else SendPoweredUIStrings();
+        base.SendUIStrings();
     }
 
     void SendPoweredUIStrings()
     {
-        UIButtonManager.instance.RefreshEastText(true, poweredEastText);
-        UIButtonManager.instance.RefreshSouthText(true, poweredSouthText);
         UIButtonManager.instance.RefreshNorthText(true, poweredNorthText);
         UIButtonManager.instance.RefreshWestText(true, poweredWestText);
+    }
+
+    public override void RefreshInteractability(bool possibility)
+    {
+        if (possibility)
+        {            
+            if (powered)
+            {
+                if (possibility) ActionButtonContextManager.instance.activeInteractable = this;
+                else ActionButtonContextManager.instance.activeInteractable = null;
+                SendPoweredUIStrings();
+            }
+            else base.RefreshInteractability(possibility);
+        }
+        else base.RefreshInteractability(possibility);
     }
 
     public override void ChoiceAInstantReaction()
@@ -41,6 +51,25 @@ public class InteractableSwordSocket : Interactable
     }
 
     public override void ChoiceADelayedReaction()
+    {
+
+        base.ChoiceADelayedReaction();
+        if (powered)
+        {
+            print(poweredCommentText);
+        }
+        else
+        {
+            print(placeHolderComment);
+        }
+    }
+
+    public override void ChoiceBInstantReaction()
+    {
+        base.ChoiceBInstantReaction();
+    }
+
+    public override void ChoiceBDelayedReaction()
     {
         base.ChoiceADelayedReaction();
         if (powered)
@@ -53,17 +82,6 @@ public class InteractableSwordSocket : Interactable
         }
         powered = !powered;
         emitter.ToggleState();
-        
-    }
-
-    public override void ChoiceBInstantReaction()
-    {
-        base.ChoiceBInstantReaction();
-    }
-
-    public override void ChoiceBDelayedReaction()
-    {
-        base.ChoiceBDelayedReaction();
     }
 
     public override bool ReqCheckA()
@@ -76,14 +94,5 @@ public class InteractableSwordSocket : Interactable
         return true;
     }
 
-    public override void InteractionComment()
-    {
-        if (!powered) base.InteractionComment();
-        else
-        {
-            StartCoroutine(InteractionTimer(commentTime)); //
-
-            print(poweredCommentText);
-        }
-    }
+    
 }

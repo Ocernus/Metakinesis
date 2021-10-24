@@ -27,7 +27,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Interact"",
+                    ""name"": ""Comment"",
                     ""type"": ""Button"",
                     ""id"": ""6a66afbb-e3ee-46c0-96af-3bd81aab29c7"",
                     ""expectedControlType"": ""Button"",
@@ -67,7 +67,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": ""Press""
                 },
                 {
-                    ""name"": ""Sword Slash"",
+                    ""name"": ""Physical Interaction"",
                     ""type"": ""Button"",
                     ""id"": ""6aa9a7be-9b78-49c4-84b9-80047da5c588"",
                     ""expectedControlType"": ""Button"",
@@ -142,7 +142,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Interact"",
+                    ""action"": ""Comment"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -197,7 +197,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Sword Slash"",
+                    ""action"": ""Physical Interaction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -270,90 +270,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
             ]
         },
         {
-            ""name"": ""Interactable Control"",
-            ""id"": ""3f7737db-16c8-486f-ad33-42aa675cc90e"",
-            ""actions"": [
-                {
-                    ""name"": ""Comment"",
-                    ""type"": ""Button"",
-                    ""id"": ""f660e4dc-df76-4f64-9ec5-3a98c71b3062"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Cancel"",
-                    ""type"": ""Button"",
-                    ""id"": ""b0fe33f4-8d6f-434f-9374-c1da00d55e8d"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Option A"",
-                    ""type"": ""Button"",
-                    ""id"": ""80216331-357f-497d-9ad5-35e1730c59a4"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Option B"",
-                    ""type"": ""Button"",
-                    ""id"": ""e0c9cf90-c176-4560-9d7d-b181821ef74a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""77d8f24d-c65e-4aff-81f4-9230d2386d2c"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Comment"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d279c797-6f9e-4a4f-871f-29555a6e37fe"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Cancel"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5248b48f-d985-4856-a1b1-170f94c57478"",
-                    ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Option A"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b1499ab9-3b6e-4b9d-915e-762e23088ec7"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Option B"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
             ""name"": ""Menu Control"",
             ""id"": ""d3506e28-80da-4f2e-89c9-8e8a5753c675"",
             ""actions"": [
@@ -386,24 +302,18 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         // Character Control
         m_CharacterControl = asset.FindActionMap("Character Control", throwIfNotFound: true);
         m_CharacterControl_Look = m_CharacterControl.FindAction("Look", throwIfNotFound: true);
-        m_CharacterControl_Interact = m_CharacterControl.FindAction("Interact", throwIfNotFound: true);
+        m_CharacterControl_Comment = m_CharacterControl.FindAction("Comment", throwIfNotFound: true);
         m_CharacterControl_Jump = m_CharacterControl.FindAction("Jump", throwIfNotFound: true);
         m_CharacterControl_Item = m_CharacterControl.FindAction("Item", throwIfNotFound: true);
         m_CharacterControl_ResetCamera = m_CharacterControl.FindAction("Reset Camera", throwIfNotFound: true);
         m_CharacterControl_TargetCamera = m_CharacterControl.FindAction("Target Camera", throwIfNotFound: true);
-        m_CharacterControl_SwordSlash = m_CharacterControl.FindAction("Sword Slash", throwIfNotFound: true);
+        m_CharacterControl_PhysicalInteraction = m_CharacterControl.FindAction("Physical Interaction", throwIfNotFound: true);
         m_CharacterControl_MoveX = m_CharacterControl.FindAction("MoveX", throwIfNotFound: true);
         m_CharacterControl_MoveY = m_CharacterControl.FindAction("MoveY", throwIfNotFound: true);
         m_CharacterControl_Sprint = m_CharacterControl.FindAction("Sprint", throwIfNotFound: true);
         m_CharacterControl_Pause = m_CharacterControl.FindAction("Pause", throwIfNotFound: true);
         m_CharacterControl_Shoot = m_CharacterControl.FindAction("Shoot", throwIfNotFound: true);
         m_CharacterControl_Heal = m_CharacterControl.FindAction("Heal", throwIfNotFound: true);
-        // Interactable Control
-        m_InteractableControl = asset.FindActionMap("Interactable Control", throwIfNotFound: true);
-        m_InteractableControl_Comment = m_InteractableControl.FindAction("Comment", throwIfNotFound: true);
-        m_InteractableControl_Cancel = m_InteractableControl.FindAction("Cancel", throwIfNotFound: true);
-        m_InteractableControl_OptionA = m_InteractableControl.FindAction("Option A", throwIfNotFound: true);
-        m_InteractableControl_OptionB = m_InteractableControl.FindAction("Option B", throwIfNotFound: true);
         // Menu Control
         m_MenuControl = asset.FindActionMap("Menu Control", throwIfNotFound: true);
         m_MenuControl_Start = m_MenuControl.FindAction("Start", throwIfNotFound: true);
@@ -457,12 +367,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_CharacterControl;
     private ICharacterControlActions m_CharacterControlActionsCallbackInterface;
     private readonly InputAction m_CharacterControl_Look;
-    private readonly InputAction m_CharacterControl_Interact;
+    private readonly InputAction m_CharacterControl_Comment;
     private readonly InputAction m_CharacterControl_Jump;
     private readonly InputAction m_CharacterControl_Item;
     private readonly InputAction m_CharacterControl_ResetCamera;
     private readonly InputAction m_CharacterControl_TargetCamera;
-    private readonly InputAction m_CharacterControl_SwordSlash;
+    private readonly InputAction m_CharacterControl_PhysicalInteraction;
     private readonly InputAction m_CharacterControl_MoveX;
     private readonly InputAction m_CharacterControl_MoveY;
     private readonly InputAction m_CharacterControl_Sprint;
@@ -474,12 +384,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         private @PlayerControls m_Wrapper;
         public CharacterControlActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Look => m_Wrapper.m_CharacterControl_Look;
-        public InputAction @Interact => m_Wrapper.m_CharacterControl_Interact;
+        public InputAction @Comment => m_Wrapper.m_CharacterControl_Comment;
         public InputAction @Jump => m_Wrapper.m_CharacterControl_Jump;
         public InputAction @Item => m_Wrapper.m_CharacterControl_Item;
         public InputAction @ResetCamera => m_Wrapper.m_CharacterControl_ResetCamera;
         public InputAction @TargetCamera => m_Wrapper.m_CharacterControl_TargetCamera;
-        public InputAction @SwordSlash => m_Wrapper.m_CharacterControl_SwordSlash;
+        public InputAction @PhysicalInteraction => m_Wrapper.m_CharacterControl_PhysicalInteraction;
         public InputAction @MoveX => m_Wrapper.m_CharacterControl_MoveX;
         public InputAction @MoveY => m_Wrapper.m_CharacterControl_MoveY;
         public InputAction @Sprint => m_Wrapper.m_CharacterControl_Sprint;
@@ -498,9 +408,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Look.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLook;
-                @Interact.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnInteract;
-                @Interact.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnInteract;
-                @Interact.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnInteract;
+                @Comment.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnComment;
+                @Comment.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnComment;
+                @Comment.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnComment;
                 @Jump.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnJump;
@@ -513,9 +423,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @TargetCamera.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnTargetCamera;
                 @TargetCamera.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnTargetCamera;
                 @TargetCamera.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnTargetCamera;
-                @SwordSlash.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnSwordSlash;
-                @SwordSlash.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnSwordSlash;
-                @SwordSlash.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnSwordSlash;
+                @PhysicalInteraction.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPhysicalInteraction;
+                @PhysicalInteraction.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPhysicalInteraction;
+                @PhysicalInteraction.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPhysicalInteraction;
                 @MoveX.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveX;
                 @MoveX.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveX;
                 @MoveX.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveX;
@@ -541,9 +451,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
-                @Interact.started += instance.OnInteract;
-                @Interact.performed += instance.OnInteract;
-                @Interact.canceled += instance.OnInteract;
+                @Comment.started += instance.OnComment;
+                @Comment.performed += instance.OnComment;
+                @Comment.canceled += instance.OnComment;
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
@@ -556,9 +466,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @TargetCamera.started += instance.OnTargetCamera;
                 @TargetCamera.performed += instance.OnTargetCamera;
                 @TargetCamera.canceled += instance.OnTargetCamera;
-                @SwordSlash.started += instance.OnSwordSlash;
-                @SwordSlash.performed += instance.OnSwordSlash;
-                @SwordSlash.canceled += instance.OnSwordSlash;
+                @PhysicalInteraction.started += instance.OnPhysicalInteraction;
+                @PhysicalInteraction.performed += instance.OnPhysicalInteraction;
+                @PhysicalInteraction.canceled += instance.OnPhysicalInteraction;
                 @MoveX.started += instance.OnMoveX;
                 @MoveX.performed += instance.OnMoveX;
                 @MoveX.canceled += instance.OnMoveX;
@@ -581,63 +491,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         }
     }
     public CharacterControlActions @CharacterControl => new CharacterControlActions(this);
-
-    // Interactable Control
-    private readonly InputActionMap m_InteractableControl;
-    private IInteractableControlActions m_InteractableControlActionsCallbackInterface;
-    private readonly InputAction m_InteractableControl_Comment;
-    private readonly InputAction m_InteractableControl_Cancel;
-    private readonly InputAction m_InteractableControl_OptionA;
-    private readonly InputAction m_InteractableControl_OptionB;
-    public struct InteractableControlActions
-    {
-        private @PlayerControls m_Wrapper;
-        public InteractableControlActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Comment => m_Wrapper.m_InteractableControl_Comment;
-        public InputAction @Cancel => m_Wrapper.m_InteractableControl_Cancel;
-        public InputAction @OptionA => m_Wrapper.m_InteractableControl_OptionA;
-        public InputAction @OptionB => m_Wrapper.m_InteractableControl_OptionB;
-        public InputActionMap Get() { return m_Wrapper.m_InteractableControl; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(InteractableControlActions set) { return set.Get(); }
-        public void SetCallbacks(IInteractableControlActions instance)
-        {
-            if (m_Wrapper.m_InteractableControlActionsCallbackInterface != null)
-            {
-                @Comment.started -= m_Wrapper.m_InteractableControlActionsCallbackInterface.OnComment;
-                @Comment.performed -= m_Wrapper.m_InteractableControlActionsCallbackInterface.OnComment;
-                @Comment.canceled -= m_Wrapper.m_InteractableControlActionsCallbackInterface.OnComment;
-                @Cancel.started -= m_Wrapper.m_InteractableControlActionsCallbackInterface.OnCancel;
-                @Cancel.performed -= m_Wrapper.m_InteractableControlActionsCallbackInterface.OnCancel;
-                @Cancel.canceled -= m_Wrapper.m_InteractableControlActionsCallbackInterface.OnCancel;
-                @OptionA.started -= m_Wrapper.m_InteractableControlActionsCallbackInterface.OnOptionA;
-                @OptionA.performed -= m_Wrapper.m_InteractableControlActionsCallbackInterface.OnOptionA;
-                @OptionA.canceled -= m_Wrapper.m_InteractableControlActionsCallbackInterface.OnOptionA;
-                @OptionB.started -= m_Wrapper.m_InteractableControlActionsCallbackInterface.OnOptionB;
-                @OptionB.performed -= m_Wrapper.m_InteractableControlActionsCallbackInterface.OnOptionB;
-                @OptionB.canceled -= m_Wrapper.m_InteractableControlActionsCallbackInterface.OnOptionB;
-            }
-            m_Wrapper.m_InteractableControlActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @Comment.started += instance.OnComment;
-                @Comment.performed += instance.OnComment;
-                @Comment.canceled += instance.OnComment;
-                @Cancel.started += instance.OnCancel;
-                @Cancel.performed += instance.OnCancel;
-                @Cancel.canceled += instance.OnCancel;
-                @OptionA.started += instance.OnOptionA;
-                @OptionA.performed += instance.OnOptionA;
-                @OptionA.canceled += instance.OnOptionA;
-                @OptionB.started += instance.OnOptionB;
-                @OptionB.performed += instance.OnOptionB;
-                @OptionB.canceled += instance.OnOptionB;
-            }
-        }
-    }
-    public InteractableControlActions @InteractableControl => new InteractableControlActions(this);
 
     // Menu Control
     private readonly InputActionMap m_MenuControl;
@@ -674,25 +527,18 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     public interface ICharacterControlActions
     {
         void OnLook(InputAction.CallbackContext context);
-        void OnInteract(InputAction.CallbackContext context);
+        void OnComment(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnItem(InputAction.CallbackContext context);
         void OnResetCamera(InputAction.CallbackContext context);
         void OnTargetCamera(InputAction.CallbackContext context);
-        void OnSwordSlash(InputAction.CallbackContext context);
+        void OnPhysicalInteraction(InputAction.CallbackContext context);
         void OnMoveX(InputAction.CallbackContext context);
         void OnMoveY(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnHeal(InputAction.CallbackContext context);
-    }
-    public interface IInteractableControlActions
-    {
-        void OnComment(InputAction.CallbackContext context);
-        void OnCancel(InputAction.CallbackContext context);
-        void OnOptionA(InputAction.CallbackContext context);
-        void OnOptionB(InputAction.CallbackContext context);
     }
     public interface IMenuControlActions
     {
