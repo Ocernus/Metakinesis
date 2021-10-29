@@ -59,6 +59,19 @@ public class GameManager : MonoBehaviour
         HUD.SetActive(true);
     }
 
+    public void Death()
+    {
+        //basically start the game over saving some progress and stats
+        ReAnnihilate();
+    }
+
+    public void ReAnnihilate() //can be called from menu option, death, and other context-based events
+    {
+        //move player character back to start position
+        //show title screen
+        //save progress
+    }
+
     public void OnGamePause(InputAction.CallbackContext value)
     {
         if (value.started)
