@@ -81,7 +81,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: CharacterBaseMaterial
-    second: {fileID: 2100000, guid: 83b8df2ee313c174986cd7361817d5de, type: 2}
+    second: {fileID: 2100000, guid: 67603b48eb0373d449d819df0f19996a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
