@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -61,12 +62,14 @@ public class GameManager : MonoBehaviour
 
     public void Death()
     {
+        SceneManager.LoadScene(0);
         //basically start the game over saving some progress and stats
         ReAnnihilate();
     }
 
     public void ReAnnihilate() //can be called from menu option, death, and other context-based events
     {
+
         //move player character back to start position
         //show title screen
         //save progress
