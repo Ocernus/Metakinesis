@@ -24,6 +24,6 @@ Material:
     - Vector1_D182A421: 5
     - Vector1_D4982A6: 30
     m_Colors:
-    - Color_679E3674: {r: 0.8867924, g: 0, b: 0.072066434, a: 1}
-    - Color_6CD3B016: {r: 17.793486, g: 5.7531433, b: 71.74507, a: 0}
+    - Color_679E3674: {r: 0.8862745, g: 0, b: 0.75907564, a: 1}
+    - Color_6CD3B016: {r: 16.94838, g: 8.341087, b: 1.5084945, a: 0}
   m_BuildTextureStacks: []
