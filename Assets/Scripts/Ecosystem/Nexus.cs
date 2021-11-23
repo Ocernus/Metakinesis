@@ -15,25 +15,36 @@ public class Nexus : MonoBehaviour
     public int seedlingEnergyLowerLimit;
     public float seedlingSpawnDistance;
 
+    public float randomFluxPower;
+
     public GameObject influenceField;
     public GameObject particles;
     public GameObject orb;
     public GameObject shell;
     public GameObject seedling;
+    public Light mainLight;
 
     private Vector3 fieldScaleBase;
     private float scaleDelta;
     private bool mainTimerRunning;
     private bool shouldUpdateField;
+    private float baseIntensity;
+    private bool seedlingSpawnTimerRunning;
+    private float randomSeed;
 
     private void Start()
     {
-        fieldScaleBase = influenceField.transform.localScale;        
+        fieldScaleBase = influenceField.transform.localScale;
+        baseIntensity = mainLight.intensity;
     }
 
     void Update()
     {
-        if (!mainTimerRunning) StartCoroutine(MainIntervalTimer());UpdateField();
+        randomSeed = Random.Range(-randomFluxPower, randomFluxPower);
+        if (!mainTimerRunning) StartCoroutine(MainIntervalTimer());
+        UpdateField();
+
+        mainLight.intensity += randomSeed;
         AttemptSeedlingSpawn();
     }
 
@@ -48,7 +59,7 @@ public class Nexus : MonoBehaviour
         if (scaleDelta < fieldScaleUpperLimit)
         {
             scaleDelta = fieldScaleDelta * energyPoints;
-            Vector3 newScale = fieldScaleBase * scaleDelta * energyPoints;            
+            Vector3 newScale = fieldScaleBase * scaleDelta;            
             if (influenceField.transform.localScale != newScale)
             {
                 influenceField.transform.localScale = Vector3.Lerp(influenceField.transform.localScale, fieldScaleBase + newScale, scaleLerpRate);
@@ -60,7 +71,7 @@ public class Nexus : MonoBehaviour
     {
         if (energyPoints >= seedlingEnergyLowerLimit)
         {
-            StartCoroutine(SeedlingSpawnTimer());
+            if (!seedlingSpawnTimerRunning) StartCoroutine(SeedlingSpawnTimer());
         }
     }
 
@@ -73,8 +84,10 @@ public class Nexus : MonoBehaviour
     }
 
     IEnumerator SeedlingSpawnTimer()
-    {
+    {        
+        seedlingSpawnTimerRunning = true;
         yield return new WaitForSeconds(seedlingSpawnRate);
+        seedlingSpawnTimerRunning = false;
         print("seedling spawn initiated");
     }
 }
