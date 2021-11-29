@@ -105,6 +105,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Shield Energy
+    second: {fileID: 2100000, guid: c96192e0d4495ec458516b46433e062c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: SwordBladeMaterial
     second: {fileID: 2100000, guid: 74142c6fdd150bd4c9d8fc0a9196ea72, type: 2}
   - first:
