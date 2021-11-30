@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Shoot : MonoBehaviour
 {
+    public bool learned;
     bool inputHeld;
     float chargeValue;
     public int cost;
@@ -27,19 +28,23 @@ public class Shoot : MonoBehaviour
 
     public void OnShoot(InputAction.CallbackContext value)
     {
-        if (magic.magicCurrent >= cost)
-        {                
-            if (value.started)
-            {                    
-                Charge();
-                if (!chargeSound.isPlaying) chargeSound.Play();
-            }
-            if (value.canceled)
+        if (learned)
+        {
+            if (magic.magicCurrent >= cost)
             {
-                 Release();
-                 if (chargeSound.isPlaying) chargeSound.Stop();
-            }
-        }  
+                
+                if (value.started)
+                {                    
+                    Charge();
+                    if (!chargeSound.isPlaying) chargeSound.Play();
+                }
+                if (value.canceled)
+                {
+                    Release();
+                    if (chargeSound.isPlaying) chargeSound.Stop();
+                }
+            }            
+        }
     }
 
     void Charge()
@@ -59,5 +64,10 @@ public class Shoot : MonoBehaviour
     {
         GameObject obj = Instantiate(projectile, launchPoint.position, launchPoint.rotation);
         obj.GetComponent<DamageVolume>().owner = transform.parent.gameObject;
+    }
+
+    public void Learn()
+    {
+        learned = true;
     }
 }

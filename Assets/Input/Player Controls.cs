@@ -19,6 +19,62 @@ public class @PlayerControls : IInputActionCollection, IDisposable
             ""id"": ""d819ce03-2be7-4cb1-ae3e-53a2752bcbff"",
             ""actions"": [
                 {
+                    ""name"": ""Look"",
+                    ""type"": ""Value"",
+                    ""id"": ""ec9964da-8a2b-42d1-8f29-60e1ae52ac0f"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Comment"",
+                    ""type"": ""Button"",
+                    ""id"": ""6a66afbb-e3ee-46c0-96af-3bd81aab29c7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""ae9c9bd0-ded0-4fe4-a434-611540ced5ed"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Item"",
+                    ""type"": ""Button"",
+                    ""id"": ""fe35991f-2705-4ab6-a472-58474a8a3376"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Reset Camera"",
+                    ""type"": ""Button"",
+                    ""id"": ""5166e352-e93e-46c3-9ce9-d65e01e43866"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Target Camera"",
+                    ""type"": ""Button"",
+                    ""id"": ""896fa234-0289-4174-bef4-f969e6e80d5c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Physical Interaction"",
+                    ""type"": ""Button"",
+                    ""id"": ""6aa9a7be-9b78-49c4-84b9-80047da5c588"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
                     ""name"": ""MoveX"",
                     ""type"": ""Value"",
                     ""id"": ""ac374dd5-a36a-4629-a711-4e4b332f6566"",
@@ -35,33 +91,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Look"",
-                    ""type"": ""Value"",
-                    ""id"": ""ec9964da-8a2b-42d1-8f29-60e1ae52ac0f"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Reset Camera"",
+                    ""name"": ""Sprint"",
                     ""type"": ""Button"",
-                    ""id"": ""5166e352-e93e-46c3-9ce9-d65e01e43866"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
-                },
-                {
-                    ""name"": ""Comment"",
-                    ""type"": ""Button"",
-                    ""id"": ""6a66afbb-e3ee-46c0-96af-3bd81aab29c7"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
-                },
-                {
-                    ""name"": ""Physical Interaction"",
-                    ""type"": ""Button"",
-                    ""id"": ""6aa9a7be-9b78-49c4-84b9-80047da5c588"",
+                    ""id"": ""ded6cb03-a634-4b86-b7c7-2ca0988a28e2"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
@@ -75,65 +107,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": ""Press""
                 },
                 {
-                    ""name"": ""Left Hand Change"",
+                    ""name"": ""Shoot"",
                     ""type"": ""Button"",
-                    ""id"": ""07477822-73a2-40bf-a8c2-21638af8afe5"",
+                    ""id"": ""a6c30df0-c5ae-4617-87ee-3f1fc652b6af"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
                 },
                 {
-                    ""name"": ""Right Hand Change"",
+                    ""name"": ""Heal"",
                     ""type"": ""Button"",
-                    ""id"": ""436eeba1-533b-484e-aaec-49467dfe0e31"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
-                },
-                {
-                    ""name"": ""Focus Up"",
-                    ""type"": ""Button"",
-                    ""id"": ""df1bf9f4-a62b-4dc3-8e40-2fb06cdfbf08"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
-                },
-                {
-                    ""name"": ""Focus Down"",
-                    ""type"": ""Button"",
-                    ""id"": ""a5f7e195-a368-48c8-8728-1c93913f69c1"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
-                },
-                {
-                    ""name"": ""Left Hand Grip"",
-                    ""type"": ""Button"",
-                    ""id"": ""19fdcee7-a9db-4188-ad19-65734759ee7e"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
-                },
-                {
-                    ""name"": ""Right Hand Grip"",
-                    ""type"": ""Button"",
-                    ""id"": ""7b6b156f-b703-45af-8ca2-a092308da18f"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
-                },
-                {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""0356cb9a-569e-4fc6-a06d-295f921fdead"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
-                },
-                {
-                    ""name"": ""Dodge"",
-                    ""type"": ""Button"",
-                    ""id"": ""e65cafe5-59cf-4b15-be1b-f4988302f3ef"",
+                    ""id"": ""84b6f580-8160-4abf-b126-5e5e7352bc76"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
@@ -164,34 +148,56 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""e29cf3e8-356b-4c67-a7ae-d28c61c9edf5"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8020e0ec-f08f-4f38-a8cb-7acd5b32dc2a"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Item"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2e1b6c10-0c00-4a33-af39-47c18b5ab730"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reset Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b81b0450-e7e2-4fdf-bec9-1bd643d94963"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Target Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""b03d1699-5d1e-4239-b93b-b1a692251c6c"",
                     ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Physical Interaction"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""09e48003-f48e-4038-bf70-896fc877da4c"",
-                    ""path"": ""<Gamepad>/start"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Pause"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""fd16011e-d2a3-49af-98d5-c80b60091928"",
-                    ""path"": ""<Gamepad>/dpad/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Left Hand Change"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -219,89 +225,45 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""2e1b6c10-0c00-4a33-af39-47c18b5ab730"",
-                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""id"": ""150c25e3-285e-48e3-abe4-4a510ef62e4c"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Reset Camera"",
+                    ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""564fe041-5b52-4c4a-ac4c-32c8c0f836d7"",
-                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""id"": ""09e48003-f48e-4038-bf70-896fc877da4c"",
+                    ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Right Hand Change"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e5732bc1-e551-4421-a9d6-d8c13ad78912"",
-                    ""path"": ""<Gamepad>/dpad/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Focus Up"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4b40143c-54a1-4ad1-a0e6-9ffaec2c2f1d"",
-                    ""path"": ""<Gamepad>/dpad/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Focus Down"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""32bd9596-2d3f-4b07-b0a0-26a2ab82bfe7"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Left Hand Grip"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0db14db0-c8b9-48da-ad7b-b402beb6fd6c"",
+                    ""id"": ""23f06bf7-c29d-4013-9385-91ed10b98cc3"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Right Hand Grip"",
+                    ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""6a5448e3-68e0-41ea-83a0-74b822fa0a2b"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c618d98e-b57a-4c6b-9e86-d0758844fd8e"",
+                    ""id"": ""0e646f32-3079-4fc1-8311-f2be718b5ff5"",
                     ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Dodge"",
+                    ""action"": ""Heal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -339,21 +301,19 @@ public class @PlayerControls : IInputActionCollection, IDisposable
 }");
         // Character Control
         m_CharacterControl = asset.FindActionMap("Character Control", throwIfNotFound: true);
+        m_CharacterControl_Look = m_CharacterControl.FindAction("Look", throwIfNotFound: true);
+        m_CharacterControl_Comment = m_CharacterControl.FindAction("Comment", throwIfNotFound: true);
+        m_CharacterControl_Jump = m_CharacterControl.FindAction("Jump", throwIfNotFound: true);
+        m_CharacterControl_Item = m_CharacterControl.FindAction("Item", throwIfNotFound: true);
+        m_CharacterControl_ResetCamera = m_CharacterControl.FindAction("Reset Camera", throwIfNotFound: true);
+        m_CharacterControl_TargetCamera = m_CharacterControl.FindAction("Target Camera", throwIfNotFound: true);
+        m_CharacterControl_PhysicalInteraction = m_CharacterControl.FindAction("Physical Interaction", throwIfNotFound: true);
         m_CharacterControl_MoveX = m_CharacterControl.FindAction("MoveX", throwIfNotFound: true);
         m_CharacterControl_MoveY = m_CharacterControl.FindAction("MoveY", throwIfNotFound: true);
-        m_CharacterControl_Look = m_CharacterControl.FindAction("Look", throwIfNotFound: true);
-        m_CharacterControl_ResetCamera = m_CharacterControl.FindAction("Reset Camera", throwIfNotFound: true);
-        m_CharacterControl_Comment = m_CharacterControl.FindAction("Comment", throwIfNotFound: true);
-        m_CharacterControl_PhysicalInteraction = m_CharacterControl.FindAction("Physical Interaction", throwIfNotFound: true);
+        m_CharacterControl_Sprint = m_CharacterControl.FindAction("Sprint", throwIfNotFound: true);
         m_CharacterControl_Pause = m_CharacterControl.FindAction("Pause", throwIfNotFound: true);
-        m_CharacterControl_LeftHandChange = m_CharacterControl.FindAction("Left Hand Change", throwIfNotFound: true);
-        m_CharacterControl_RightHandChange = m_CharacterControl.FindAction("Right Hand Change", throwIfNotFound: true);
-        m_CharacterControl_FocusUp = m_CharacterControl.FindAction("Focus Up", throwIfNotFound: true);
-        m_CharacterControl_FocusDown = m_CharacterControl.FindAction("Focus Down", throwIfNotFound: true);
-        m_CharacterControl_LeftHandGrip = m_CharacterControl.FindAction("Left Hand Grip", throwIfNotFound: true);
-        m_CharacterControl_RightHandGrip = m_CharacterControl.FindAction("Right Hand Grip", throwIfNotFound: true);
-        m_CharacterControl_Jump = m_CharacterControl.FindAction("Jump", throwIfNotFound: true);
-        m_CharacterControl_Dodge = m_CharacterControl.FindAction("Dodge", throwIfNotFound: true);
+        m_CharacterControl_Shoot = m_CharacterControl.FindAction("Shoot", throwIfNotFound: true);
+        m_CharacterControl_Heal = m_CharacterControl.FindAction("Heal", throwIfNotFound: true);
         // Menu Control
         m_MenuControl = asset.FindActionMap("Menu Control", throwIfNotFound: true);
         m_MenuControl_Start = m_MenuControl.FindAction("Start", throwIfNotFound: true);
@@ -406,40 +366,36 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     // Character Control
     private readonly InputActionMap m_CharacterControl;
     private ICharacterControlActions m_CharacterControlActionsCallbackInterface;
+    private readonly InputAction m_CharacterControl_Look;
+    private readonly InputAction m_CharacterControl_Comment;
+    private readonly InputAction m_CharacterControl_Jump;
+    private readonly InputAction m_CharacterControl_Item;
+    private readonly InputAction m_CharacterControl_ResetCamera;
+    private readonly InputAction m_CharacterControl_TargetCamera;
+    private readonly InputAction m_CharacterControl_PhysicalInteraction;
     private readonly InputAction m_CharacterControl_MoveX;
     private readonly InputAction m_CharacterControl_MoveY;
-    private readonly InputAction m_CharacterControl_Look;
-    private readonly InputAction m_CharacterControl_ResetCamera;
-    private readonly InputAction m_CharacterControl_Comment;
-    private readonly InputAction m_CharacterControl_PhysicalInteraction;
+    private readonly InputAction m_CharacterControl_Sprint;
     private readonly InputAction m_CharacterControl_Pause;
-    private readonly InputAction m_CharacterControl_LeftHandChange;
-    private readonly InputAction m_CharacterControl_RightHandChange;
-    private readonly InputAction m_CharacterControl_FocusUp;
-    private readonly InputAction m_CharacterControl_FocusDown;
-    private readonly InputAction m_CharacterControl_LeftHandGrip;
-    private readonly InputAction m_CharacterControl_RightHandGrip;
-    private readonly InputAction m_CharacterControl_Jump;
-    private readonly InputAction m_CharacterControl_Dodge;
+    private readonly InputAction m_CharacterControl_Shoot;
+    private readonly InputAction m_CharacterControl_Heal;
     public struct CharacterControlActions
     {
         private @PlayerControls m_Wrapper;
         public CharacterControlActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Look => m_Wrapper.m_CharacterControl_Look;
+        public InputAction @Comment => m_Wrapper.m_CharacterControl_Comment;
+        public InputAction @Jump => m_Wrapper.m_CharacterControl_Jump;
+        public InputAction @Item => m_Wrapper.m_CharacterControl_Item;
+        public InputAction @ResetCamera => m_Wrapper.m_CharacterControl_ResetCamera;
+        public InputAction @TargetCamera => m_Wrapper.m_CharacterControl_TargetCamera;
+        public InputAction @PhysicalInteraction => m_Wrapper.m_CharacterControl_PhysicalInteraction;
         public InputAction @MoveX => m_Wrapper.m_CharacterControl_MoveX;
         public InputAction @MoveY => m_Wrapper.m_CharacterControl_MoveY;
-        public InputAction @Look => m_Wrapper.m_CharacterControl_Look;
-        public InputAction @ResetCamera => m_Wrapper.m_CharacterControl_ResetCamera;
-        public InputAction @Comment => m_Wrapper.m_CharacterControl_Comment;
-        public InputAction @PhysicalInteraction => m_Wrapper.m_CharacterControl_PhysicalInteraction;
+        public InputAction @Sprint => m_Wrapper.m_CharacterControl_Sprint;
         public InputAction @Pause => m_Wrapper.m_CharacterControl_Pause;
-        public InputAction @LeftHandChange => m_Wrapper.m_CharacterControl_LeftHandChange;
-        public InputAction @RightHandChange => m_Wrapper.m_CharacterControl_RightHandChange;
-        public InputAction @FocusUp => m_Wrapper.m_CharacterControl_FocusUp;
-        public InputAction @FocusDown => m_Wrapper.m_CharacterControl_FocusDown;
-        public InputAction @LeftHandGrip => m_Wrapper.m_CharacterControl_LeftHandGrip;
-        public InputAction @RightHandGrip => m_Wrapper.m_CharacterControl_RightHandGrip;
-        public InputAction @Jump => m_Wrapper.m_CharacterControl_Jump;
-        public InputAction @Dodge => m_Wrapper.m_CharacterControl_Dodge;
+        public InputAction @Shoot => m_Wrapper.m_CharacterControl_Shoot;
+        public InputAction @Heal => m_Wrapper.m_CharacterControl_Heal;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -449,100 +405,88 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_CharacterControlActionsCallbackInterface != null)
             {
+                @Look.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLook;
+                @Look.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLook;
+                @Look.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLook;
+                @Comment.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnComment;
+                @Comment.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnComment;
+                @Comment.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnComment;
+                @Jump.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnJump;
+                @Item.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnItem;
+                @Item.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnItem;
+                @Item.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnItem;
+                @ResetCamera.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnResetCamera;
+                @ResetCamera.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnResetCamera;
+                @ResetCamera.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnResetCamera;
+                @TargetCamera.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnTargetCamera;
+                @TargetCamera.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnTargetCamera;
+                @TargetCamera.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnTargetCamera;
+                @PhysicalInteraction.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPhysicalInteraction;
+                @PhysicalInteraction.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPhysicalInteraction;
+                @PhysicalInteraction.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPhysicalInteraction;
                 @MoveX.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveX;
                 @MoveX.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveX;
                 @MoveX.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveX;
                 @MoveY.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveY;
                 @MoveY.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveY;
                 @MoveY.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveY;
-                @Look.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLook;
-                @Look.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLook;
-                @Look.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLook;
-                @ResetCamera.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnResetCamera;
-                @ResetCamera.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnResetCamera;
-                @ResetCamera.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnResetCamera;
-                @Comment.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnComment;
-                @Comment.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnComment;
-                @Comment.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnComment;
-                @PhysicalInteraction.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPhysicalInteraction;
-                @PhysicalInteraction.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPhysicalInteraction;
-                @PhysicalInteraction.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPhysicalInteraction;
+                @Sprint.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnSprint;
+                @Sprint.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnSprint;
+                @Sprint.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnSprint;
                 @Pause.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPause;
-                @LeftHandChange.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLeftHandChange;
-                @LeftHandChange.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLeftHandChange;
-                @LeftHandChange.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLeftHandChange;
-                @RightHandChange.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnRightHandChange;
-                @RightHandChange.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnRightHandChange;
-                @RightHandChange.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnRightHandChange;
-                @FocusUp.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnFocusUp;
-                @FocusUp.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnFocusUp;
-                @FocusUp.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnFocusUp;
-                @FocusDown.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnFocusDown;
-                @FocusDown.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnFocusDown;
-                @FocusDown.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnFocusDown;
-                @LeftHandGrip.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLeftHandGrip;
-                @LeftHandGrip.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLeftHandGrip;
-                @LeftHandGrip.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLeftHandGrip;
-                @RightHandGrip.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnRightHandGrip;
-                @RightHandGrip.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnRightHandGrip;
-                @RightHandGrip.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnRightHandGrip;
-                @Jump.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnJump;
-                @Dodge.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnDodge;
-                @Dodge.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnDodge;
-                @Dodge.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnDodge;
+                @Shoot.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnShoot;
+                @Shoot.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnShoot;
+                @Shoot.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnShoot;
+                @Heal.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnHeal;
+                @Heal.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnHeal;
+                @Heal.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnHeal;
             }
             m_Wrapper.m_CharacterControlActionsCallbackInterface = instance;
             if (instance != null)
             {
+                @Look.started += instance.OnLook;
+                @Look.performed += instance.OnLook;
+                @Look.canceled += instance.OnLook;
+                @Comment.started += instance.OnComment;
+                @Comment.performed += instance.OnComment;
+                @Comment.canceled += instance.OnComment;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
+                @Item.started += instance.OnItem;
+                @Item.performed += instance.OnItem;
+                @Item.canceled += instance.OnItem;
+                @ResetCamera.started += instance.OnResetCamera;
+                @ResetCamera.performed += instance.OnResetCamera;
+                @ResetCamera.canceled += instance.OnResetCamera;
+                @TargetCamera.started += instance.OnTargetCamera;
+                @TargetCamera.performed += instance.OnTargetCamera;
+                @TargetCamera.canceled += instance.OnTargetCamera;
+                @PhysicalInteraction.started += instance.OnPhysicalInteraction;
+                @PhysicalInteraction.performed += instance.OnPhysicalInteraction;
+                @PhysicalInteraction.canceled += instance.OnPhysicalInteraction;
                 @MoveX.started += instance.OnMoveX;
                 @MoveX.performed += instance.OnMoveX;
                 @MoveX.canceled += instance.OnMoveX;
                 @MoveY.started += instance.OnMoveY;
                 @MoveY.performed += instance.OnMoveY;
                 @MoveY.canceled += instance.OnMoveY;
-                @Look.started += instance.OnLook;
-                @Look.performed += instance.OnLook;
-                @Look.canceled += instance.OnLook;
-                @ResetCamera.started += instance.OnResetCamera;
-                @ResetCamera.performed += instance.OnResetCamera;
-                @ResetCamera.canceled += instance.OnResetCamera;
-                @Comment.started += instance.OnComment;
-                @Comment.performed += instance.OnComment;
-                @Comment.canceled += instance.OnComment;
-                @PhysicalInteraction.started += instance.OnPhysicalInteraction;
-                @PhysicalInteraction.performed += instance.OnPhysicalInteraction;
-                @PhysicalInteraction.canceled += instance.OnPhysicalInteraction;
+                @Sprint.started += instance.OnSprint;
+                @Sprint.performed += instance.OnSprint;
+                @Sprint.canceled += instance.OnSprint;
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
-                @LeftHandChange.started += instance.OnLeftHandChange;
-                @LeftHandChange.performed += instance.OnLeftHandChange;
-                @LeftHandChange.canceled += instance.OnLeftHandChange;
-                @RightHandChange.started += instance.OnRightHandChange;
-                @RightHandChange.performed += instance.OnRightHandChange;
-                @RightHandChange.canceled += instance.OnRightHandChange;
-                @FocusUp.started += instance.OnFocusUp;
-                @FocusUp.performed += instance.OnFocusUp;
-                @FocusUp.canceled += instance.OnFocusUp;
-                @FocusDown.started += instance.OnFocusDown;
-                @FocusDown.performed += instance.OnFocusDown;
-                @FocusDown.canceled += instance.OnFocusDown;
-                @LeftHandGrip.started += instance.OnLeftHandGrip;
-                @LeftHandGrip.performed += instance.OnLeftHandGrip;
-                @LeftHandGrip.canceled += instance.OnLeftHandGrip;
-                @RightHandGrip.started += instance.OnRightHandGrip;
-                @RightHandGrip.performed += instance.OnRightHandGrip;
-                @RightHandGrip.canceled += instance.OnRightHandGrip;
-                @Jump.started += instance.OnJump;
-                @Jump.performed += instance.OnJump;
-                @Jump.canceled += instance.OnJump;
-                @Dodge.started += instance.OnDodge;
-                @Dodge.performed += instance.OnDodge;
-                @Dodge.canceled += instance.OnDodge;
+                @Shoot.started += instance.OnShoot;
+                @Shoot.performed += instance.OnShoot;
+                @Shoot.canceled += instance.OnShoot;
+                @Heal.started += instance.OnHeal;
+                @Heal.performed += instance.OnHeal;
+                @Heal.canceled += instance.OnHeal;
             }
         }
     }
@@ -582,21 +526,19 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     public MenuControlActions @MenuControl => new MenuControlActions(this);
     public interface ICharacterControlActions
     {
+        void OnLook(InputAction.CallbackContext context);
+        void OnComment(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
+        void OnItem(InputAction.CallbackContext context);
+        void OnResetCamera(InputAction.CallbackContext context);
+        void OnTargetCamera(InputAction.CallbackContext context);
+        void OnPhysicalInteraction(InputAction.CallbackContext context);
         void OnMoveX(InputAction.CallbackContext context);
         void OnMoveY(InputAction.CallbackContext context);
-        void OnLook(InputAction.CallbackContext context);
-        void OnResetCamera(InputAction.CallbackContext context);
-        void OnComment(InputAction.CallbackContext context);
-        void OnPhysicalInteraction(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
-        void OnLeftHandChange(InputAction.CallbackContext context);
-        void OnRightHandChange(InputAction.CallbackContext context);
-        void OnFocusUp(InputAction.CallbackContext context);
-        void OnFocusDown(InputAction.CallbackContext context);
-        void OnLeftHandGrip(InputAction.CallbackContext context);
-        void OnRightHandGrip(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
-        void OnDodge(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
+        void OnHeal(InputAction.CallbackContext context);
     }
     public interface IMenuControlActions
     {

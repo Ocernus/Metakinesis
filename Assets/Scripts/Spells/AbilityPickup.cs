@@ -17,7 +17,7 @@ public class AbilityPickup : MonoBehaviour
                     Shoot shoot = other.gameObject.GetComponentInChildren<Shoot>();
                     if (shoot)
                     {
-                        //shoot.Learn();
+                        shoot.Learn();
                         Instantiate(soundObject, transform.position, transform.rotation);
                         Destroy(gameObject);
                     }
