@@ -121,6 +121,22 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Guard"",
+                    ""type"": ""Button"",
+                    ""id"": ""c85268d4-469d-4e88-aa3b-06bde35dff98"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Put Away"",
+                    ""type"": ""Button"",
+                    ""id"": ""bb16b92b-3199-438c-902a-1c2a08038b33"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -266,6 +282,28 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Heal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d9178b30-e7eb-4022-a313-c0cf3e97e754"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Guard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""03d949f2-1420-4390-b82a-c031b546adb5"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Put Away"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -314,6 +352,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_CharacterControl_Pause = m_CharacterControl.FindAction("Pause", throwIfNotFound: true);
         m_CharacterControl_Shoot = m_CharacterControl.FindAction("Shoot", throwIfNotFound: true);
         m_CharacterControl_Heal = m_CharacterControl.FindAction("Heal", throwIfNotFound: true);
+        m_CharacterControl_Guard = m_CharacterControl.FindAction("Guard", throwIfNotFound: true);
+        m_CharacterControl_PutAway = m_CharacterControl.FindAction("Put Away", throwIfNotFound: true);
         // Menu Control
         m_MenuControl = asset.FindActionMap("Menu Control", throwIfNotFound: true);
         m_MenuControl_Start = m_MenuControl.FindAction("Start", throwIfNotFound: true);
@@ -379,6 +419,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_CharacterControl_Pause;
     private readonly InputAction m_CharacterControl_Shoot;
     private readonly InputAction m_CharacterControl_Heal;
+    private readonly InputAction m_CharacterControl_Guard;
+    private readonly InputAction m_CharacterControl_PutAway;
     public struct CharacterControlActions
     {
         private @PlayerControls m_Wrapper;
@@ -396,6 +438,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Pause => m_Wrapper.m_CharacterControl_Pause;
         public InputAction @Shoot => m_Wrapper.m_CharacterControl_Shoot;
         public InputAction @Heal => m_Wrapper.m_CharacterControl_Heal;
+        public InputAction @Guard => m_Wrapper.m_CharacterControl_Guard;
+        public InputAction @PutAway => m_Wrapper.m_CharacterControl_PutAway;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -444,6 +488,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Heal.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnHeal;
                 @Heal.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnHeal;
                 @Heal.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnHeal;
+                @Guard.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnGuard;
+                @Guard.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnGuard;
+                @Guard.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnGuard;
+                @PutAway.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPutAway;
+                @PutAway.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPutAway;
+                @PutAway.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPutAway;
             }
             m_Wrapper.m_CharacterControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -487,6 +537,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Heal.started += instance.OnHeal;
                 @Heal.performed += instance.OnHeal;
                 @Heal.canceled += instance.OnHeal;
+                @Guard.started += instance.OnGuard;
+                @Guard.performed += instance.OnGuard;
+                @Guard.canceled += instance.OnGuard;
+                @PutAway.started += instance.OnPutAway;
+                @PutAway.performed += instance.OnPutAway;
+                @PutAway.canceled += instance.OnPutAway;
             }
         }
     }
@@ -539,6 +595,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnHeal(InputAction.CallbackContext context);
+        void OnGuard(InputAction.CallbackContext context);
+        void OnPutAway(InputAction.CallbackContext context);
     }
     public interface IMenuControlActions
     {

@@ -85,25 +85,27 @@ public class SwordAttack : MonoBehaviour
     public void Attack()
     {
         if (!inputTimerRunning)
-        {
+        {/*
             if (movement.state == Movement.States.onGround)
-            {
+            {*/
                 anim.SetTrigger("Slash");
                 swordSwingSound.Play();
 
                 inputTimerRunning = true;
                 inputTimeCurrent = 0;
-                sheathTimerRunning = true;
-                sheathTimeCurrent = 0;
+                /*sheathTimerRunning = true;
+                sheathTimeCurrent = 0;*/
                 moveLockTimerRunning = true;
                 moveLockTimeCurrent = 0;
                 damageTimerRunning = true;
                 damageTimeCurrent = 0;
-
-                equipGraphics.ShowSword(true);
+            
+            equipGraphics.ShowSword(true);
+            
+            //show shield here
                 movement.movementMultiplier = 0;
-                slashAttackVolume.SetActive(false);
-            }
+                slashAttackVolume.SetActive(false);/*
+            }*/
         }
     }
 
@@ -132,6 +134,7 @@ public class SwordAttack : MonoBehaviour
     {
         inputTimerRunning = false;
         inputTimeCurrent = 0;
+        anim.SetBool("Offset Swing", !anim.GetBool("Offset Swing"));
     }
 
     public void ExternalReset()

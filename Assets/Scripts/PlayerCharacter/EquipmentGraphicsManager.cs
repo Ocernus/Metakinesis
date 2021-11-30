@@ -9,10 +9,13 @@ public class EquipmentGraphicsManager : MonoBehaviour
     public GameObject[] fullArmorUpgrades;
     public GameObject[] sheathParts;
     public GameObject[] armorPieces;
+    public GameObject[] shieldPieces;
 
     public bool swordEquipped;
     public bool swordHeld;
     public bool armorComplete;
+    public bool shieldEquipped;
+    public bool shieldHeld;
 
     public bool triggerRefresh;
 
@@ -20,6 +23,7 @@ public class EquipmentGraphicsManager : MonoBehaviour
     void Update()
     {
         swordEquipped = Inventory.instance.swordEquipped;
+        shieldEquipped = Inventory.instance.shieldEquipped;
 
         if (triggerRefresh)
         {
@@ -50,6 +54,12 @@ public class EquipmentGraphicsManager : MonoBehaviour
     {
         swordEquipped = toggle;
         foreach (GameObject obj in sheathedSwordParts) obj.SetActive(toggle);
+        foreach (GameObject obj in sheathParts) obj.SetActive(toggle);
+    }
+
+    public void EquipShield(bool toggle)
+    {
+        shieldEquipped = toggle;
         foreach (GameObject obj in sheathParts) obj.SetActive(toggle);
     }
 
