@@ -5,9 +5,7 @@ using UnityEngine.InputSystem;
 
 public class SwordAttack : MonoBehaviour
 {
-    public float sheathTimeMax;
-    private float sheathTimeCurrent;
-    private bool sheathTimerRunning;
+    
 
     public float moveLockTimeMax;
     private float moveLockTimeCurrent;
@@ -30,6 +28,8 @@ public class SwordAttack : MonoBehaviour
     Animator anim;
     Movement movement;
 
+    public Shield shield;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -40,14 +40,7 @@ public class SwordAttack : MonoBehaviour
 
     private void Update()
     {
-        if (sheathTimerRunning)
-        {
-            if (sheathTimeCurrent >= sheathTimeMax)
-            {
-                ResetSheathTimer();
-            }
-            else sheathTimeCurrent += Time.deltaTime;
-        }
+        
 
         if (moveLockTimerRunning)
         {
@@ -101,20 +94,15 @@ public class SwordAttack : MonoBehaviour
                 damageTimeCurrent = 0;
             
             equipGraphics.ShowSword(true);
-            
-            //show shield here
+
+            shield.shouldProject = true;
                 movement.movementMultiplier = 0;
                 slashAttackVolume.SetActive(false);/*
             }*/
         }
     }
 
-    void ResetSheathTimer()
-    {
-        sheathTimerRunning = false;
-        sheathTimeCurrent = 0;
-        equipGraphics.ShowSword(false);
-    }
+    
 
     void ResetMoveLockTimer()
     {
@@ -139,7 +127,7 @@ public class SwordAttack : MonoBehaviour
 
     public void ExternalReset()
     {
-        ResetSheathTimer();
+        //ResetSheathTimer();
         ResetMoveLockTimer();
         ResetDamageTimer();
         ResetInputTimer();

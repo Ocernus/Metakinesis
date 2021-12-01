@@ -9,6 +9,7 @@ public class PlayerGuard : MonoBehaviour
 
     Animator anim;
     EquipmentGraphicsManager equip;
+    public Shield shield;
 
     private void Start()
     {
@@ -23,6 +24,8 @@ public class PlayerGuard : MonoBehaviour
             anim.SetBool("Guarding", true);
             anim.SetBool("Offset Swing", true);
             equip.EquipShield(true);
+            if (!shield.shouldProject) shield.shouldProject = true;
+            equip.ShowSword(true);//new
         }
 
         if (value.canceled)
