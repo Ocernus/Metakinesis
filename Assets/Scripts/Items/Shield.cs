@@ -8,10 +8,13 @@ public class Shield : MonoBehaviour
     public GameObject shieldEnergy;
     public GameObject shieldMetal;
 
-    public float scaleChange;
+    public float scaleUpChange;
     public float scaleMax;
+    public float scaleDownChange;
     public float scaleMin;
-    public float retractionSpeed;
+
+    public float fluctuation;
+
 
     public bool shouldProject;
     public bool shouldRetract;
@@ -25,25 +28,22 @@ public class Shield : MonoBehaviour
     private void Update()
     {
         if (shouldProject)
-        {            
-            if (shieldBone.transform.localScale.magnitude >= scaleMax) shouldProject = false;
-            else shieldBone.transform.localScale *= scaleChange;
+        {
+            if (shieldBone.transform.localScale.magnitude >= scaleMax)
+            {
+                shieldBone.transform.localScale = new Vector3(1, 1, 1);
+                shouldProject = false;
+            }
+            else shieldBone.transform.localScale *= scaleUpChange;
         }
         if (shouldRetract)
         {            
-            if (shieldBone.transform.localScale.magnitude <= scaleMin) shouldRetract = false;
-            else shieldBone.transform.localScale *= 1 / scaleChange;
+            if (shieldBone.transform.localScale.magnitude <= scaleMin)
+            {
+                shieldBone.transform.localScale = new Vector3(scaleMin, scaleMin, scaleMin);
+                shouldRetract = false;
+            }
+            else shieldBone.transform.localScale *= 1 / scaleDownChange;
         }
-    }
-
-    public void ProjectShield()
-    {
-        shieldBone.SetActive(true);
-    }
-
-    IEnumerator Disabler()
-    {
-        yield return new WaitForSeconds(retractionSpeed);
-        shieldBone.SetActive(false);
     }
 }
