@@ -28,7 +28,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Body
-    second: {fileID: 2100000, guid: cc23da9a61738cf4d9e9f3d22e6dd220, type: 2}
+    second: {fileID: 2100000, guid: 0ddca43a2d009a24dbedf856335ca433, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -38,7 +38,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Wing
-    second: {fileID: 2100000, guid: 9c8f43b5faf9a08498729ad0d00d62d5, type: 2}
+    second: {fileID: 2100000, guid: 7bae5bb9188a3e64aa0a4276b3847b5a, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

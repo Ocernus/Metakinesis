@@ -333,6 +333,33 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Dragon Control"",
+            ""id"": ""e1ec2fcd-e3cd-4eb3-88e6-510137ac68a1"",
+            ""actions"": [
+                {
+                    ""name"": ""Turn"",
+                    ""type"": ""Value"",
+                    ""id"": ""3e2844f6-b16e-4a1a-88db-5d665a111d50"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""d682d9b0-b15c-4cb0-8342-297813f66153"",
+                    ""path"": ""<Gamepad>/leftStick/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -357,6 +384,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         // Menu Control
         m_MenuControl = asset.FindActionMap("Menu Control", throwIfNotFound: true);
         m_MenuControl_Start = m_MenuControl.FindAction("Start", throwIfNotFound: true);
+        // Dragon Control
+        m_DragonControl = asset.FindActionMap("Dragon Control", throwIfNotFound: true);
+        m_DragonControl_Turn = m_DragonControl.FindAction("Turn", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -580,6 +610,39 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         }
     }
     public MenuControlActions @MenuControl => new MenuControlActions(this);
+
+    // Dragon Control
+    private readonly InputActionMap m_DragonControl;
+    private IDragonControlActions m_DragonControlActionsCallbackInterface;
+    private readonly InputAction m_DragonControl_Turn;
+    public struct DragonControlActions
+    {
+        private @PlayerControls m_Wrapper;
+        public DragonControlActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Turn => m_Wrapper.m_DragonControl_Turn;
+        public InputActionMap Get() { return m_Wrapper.m_DragonControl; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DragonControlActions set) { return set.Get(); }
+        public void SetCallbacks(IDragonControlActions instance)
+        {
+            if (m_Wrapper.m_DragonControlActionsCallbackInterface != null)
+            {
+                @Turn.started -= m_Wrapper.m_DragonControlActionsCallbackInterface.OnTurn;
+                @Turn.performed -= m_Wrapper.m_DragonControlActionsCallbackInterface.OnTurn;
+                @Turn.canceled -= m_Wrapper.m_DragonControlActionsCallbackInterface.OnTurn;
+            }
+            m_Wrapper.m_DragonControlActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Turn.started += instance.OnTurn;
+                @Turn.performed += instance.OnTurn;
+                @Turn.canceled += instance.OnTurn;
+            }
+        }
+    }
+    public DragonControlActions @DragonControl => new DragonControlActions(this);
     public interface ICharacterControlActions
     {
         void OnLook(InputAction.CallbackContext context);
@@ -601,5 +664,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     public interface IMenuControlActions
     {
         void OnStart(InputAction.CallbackContext context);
+    }
+    public interface IDragonControlActions
+    {
+        void OnTurn(InputAction.CallbackContext context);
     }
 }
