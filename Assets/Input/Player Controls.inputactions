@@ -38,14 +38,6 @@
                     "interactions": "Press"
                 },
                 {
-                    "name": "Reset Camera",
-                    "type": "Button",
-                    "id": "5166e352-e93e-46c3-9ce9-d65e01e43866",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press"
-                },
-                {
                     "name": "Target Camera",
                     "type": "Button",
                     "id": "896fa234-0289-4174-bef4-f969e6e80d5c",
@@ -54,7 +46,7 @@
                     "interactions": "Press"
                 },
                 {
-                    "name": "Physical Interaction",
+                    "name": "Attack",
                     "type": "Button",
                     "id": "6aa9a7be-9b78-49c4-84b9-80047da5c588",
                     "expectedControlType": "Button",
@@ -173,19 +165,8 @@
                 },
                 {
                     "name": "",
-                    "id": "2e1b6c10-0c00-4a33-af39-47c18b5ab730",
-                    "path": "<Gamepad>/rightStickPress",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Reset Camera",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "b81b0450-e7e2-4fdf-bec9-1bd643d94963",
-                    "path": "<Gamepad>/leftShoulder",
+                    "path": "<Gamepad>/rightStickPress",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -196,11 +177,11 @@
                 {
                     "name": "",
                     "id": "b03d1699-5d1e-4239-b93b-b1a692251c6c",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Physical Interaction",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -273,7 +254,7 @@
                 {
                     "name": "",
                     "id": "d9178b30-e7eb-4022-a313-c0cf3e97e754",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

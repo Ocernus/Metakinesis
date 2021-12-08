@@ -51,14 +51,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": ""Press""
                 },
                 {
-                    ""name"": ""Reset Camera"",
-                    ""type"": ""Button"",
-                    ""id"": ""5166e352-e93e-46c3-9ce9-d65e01e43866"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
-                },
-                {
                     ""name"": ""Target Camera"",
                     ""type"": ""Button"",
                     ""id"": ""896fa234-0289-4174-bef4-f969e6e80d5c"",
@@ -67,7 +59,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": ""Press""
                 },
                 {
-                    ""name"": ""Physical Interaction"",
+                    ""name"": ""Attack"",
                     ""type"": ""Button"",
                     ""id"": ""6aa9a7be-9b78-49c4-84b9-80047da5c588"",
                     ""expectedControlType"": ""Button"",
@@ -186,19 +178,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""2e1b6c10-0c00-4a33-af39-47c18b5ab730"",
-                    ""path"": ""<Gamepad>/rightStickPress"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Reset Camera"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""b81b0450-e7e2-4fdf-bec9-1bd643d94963"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -209,11 +190,11 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""b03d1699-5d1e-4239-b93b-b1a692251c6c"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Physical Interaction"",
+                    ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -286,7 +267,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d9178b30-e7eb-4022-a313-c0cf3e97e754"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -370,9 +351,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_CharacterControl_Comment = m_CharacterControl.FindAction("Comment", throwIfNotFound: true);
         m_CharacterControl_Jump = m_CharacterControl.FindAction("Jump", throwIfNotFound: true);
         m_CharacterControl_Item = m_CharacterControl.FindAction("Item", throwIfNotFound: true);
-        m_CharacterControl_ResetCamera = m_CharacterControl.FindAction("Reset Camera", throwIfNotFound: true);
         m_CharacterControl_TargetCamera = m_CharacterControl.FindAction("Target Camera", throwIfNotFound: true);
-        m_CharacterControl_PhysicalInteraction = m_CharacterControl.FindAction("Physical Interaction", throwIfNotFound: true);
+        m_CharacterControl_Attack = m_CharacterControl.FindAction("Attack", throwIfNotFound: true);
         m_CharacterControl_MoveX = m_CharacterControl.FindAction("MoveX", throwIfNotFound: true);
         m_CharacterControl_MoveY = m_CharacterControl.FindAction("MoveY", throwIfNotFound: true);
         m_CharacterControl_Sprint = m_CharacterControl.FindAction("Sprint", throwIfNotFound: true);
@@ -440,9 +420,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_CharacterControl_Comment;
     private readonly InputAction m_CharacterControl_Jump;
     private readonly InputAction m_CharacterControl_Item;
-    private readonly InputAction m_CharacterControl_ResetCamera;
     private readonly InputAction m_CharacterControl_TargetCamera;
-    private readonly InputAction m_CharacterControl_PhysicalInteraction;
+    private readonly InputAction m_CharacterControl_Attack;
     private readonly InputAction m_CharacterControl_MoveX;
     private readonly InputAction m_CharacterControl_MoveY;
     private readonly InputAction m_CharacterControl_Sprint;
@@ -459,9 +438,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Comment => m_Wrapper.m_CharacterControl_Comment;
         public InputAction @Jump => m_Wrapper.m_CharacterControl_Jump;
         public InputAction @Item => m_Wrapper.m_CharacterControl_Item;
-        public InputAction @ResetCamera => m_Wrapper.m_CharacterControl_ResetCamera;
         public InputAction @TargetCamera => m_Wrapper.m_CharacterControl_TargetCamera;
-        public InputAction @PhysicalInteraction => m_Wrapper.m_CharacterControl_PhysicalInteraction;
+        public InputAction @Attack => m_Wrapper.m_CharacterControl_Attack;
         public InputAction @MoveX => m_Wrapper.m_CharacterControl_MoveX;
         public InputAction @MoveY => m_Wrapper.m_CharacterControl_MoveY;
         public InputAction @Sprint => m_Wrapper.m_CharacterControl_Sprint;
@@ -491,15 +469,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Item.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnItem;
                 @Item.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnItem;
                 @Item.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnItem;
-                @ResetCamera.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnResetCamera;
-                @ResetCamera.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnResetCamera;
-                @ResetCamera.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnResetCamera;
                 @TargetCamera.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnTargetCamera;
                 @TargetCamera.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnTargetCamera;
                 @TargetCamera.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnTargetCamera;
-                @PhysicalInteraction.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPhysicalInteraction;
-                @PhysicalInteraction.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPhysicalInteraction;
-                @PhysicalInteraction.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPhysicalInteraction;
+                @Attack.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnAttack;
+                @Attack.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnAttack;
+                @Attack.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnAttack;
                 @MoveX.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveX;
                 @MoveX.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveX;
                 @MoveX.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveX;
@@ -540,15 +515,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Item.started += instance.OnItem;
                 @Item.performed += instance.OnItem;
                 @Item.canceled += instance.OnItem;
-                @ResetCamera.started += instance.OnResetCamera;
-                @ResetCamera.performed += instance.OnResetCamera;
-                @ResetCamera.canceled += instance.OnResetCamera;
                 @TargetCamera.started += instance.OnTargetCamera;
                 @TargetCamera.performed += instance.OnTargetCamera;
                 @TargetCamera.canceled += instance.OnTargetCamera;
-                @PhysicalInteraction.started += instance.OnPhysicalInteraction;
-                @PhysicalInteraction.performed += instance.OnPhysicalInteraction;
-                @PhysicalInteraction.canceled += instance.OnPhysicalInteraction;
+                @Attack.started += instance.OnAttack;
+                @Attack.performed += instance.OnAttack;
+                @Attack.canceled += instance.OnAttack;
                 @MoveX.started += instance.OnMoveX;
                 @MoveX.performed += instance.OnMoveX;
                 @MoveX.canceled += instance.OnMoveX;
@@ -649,9 +621,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnComment(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnItem(InputAction.CallbackContext context);
-        void OnResetCamera(InputAction.CallbackContext context);
         void OnTargetCamera(InputAction.CallbackContext context);
-        void OnPhysicalInteraction(InputAction.CallbackContext context);
+        void OnAttack(InputAction.CallbackContext context);
         void OnMoveX(InputAction.CallbackContext context);
         void OnMoveY(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
