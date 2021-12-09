@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Shader Graphs_Sky Experimental
+  m_Shader: {fileID: -6465566751694194690, guid: 9d3bf26fac4f68f44aea0fca19cb40cc, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - Vector1_E40127BF: 70
+    - Vector1_F378FCF8: 1.3
+    m_Colors:
+    - Color_CAB81F51: {r: 0, g: 0, b: 0, a: 0}
+    - Vector2_48B17CF6: {r: 0.01, g: 0.01, b: 0, a: 0}
+  m_BuildTextureStacks: []
