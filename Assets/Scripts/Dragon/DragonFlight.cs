@@ -48,6 +48,13 @@ public class DragonFlight : MonoBehaviour
 
     public ParticleSystem pickupParticle;
 
+    // // // //
+    
+    public float vertSpeed;
+    public float horzSpeed;
+    private float vertical;
+    private float horizontal;
+
     // // // // // // // //
 
     public static DragonFlight instance;
@@ -92,6 +99,8 @@ public class DragonFlight : MonoBehaviour
         UpdateBlast(leftBlast, leftPowerCurrent / powerLimit, 1);
         UpdateBlast(rightBlast, rightPowerCurrent / powerLimit, -1);
         */
+
+
     }
 
     // ++ //
@@ -207,34 +216,12 @@ public class DragonFlight : MonoBehaviour
 
     public void OnElevate(InputAction.CallbackContext value)
     {
-        if (value.started)
-        {
-            if (value.ReadValue<float>() > 0)
-            {
-                print("raise");
-            }
-            
-            if (value.ReadValue<float>() < 0)
-            {
-                print("lower");
-            }
-        }
-        if (value.canceled)
-        {
-
-        }
+        vertical = value.ReadValue<float>() * vertSpeed;        
     }
 
     public void OnStrafe(InputAction.CallbackContext value)
     {
-        if (value.started)
-        {
-
-        }
-        if (value.canceled)
-        {
-
-        }
+        horizontal = value.ReadValue<float>() * horzSpeed;
     }
 
     // ++ //
@@ -247,7 +234,7 @@ public class DragonFlight : MonoBehaviour
 
         //addingforces horizon/linear movement
         rb.AddTorque(Vector3.up * powerBalance * torque);
-        rb.AddForce((transform.forward * powerAccumulative * force) * (transform.up ));
+        rb.AddForce((transform.forward * powerAccumulative * force) + (transform.up * vertical) + (transform.right * horizontal));
 
     }
 }
