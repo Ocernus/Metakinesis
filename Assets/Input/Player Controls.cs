@@ -363,10 +363,18 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Strafe And Elevate"",
+                    ""name"": ""Strafe"",
                     ""type"": ""Value"",
                     ""id"": ""7af4d178-e832-4bb5-beb7-13933e70dd9f"",
-                    ""expectedControlType"": ""Stick"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Elevate"",
+                    ""type"": ""Value"",
+                    ""id"": ""ff8deeeb-5e37-4c30-8aca-f41770bd4495"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -408,11 +416,22 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""4da78d37-5203-4996-9fae-3cbb52693891"",
-                    ""path"": ""<Gamepad>/leftStick"",
+                    ""path"": ""<Gamepad>/leftStick/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Strafe And Elevate"",
+                    ""action"": ""Strafe"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8d6c2943-31e7-40c7-8adf-8576b20fb96f"",
+                    ""path"": ""<Gamepad>/leftStick/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Elevate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -446,7 +465,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_DragonControls_LeftWingHold = m_DragonControls.FindAction("Left Wing Hold", throwIfNotFound: true);
         m_DragonControls_RightWingHold = m_DragonControls.FindAction("Right Wing Hold", throwIfNotFound: true);
         m_DragonControls_Look = m_DragonControls.FindAction("Look", throwIfNotFound: true);
-        m_DragonControls_StrafeAndElevate = m_DragonControls.FindAction("Strafe And Elevate", throwIfNotFound: true);
+        m_DragonControls_Strafe = m_DragonControls.FindAction("Strafe", throwIfNotFound: true);
+        m_DragonControls_Elevate = m_DragonControls.FindAction("Elevate", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -677,7 +697,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_DragonControls_LeftWingHold;
     private readonly InputAction m_DragonControls_RightWingHold;
     private readonly InputAction m_DragonControls_Look;
-    private readonly InputAction m_DragonControls_StrafeAndElevate;
+    private readonly InputAction m_DragonControls_Strafe;
+    private readonly InputAction m_DragonControls_Elevate;
     public struct DragonControlsActions
     {
         private @PlayerControls m_Wrapper;
@@ -685,7 +706,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @LeftWingHold => m_Wrapper.m_DragonControls_LeftWingHold;
         public InputAction @RightWingHold => m_Wrapper.m_DragonControls_RightWingHold;
         public InputAction @Look => m_Wrapper.m_DragonControls_Look;
-        public InputAction @StrafeAndElevate => m_Wrapper.m_DragonControls_StrafeAndElevate;
+        public InputAction @Strafe => m_Wrapper.m_DragonControls_Strafe;
+        public InputAction @Elevate => m_Wrapper.m_DragonControls_Elevate;
         public InputActionMap Get() { return m_Wrapper.m_DragonControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -704,9 +726,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Look.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnLook;
-                @StrafeAndElevate.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnStrafeAndElevate;
-                @StrafeAndElevate.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnStrafeAndElevate;
-                @StrafeAndElevate.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnStrafeAndElevate;
+                @Strafe.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnStrafe;
+                @Strafe.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnStrafe;
+                @Strafe.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnStrafe;
+                @Elevate.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnElevate;
+                @Elevate.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnElevate;
+                @Elevate.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnElevate;
             }
             m_Wrapper.m_DragonControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -720,9 +745,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
-                @StrafeAndElevate.started += instance.OnStrafeAndElevate;
-                @StrafeAndElevate.performed += instance.OnStrafeAndElevate;
-                @StrafeAndElevate.canceled += instance.OnStrafeAndElevate;
+                @Strafe.started += instance.OnStrafe;
+                @Strafe.performed += instance.OnStrafe;
+                @Strafe.canceled += instance.OnStrafe;
+                @Elevate.started += instance.OnElevate;
+                @Elevate.performed += instance.OnElevate;
+                @Elevate.canceled += instance.OnElevate;
             }
         }
     }
@@ -754,6 +782,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnLeftWingHold(InputAction.CallbackContext context);
         void OnRightWingHold(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
-        void OnStrafeAndElevate(InputAction.CallbackContext context);
+        void OnStrafe(InputAction.CallbackContext context);
+        void OnElevate(InputAction.CallbackContext context);
     }
 }

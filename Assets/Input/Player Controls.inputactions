@@ -350,10 +350,18 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Strafe And Elevate",
+                    "name": "Strafe",
                     "type": "Value",
                     "id": "7af4d178-e832-4bb5-beb7-13933e70dd9f",
-                    "expectedControlType": "Stick",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Elevate",
+                    "type": "Value",
+                    "id": "ff8deeeb-5e37-4c30-8aca-f41770bd4495",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": ""
                 }
@@ -395,11 +403,22 @@
                 {
                     "name": "",
                     "id": "4da78d37-5203-4996-9fae-3cbb52693891",
-                    "path": "<Gamepad>/leftStick",
+                    "path": "<Gamepad>/leftStick/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Strafe And Elevate",
+                    "action": "Strafe",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8d6c2943-31e7-40c7-8adf-8576b20fb96f",
+                    "path": "<Gamepad>/leftStick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Elevate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

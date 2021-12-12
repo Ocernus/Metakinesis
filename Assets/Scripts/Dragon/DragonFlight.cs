@@ -177,14 +177,7 @@ public class DragonFlight : MonoBehaviour
         blast.transform.localScale = new Vector3(blast.transform.localScale.x, power, blast.transform.localScale.z);
     }
 
-    private void FixedUpdate()
-    {
-        velocity = rb.velocity.magnitude;
-        currentTorque = rb.angularVelocity.magnitude;
-
-        rb.AddTorque(Vector3.up * powerBalance * torque);
-        rb.AddForce(transform.forward * powerAccumulative * force);
-    }
+    
 
     //++//
 
@@ -193,7 +186,6 @@ public class DragonFlight : MonoBehaviour
         if (value.started)
         {
             StartRightEngine();
-            print("fly R");
         }
         if (value.canceled)
         {
@@ -206,11 +198,56 @@ public class DragonFlight : MonoBehaviour
         if (value.started)
         {
             StartLeftEngine();
-            print("fly L");
         }
         if (value.canceled)
         {
             StopLeftEngine();
         }
+    }
+
+    public void OnElevate(InputAction.CallbackContext value)
+    {
+        if (value.started)
+        {
+            if (value.ReadValue<float>() > 0)
+            {
+                print("raise");
+            }
+            
+            if (value.ReadValue<float>() < 0)
+            {
+                print("lower");
+            }
+        }
+        if (value.canceled)
+        {
+
+        }
+    }
+
+    public void OnStrafe(InputAction.CallbackContext value)
+    {
+        if (value.started)
+        {
+
+        }
+        if (value.canceled)
+        {
+
+        }
+    }
+
+    // ++ //
+
+    private void FixedUpdate()
+    {
+        // Geetting samlpes
+        velocity = rb.velocity.magnitude;
+        currentTorque = rb.angularVelocity.magnitude;
+
+        //addingforces horizon/linear movement
+        rb.AddTorque(Vector3.up * powerBalance * torque);
+        rb.AddForce((transform.forward * powerAccumulative * force) * (transform.up ));
+
     }
 }
