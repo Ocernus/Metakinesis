@@ -16,17 +16,17 @@ public class ActionButtonContextManager : MonoBehaviour
         instance = this;
     }
 
-    public void OnNorthAction(InputAction.CallbackContext value)
+    public void OnSouthAction(InputAction.CallbackContext value)
     {
         if (value.started)
         {
             if (activeInteractable)
             {
-                activeInteractable.InteractionChooseA();
+                activeInteractable.InteractionChooseSouth();
             }
             else
             {
-                print("ha ha ha");
+                // print("ha ha ha");
             }
         }        
     }
@@ -37,15 +37,18 @@ public class ActionButtonContextManager : MonoBehaviour
         {
             if (activeInteractable)
             {
-                activeInteractable.InteractionChooseB();
+                activeInteractable.InteractionChooseWest();
             }
             else
             {
+                /*
                 if (Inventory.instance.swordEquipped) swordAttack.Attack();
                 else
                 {
                     print("<<<<<");
                 }
+                */
+                //print("<<<<<");
             }
         }        
     }

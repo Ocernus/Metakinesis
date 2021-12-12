@@ -6,39 +6,39 @@ public class InteractableBrainVat : Interactable
 {
     // Give creepy totem
 
-    public override void ChoiceAInstantReaction()
+    public override void ChoiceWestInstantReaction()
     {
-        base.ChoiceAInstantReaction();
+        base.ChoiceWestInstantReaction();
     }
 
-    public override void ChoiceADelayedReaction()
+    public override void ChoiceWestDelayedReaction()
     {
-        base.ChoiceADelayedReaction();
+        base.ChoiceWestDelayedReaction();
         
     }
 
     // Buy seltzer
 
-    public override void ChoiceBInstantReaction()
+    public override void ChoiceSouthInstantReaction()
     {
-        base.ChoiceBInstantReaction();
+        base.ChoiceSouthInstantReaction();
         Inventory.instance.ChangeItemCount(0, -10);
     }
 
-    public override void ChoiceBDelayedReaction()
+    public override void ChoiceSouthDelayedReaction()
     {
-        base.ChoiceBDelayedReaction();
+        base.ChoiceSouthDelayedReaction();
         Inventory.instance.ChangeItemCount(3, 1);
     }
 
     // req checks
 
-    public override bool ReqCheckA()
+    public override bool ReqCheckWest()
     {
-        return base.ReqCheckA(); // check for creepy totem
+        return base.ReqCheckWest(); // check for creepy totem
     }
 
-    public override bool ReqCheckB()
+    public override bool ReqCheckSouth()
     {
         if (Inventory.instance.items[0] >= 10) return true;
         else return false;

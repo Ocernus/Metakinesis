@@ -53,30 +53,14 @@ public class UIButtonManager : MonoBehaviour
 
     public void RefreshWestText(bool contextExists, string context)
     {
-        if (contextExists)
-        {
-            westText.text = context;
-            // Update Images
-        }
-        else
-        {
-            westText.text = westTextDefaultString;
-            // Update Images
-        }
+        if (contextExists)westText.text = context;
+        else westText.text = westTextDefaultString;
     }
 
     public void RefreshNorthText(bool contextExists, string context)
     {
-        if (contextExists)
-        {
-            northText.text = context;
-
-        }
-        else
-        {
-            northText.text = northTextDefaultString;
-
-        }
+        if (contextExists) northText.text = context;
+        else northText.text = northTextDefaultString;
     }
 
     public void ResetAllButtonTexts()

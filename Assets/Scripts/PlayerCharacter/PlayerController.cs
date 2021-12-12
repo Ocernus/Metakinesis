@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     private string actionMapCharacterControl = "Character Control";
     private string actionMapInteractableControl = "Interactable Control";
     private string actionMapMenuControl = "Menu Control";
+    private string actionMapFlightControl = "Dragon Controls";
 
     private PlayerInput playerInput;
 
@@ -38,5 +39,11 @@ public class PlayerController : MonoBehaviour
     public void EnableMenuControl()
     {
         playerInput.SwitchCurrentActionMap(actionMapMenuControl);
+    }
+
+    public void EnableFlightControls()
+    {
+        print("tried switching to flight mode");
+        playerInput.SwitchCurrentActionMap(actionMapFlightControl);
     }
 }

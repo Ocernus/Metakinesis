@@ -14,22 +14,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Comment",
-                    "type": "Button",
-                    "id": "6a66afbb-e3ee-46c0-96af-3bd81aab29c7",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press"
-                },
-                {
-                    "name": "Jump",
-                    "type": "Button",
-                    "id": "ae9c9bd0-ded0-4fe4-a434-611540ced5ed",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press"
-                },
-                {
                     "name": "Item",
                     "type": "Button",
                     "id": "fe35991f-2705-4ab6-a472-58474a8a3376",
@@ -70,14 +54,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Sprint",
-                    "type": "Button",
-                    "id": "ded6cb03-a634-4b86-b7c7-2ca0988a28e2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press"
-                },
-                {
                     "name": "Pause",
                     "type": "Button",
                     "id": "9070faa0-bb58-4171-8102-062f9d97a483",
@@ -116,6 +92,38 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press"
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "6a66afbb-e3ee-46c0-96af-3bd81aab29c7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "ae9c9bd0-ded0-4fe4-a434-611540ced5ed",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "Evade",
+                    "type": "Button",
+                    "id": "ded6cb03-a634-4b86-b7c7-2ca0988a28e2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "Comment",
+                    "type": "Button",
+                    "id": "fd991d62-f023-43dd-b1c2-dbc59b312116",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
@@ -127,28 +135,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Look",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "28602f39-76cf-4bb0-b059-ca68eb565104",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Comment",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e29cf3e8-356b-4c67-a7ae-d28c61c9edf5",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -209,17 +195,6 @@
                 },
                 {
                     "name": "",
-                    "id": "150c25e3-285e-48e3-abe4-4a510ef62e4c",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Sprint",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "09e48003-f48e-4038-bf70-896fc877da4c",
                     "path": "<Gamepad>/start",
                     "interactions": "",
@@ -272,6 +247,50 @@
                     "action": "Put Away",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "28602f39-76cf-4bb0-b059-ca68eb565104",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e29cf3e8-356b-4c67-a7ae-d28c61c9edf5",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "150c25e3-285e-48e3-abe4-4a510ef62e4c",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Evade",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "36a717a0-e86c-4d80-a52e-17f5822ceed4",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Comment",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -303,14 +322,38 @@
             ]
         },
         {
-            "name": "Dragon Control",
+            "name": "Dragon Controls",
             "id": "e1ec2fcd-e3cd-4eb3-88e6-510137ac68a1",
             "actions": [
                 {
-                    "name": "Turn",
-                    "type": "Value",
+                    "name": "Left Wing Hold",
+                    "type": "Button",
                     "id": "3e2844f6-b16e-4a1a-88db-5d665a111d50",
-                    "expectedControlType": "Axis",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "Right Wing Hold",
+                    "type": "Button",
+                    "id": "9d10239a-8335-4074-be83-4f61dc0f82e2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "Look",
+                    "type": "Value",
+                    "id": "a924822c-719f-4a12-b35e-171e5495fcc7",
+                    "expectedControlType": "Stick",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Strafe And Elevate",
+                    "type": "Value",
+                    "id": "7af4d178-e832-4bb5-beb7-13933e70dd9f",
+                    "expectedControlType": "Stick",
                     "processors": "",
                     "interactions": ""
                 }
@@ -319,11 +362,44 @@
                 {
                     "name": "",
                     "id": "d682d9b0-b15c-4cb0-8342-297813f66153",
-                    "path": "<Gamepad>/leftStick/x",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Turn",
+                    "action": "Left Wing Hold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "20309ad3-b192-408c-8660-d4f4ddb9b5ba",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right Wing Hold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f3cf5658-d8e5-425e-b11c-c63310d16652",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4da78d37-5203-4996-9fae-3cbb52693891",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Strafe And Elevate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

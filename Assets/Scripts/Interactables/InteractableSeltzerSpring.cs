@@ -6,39 +6,39 @@ public class InteractableSeltzerSpring : Interactable
 {
     // Drinking from pool
 
-    public override void ChoiceAInstantReaction()
+    public override void ChoiceWestInstantReaction()
     {
-        base.ChoiceAInstantReaction();
+        base.ChoiceWestInstantReaction();
     }
 
-    public override void ChoiceADelayedReaction()
+    public override void ChoiceWestDelayedReaction()
     {
-        base.ChoiceADelayedReaction();
+        base.ChoiceWestDelayedReaction();
         //heal player
     }
 
     // Filling up bottle
 
-    public override void ChoiceBInstantReaction()
+    public override void ChoiceSouthInstantReaction()
     {
-        base.ChoiceBInstantReaction();
+        base.ChoiceSouthInstantReaction();
         //Inventory.instance.ChangeItemCount(1, -1); // remove empty bottle
     }
 
-    public override void ChoiceBDelayedReaction()
+    public override void ChoiceSouthDelayedReaction()
     {
-        base.ChoiceBDelayedReaction();
+        base.ChoiceSouthDelayedReaction();
         Inventory.instance.ChangeItemCount(2, 1); // return selzter
     }
 
     // req checks
 
-    public override bool ReqCheckA()
+    public override bool ReqCheckWest()
     {
         return true; // should check HP
     }
 
-    public override bool ReqCheckB()
+    public override bool ReqCheckSouth()
     {
         if (Inventory.instance.items[1] > 0) return true;
         else return false;

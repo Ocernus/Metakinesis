@@ -15,37 +15,37 @@ public class InteractableBlacksmith : Interactable
         health = playerCharacter.GetComponent<PlayerHealth>();
     }
 
-    public override void ChoiceAInstantReaction()
+    public override void ChoiceWestInstantReaction()
     {
         
         Inventory.instance.ChangeItemCount(5, -swordCost);
     }
 
-    public override void ChoiceADelayedReaction()
+    public override void ChoiceWestDelayedReaction()
     {
         // give next tier of sword
         print("got next sword upgrade");
     }
 
-    public override void ChoiceBInstantReaction()
+    public override void ChoiceSouthInstantReaction()
     {
         Inventory.instance.ChangeItemCount(5, -armorCost);
     }
 
-    public override void ChoiceBDelayedReaction()
+    public override void ChoiceSouthDelayedReaction()
     {
         
         health.IncreaseArmor();
         print("got next armor piece");
     }
 
-    public override bool ReqCheckA()
+    public override bool ReqCheckWest()
     {
         if (Inventory.instance.items[5] >= armorCost && health.armorCurrent < health.armorMax) return true;
         else return false;
     }
 
-    public override bool ReqCheckB()
+    public override bool ReqCheckSouth()
     {
         if (Inventory.instance.items[5] >= swordCost/* && sword not maxed out */) return true;
         else return false;

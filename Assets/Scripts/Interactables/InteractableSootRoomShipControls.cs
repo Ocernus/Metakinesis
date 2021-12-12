@@ -36,15 +36,15 @@ public class InteractableSootRoomShipControls : Interactable
         else base.RefreshInteractability(possibility);
     }
 
-    public override void ChoiceAInstantReaction()
+    public override void ChoiceWestInstantReaction()
     {
-        base.ChoiceAInstantReaction();
+        base.ChoiceWestInstantReaction();
     }
 
-    public override void ChoiceADelayedReaction()
+    public override void ChoiceWestDelayedReaction()
     {
 
-        base.ChoiceADelayedReaction();
+        base.ChoiceWestDelayedReaction();
         if (bridge)
         {
             print(bridgeCommentText);
@@ -55,26 +55,26 @@ public class InteractableSootRoomShipControls : Interactable
         }
     }
 
-    public override void ChoiceBInstantReaction()
+    public override void ChoiceSouthInstantReaction()
     {
-        base.ChoiceBInstantReaction();
+        base.ChoiceSouthInstantReaction();
     }
 
-    public override void ChoiceBDelayedReaction()
+    public override void ChoiceSouthDelayedReaction()
     {
-        base.ChoiceBDelayedReaction();
+        base.ChoiceSouthDelayedReaction();
         if (bridge) ShipController.instance.ShiftToArchives();
         else ShipController.instance.ShiftToBridge();
         bridge = !bridge;
 
     }
 
-    public override bool ReqCheckA()
+    public override bool ReqCheckWest()
     {
         return true;
     }
 
-    public override bool ReqCheckB()
+    public override bool ReqCheckSouth()
     {
         return true;
     }

@@ -7,24 +7,25 @@ public class Interactable : MonoBehaviour
     public string placeHolderComment;
 
     public string westText;
-    public string northText;
+    public string southText;
 
     public string initialTrigger;
     public string commentTrigger;
-    public string choiceATrigger;
-    public string choiceBTrigger;
+    public string choiceWestTrigger;
+    public string choiceSouthTrigger;
     public string exitTrigger;
 
     public float initialTime;
     public float commentTime;
-    public float choiceATime;
-    public float choiceBTime;
+    public float choiceWestTime;
+    public float choiceSouthTime;
     public float exitTime;
 
     public GameObject cam;
     public GameObject agentTarget;
+    public Transform transformTarget;
 
-    bool interactableEngaged;
+    protected bool interactableEngaged;
     bool timerRunning;
     bool volumeCheck;
     bool initiationCheck;
@@ -33,9 +34,11 @@ public class Interactable : MonoBehaviour
     bool shouldReset;
     bool initTrigger;
 
+    public bool lockInInteractable;
+
     protected GameObject playerCharacter;
     Animator anim;
-    Movement movement;
+    protected Movement movement;
        
     public virtual void Start()
     {
@@ -52,111 +55,125 @@ public class Interactable : MonoBehaviour
             else RefreshInteractability(false);
         }
         /*
-        if (interactableEngaged)
+        if (lockInInteractable)
         {
-            if (!initiationCheck) 
+            if (interactableEngaged)
             {
-                StartCoroutine(InteractionTimer(initialTime));
-
-                if (cam) cam.SetActive(true);
-                else print("no cam");
-                if (agentTarget) movement.PerformAgentMove(agentTarget.transform);
-                else print("no agent target");
-                if (movement.rotationIsSet)
+                if (!initiationCheck)
                 {
-                    initiationCheck = true;
-                    anim.SetTrigger(initialTrigger);
+                    StartCoroutine(InteractionTimer(initialTime));
+
+                    if (cam) cam.SetActive(true);
+                    else print("no cam");
+                    if (agentTarget) movement.PerformAgentMove(agentTarget.transform);
+                    else if (transformTarget)
+                    {
+                        playerCharacter.transform.position = transformTarget.position;
+                        playerCharacter.transform.rotation = transformTarget.rotation;
+                        movement.PausePlayerControl();
+                        //print("transform movement attempted");
+                    }
+
+                    //else print("no agent target");
+                    if (movement.rotationIsSet)
+                    {
+                        initiationCheck = true;
+                        anim.SetTrigger(initialTrigger);
+                    }
                 }
-            }
 
-            if (exitCheck && !timerRunning)
-            {
-                exitCheck = false;
-                interactableEngaged = false;
-                shouldReset = true;
-                PlayerController.instance.EnableCharacterControl();
-                PlayerController.instance.gameObject.GetComponent<Movement>().ReturnPlayerControl();
-            }
-
-            if (!exitCheck && !timerRunning)
-            {
-                SendUIStrings();
-                if (!controlMapLock)
+                if (exitCheck && !timerRunning)
                 {
-                    controlMapLock = true;
-                    PlayerController.instance.EnableInteractableControl(); // This needs to change to an interactable specific control scheme, like LADDER, DOOR, CHEST, PUZZLE, NPC
-                }                
+                    exitCheck = false;
+                    interactableEngaged = false;
+                    shouldReset = true;
+                    PlayerController.instance.EnableCharacterControl();
+                    PlayerController.instance.gameObject.GetComponent<Movement>().ReturnPlayerControl();
+                }
+
+                if (!exitCheck && !timerRunning)
+                {
+                    SendUIStrings();
+                    if (!controlMapLock)
+                    {
+                        controlMapLock = true;
+                        //PlayerController.instance.EnableInteractableControl(); // This needs to change to an interactable specific control scheme, like LADDER, DOOR, CHEST, PUZZLE, NPC
+                        PlayerController.instance.EnableFlightControls();
+                    }
+                }
+                else
+                {
+                    UIButtonManager.instance.HideAllButtonTexts();
+                }
             }
             else
             {
-                UIButtonManager.instance.HideAllButtonTexts();
-            }
-        }
-        else
-        {
-            if (shouldReset)
-            {
-                shouldReset = false;
-                controlMapLock = false;
-                initiationCheck = false;
-                UIButtonManager.instance.ResetAllButtonTexts();
-            }
+                if (shouldReset)
+                {
+                    shouldReset = false;
+                    controlMapLock = false;
+                    initiationCheck = false;
+                    UIButtonManager.instance.ResetAllButtonTexts();
+                }
 
-            if (volumeCheck)
-            {
-                if (FacingCheck()) RefreshInteractability(true);
-                else RefreshInteractability(false);
-            }            
+                if (volumeCheck)
+                {
+                    if (FacingCheck()) RefreshInteractability(true);
+                    else RefreshInteractability(false);
+                }
+            }
         }
+        /*
+        
         */
     }
 
-    public virtual void ChoiceAInstantReaction()
+    public virtual void ChoiceWestInstantReaction()
     {
         //print("placeholder instant reaction A"); //PFI
     }
 
-    public virtual void ChoiceADelayedReaction()
+    public virtual void ChoiceWestDelayedReaction()
     {
         //print("placeholder delayed reaction A"); //PFI and possible inventory change
     }
 
-    public virtual void ChoiceBInstantReaction()
+    public virtual void ChoiceSouthInstantReaction()
     {
         //print("placeholder instant reaction B"); //PFI
     }
 
-    public virtual void ChoiceBDelayedReaction()
+    public virtual void ChoiceSouthDelayedReaction()
     {
         //print("placeholder delayed reaction B"); //PFI and possible inventory change
     }   
 
-    public void InteractionChooseA()
+    public void InteractionChooseWest()
     {
-        if (ReqCheckA())
+        if (ReqCheckWest())
         {
-            StartCoroutine(InteractionTimer(choiceATime)); //
-            StartCoroutine(ChoiceAReactionTimer());
-            anim.SetTrigger(choiceATrigger);
+            StartCoroutine(InteractionTimer(choiceWestTime)); //
+            StartCoroutine(ChoiceWestReactionTimer());
+            anim.SetTrigger(choiceWestTrigger);
         }        
     }
 
-    public void InteractionChooseB()
+    public void InteractionChooseSouth()
     {
-        if (ReqCheckB())
+        if (ReqCheckSouth())
         {
-            StartCoroutine(InteractionTimer(choiceBTime)); //
-            StartCoroutine(ChoiceBReactionTimer());
-            anim.SetTrigger(choiceBTrigger);
+            StartCoroutine(InteractionTimer(choiceSouthTime)); //
+            StartCoroutine(ChoiceSouthReactionTimer());
+            anim.SetTrigger(choiceSouthTrigger);
         }       
     }
 
-    public virtual bool ReqCheckA()
+    public virtual bool ReqCheckWest()
     {
         return false;
     }
 
-    public virtual bool ReqCheckB()
+    public virtual bool ReqCheckSouth()
     {
         return false;
     }
@@ -170,31 +187,31 @@ public class Interactable : MonoBehaviour
         timerRunning = false;
     }
 
-    IEnumerator ChoiceAReactionTimer()
+    IEnumerator ChoiceWestReactionTimer()
     {
-        ChoiceAInstantReaction();
-        yield return new WaitForSeconds(choiceATime);
-        ChoiceADelayedReaction();
+        ChoiceWestInstantReaction();
+        yield return new WaitForSeconds(choiceWestTime);
+        ChoiceWestDelayedReaction();
     }
 
-    IEnumerator ChoiceBReactionTimer()
+    IEnumerator ChoiceSouthReactionTimer()
     {
-        ChoiceBInstantReaction();
-        yield return new WaitForSeconds(choiceBTime);
-        ChoiceBDelayedReaction();
+        ChoiceSouthInstantReaction();
+        yield return new WaitForSeconds(choiceSouthTime);
+        ChoiceSouthDelayedReaction();
     }
 
     //
 
     public virtual void SendUIStrings()
     {
-        UIButtonManager.instance.RefreshNorthText(true, northText);
+        UIButtonManager.instance.RefreshSouthText(true, southText);
         UIButtonManager.instance.RefreshWestText(true, westText);
     }
 
     public virtual void RefreshInteractability(bool possibility)
     {
-        UIButtonManager.instance.RefreshNorthText(possibility, northText);
+        UIButtonManager.instance.RefreshSouthText(possibility, southText);
         UIButtonManager.instance.RefreshWestText(possibility, westText);
         /*
         if (possibility) playerCharacter.GetComponent<PlayerInteraction>().activeInteractable = this;

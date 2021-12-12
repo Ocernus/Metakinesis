@@ -14,7 +14,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (activeInteractable)
             {
-                activeInteractable.InteractionChooseA();
+                activeInteractable.InteractionChooseWest();
             }
         }
     }
@@ -25,7 +25,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (activeInteractable)
             {
-                activeInteractable.InteractionChooseB();
+                activeInteractable.InteractionChooseSouth();
             }
         }
     }

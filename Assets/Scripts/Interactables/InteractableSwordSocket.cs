@@ -45,15 +45,15 @@ public class InteractableSwordSocket : Interactable
         else base.RefreshInteractability(possibility);
     }
 
-    public override void ChoiceAInstantReaction()
+    public override void ChoiceWestInstantReaction()
     {
-        base.ChoiceAInstantReaction();
+        base.ChoiceWestInstantReaction();
     }
 
-    public override void ChoiceADelayedReaction()
+    public override void ChoiceWestDelayedReaction()
     {
 
-        base.ChoiceADelayedReaction();
+        base.ChoiceWestDelayedReaction();
         if (powered)
         {
             print(poweredCommentText);
@@ -64,14 +64,14 @@ public class InteractableSwordSocket : Interactable
         }
     }
 
-    public override void ChoiceBInstantReaction()
+    public override void ChoiceSouthInstantReaction()
     {
-        base.ChoiceBInstantReaction();
+        base.ChoiceSouthInstantReaction();
     }
 
-    public override void ChoiceBDelayedReaction()
+    public override void ChoiceSouthDelayedReaction()
     {
-        base.ChoiceADelayedReaction();
+        base.ChoiceWestDelayedReaction();
         if (powered)
         {
             playerCharacter.GetComponent<SwordPlacement>().PickUp();
@@ -84,12 +84,12 @@ public class InteractableSwordSocket : Interactable
         emitter.ToggleState();
     }
 
-    public override bool ReqCheckA()
+    public override bool ReqCheckWest()
     {
         return true;
     }
 
-    public override bool ReqCheckB()
+    public override bool ReqCheckSouth()
     {
         return true;
     }

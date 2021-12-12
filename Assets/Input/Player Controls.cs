@@ -27,22 +27,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Comment"",
-                    ""type"": ""Button"",
-                    ""id"": ""6a66afbb-e3ee-46c0-96af-3bd81aab29c7"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
-                },
-                {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""ae9c9bd0-ded0-4fe4-a434-611540ced5ed"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
-                },
-                {
                     ""name"": ""Item"",
                     ""type"": ""Button"",
                     ""id"": ""fe35991f-2705-4ab6-a472-58474a8a3376"",
@@ -83,14 +67,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Sprint"",
-                    ""type"": ""Button"",
-                    ""id"": ""ded6cb03-a634-4b86-b7c7-2ca0988a28e2"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
-                },
-                {
                     ""name"": ""Pause"",
                     ""type"": ""Button"",
                     ""id"": ""9070faa0-bb58-4171-8102-062f9d97a483"",
@@ -129,6 +105,38 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""6a66afbb-e3ee-46c0-96af-3bd81aab29c7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""ae9c9bd0-ded0-4fe4-a434-611540ced5ed"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Evade"",
+                    ""type"": ""Button"",
+                    ""id"": ""ded6cb03-a634-4b86-b7c7-2ca0988a28e2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Comment"",
+                    ""type"": ""Button"",
+                    ""id"": ""fd991d62-f023-43dd-b1c2-dbc59b312116"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -140,28 +148,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""28602f39-76cf-4bb0-b059-ca68eb565104"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Comment"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e29cf3e8-356b-4c67-a7ae-d28c61c9edf5"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -222,17 +208,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""150c25e3-285e-48e3-abe4-4a510ef62e4c"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Sprint"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""09e48003-f48e-4038-bf70-896fc877da4c"",
                     ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
@@ -285,6 +260,50 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Put Away"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""28602f39-76cf-4bb0-b059-ca68eb565104"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e29cf3e8-356b-4c67-a7ae-d28c61c9edf5"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""150c25e3-285e-48e3-abe4-4a510ef62e4c"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Evade"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""36a717a0-e86c-4d80-a52e-17f5822ceed4"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Comment"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -316,14 +335,38 @@ public class @PlayerControls : IInputActionCollection, IDisposable
             ]
         },
         {
-            ""name"": ""Dragon Control"",
+            ""name"": ""Dragon Controls"",
             ""id"": ""e1ec2fcd-e3cd-4eb3-88e6-510137ac68a1"",
             ""actions"": [
                 {
-                    ""name"": ""Turn"",
-                    ""type"": ""Value"",
+                    ""name"": ""Left Wing Hold"",
+                    ""type"": ""Button"",
                     ""id"": ""3e2844f6-b16e-4a1a-88db-5d665a111d50"",
-                    ""expectedControlType"": ""Axis"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Right Wing Hold"",
+                    ""type"": ""Button"",
+                    ""id"": ""9d10239a-8335-4074-be83-4f61dc0f82e2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Look"",
+                    ""type"": ""Value"",
+                    ""id"": ""a924822c-719f-4a12-b35e-171e5495fcc7"",
+                    ""expectedControlType"": ""Stick"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Strafe And Elevate"",
+                    ""type"": ""Value"",
+                    ""id"": ""7af4d178-e832-4bb5-beb7-13933e70dd9f"",
+                    ""expectedControlType"": ""Stick"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -332,11 +375,44 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d682d9b0-b15c-4cb0-8342-297813f66153"",
-                    ""path"": ""<Gamepad>/leftStick/x"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Turn"",
+                    ""action"": ""Left Wing Hold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""20309ad3-b192-408c-8660-d4f4ddb9b5ba"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Right Wing Hold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f3cf5658-d8e5-425e-b11c-c63310d16652"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4da78d37-5203-4996-9fae-3cbb52693891"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Strafe And Elevate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -348,25 +424,29 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         // Character Control
         m_CharacterControl = asset.FindActionMap("Character Control", throwIfNotFound: true);
         m_CharacterControl_Look = m_CharacterControl.FindAction("Look", throwIfNotFound: true);
-        m_CharacterControl_Comment = m_CharacterControl.FindAction("Comment", throwIfNotFound: true);
-        m_CharacterControl_Jump = m_CharacterControl.FindAction("Jump", throwIfNotFound: true);
         m_CharacterControl_Item = m_CharacterControl.FindAction("Item", throwIfNotFound: true);
         m_CharacterControl_TargetCamera = m_CharacterControl.FindAction("Target Camera", throwIfNotFound: true);
         m_CharacterControl_Attack = m_CharacterControl.FindAction("Attack", throwIfNotFound: true);
         m_CharacterControl_MoveX = m_CharacterControl.FindAction("MoveX", throwIfNotFound: true);
         m_CharacterControl_MoveY = m_CharacterControl.FindAction("MoveY", throwIfNotFound: true);
-        m_CharacterControl_Sprint = m_CharacterControl.FindAction("Sprint", throwIfNotFound: true);
         m_CharacterControl_Pause = m_CharacterControl.FindAction("Pause", throwIfNotFound: true);
         m_CharacterControl_Shoot = m_CharacterControl.FindAction("Shoot", throwIfNotFound: true);
         m_CharacterControl_Heal = m_CharacterControl.FindAction("Heal", throwIfNotFound: true);
         m_CharacterControl_Guard = m_CharacterControl.FindAction("Guard", throwIfNotFound: true);
         m_CharacterControl_PutAway = m_CharacterControl.FindAction("Put Away", throwIfNotFound: true);
+        m_CharacterControl_Interact = m_CharacterControl.FindAction("Interact", throwIfNotFound: true);
+        m_CharacterControl_Jump = m_CharacterControl.FindAction("Jump", throwIfNotFound: true);
+        m_CharacterControl_Evade = m_CharacterControl.FindAction("Evade", throwIfNotFound: true);
+        m_CharacterControl_Comment = m_CharacterControl.FindAction("Comment", throwIfNotFound: true);
         // Menu Control
         m_MenuControl = asset.FindActionMap("Menu Control", throwIfNotFound: true);
         m_MenuControl_Start = m_MenuControl.FindAction("Start", throwIfNotFound: true);
-        // Dragon Control
-        m_DragonControl = asset.FindActionMap("Dragon Control", throwIfNotFound: true);
-        m_DragonControl_Turn = m_DragonControl.FindAction("Turn", throwIfNotFound: true);
+        // Dragon Controls
+        m_DragonControls = asset.FindActionMap("Dragon Controls", throwIfNotFound: true);
+        m_DragonControls_LeftWingHold = m_DragonControls.FindAction("Left Wing Hold", throwIfNotFound: true);
+        m_DragonControls_RightWingHold = m_DragonControls.FindAction("Right Wing Hold", throwIfNotFound: true);
+        m_DragonControls_Look = m_DragonControls.FindAction("Look", throwIfNotFound: true);
+        m_DragonControls_StrafeAndElevate = m_DragonControls.FindAction("Strafe And Elevate", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -417,37 +497,39 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_CharacterControl;
     private ICharacterControlActions m_CharacterControlActionsCallbackInterface;
     private readonly InputAction m_CharacterControl_Look;
-    private readonly InputAction m_CharacterControl_Comment;
-    private readonly InputAction m_CharacterControl_Jump;
     private readonly InputAction m_CharacterControl_Item;
     private readonly InputAction m_CharacterControl_TargetCamera;
     private readonly InputAction m_CharacterControl_Attack;
     private readonly InputAction m_CharacterControl_MoveX;
     private readonly InputAction m_CharacterControl_MoveY;
-    private readonly InputAction m_CharacterControl_Sprint;
     private readonly InputAction m_CharacterControl_Pause;
     private readonly InputAction m_CharacterControl_Shoot;
     private readonly InputAction m_CharacterControl_Heal;
     private readonly InputAction m_CharacterControl_Guard;
     private readonly InputAction m_CharacterControl_PutAway;
+    private readonly InputAction m_CharacterControl_Interact;
+    private readonly InputAction m_CharacterControl_Jump;
+    private readonly InputAction m_CharacterControl_Evade;
+    private readonly InputAction m_CharacterControl_Comment;
     public struct CharacterControlActions
     {
         private @PlayerControls m_Wrapper;
         public CharacterControlActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Look => m_Wrapper.m_CharacterControl_Look;
-        public InputAction @Comment => m_Wrapper.m_CharacterControl_Comment;
-        public InputAction @Jump => m_Wrapper.m_CharacterControl_Jump;
         public InputAction @Item => m_Wrapper.m_CharacterControl_Item;
         public InputAction @TargetCamera => m_Wrapper.m_CharacterControl_TargetCamera;
         public InputAction @Attack => m_Wrapper.m_CharacterControl_Attack;
         public InputAction @MoveX => m_Wrapper.m_CharacterControl_MoveX;
         public InputAction @MoveY => m_Wrapper.m_CharacterControl_MoveY;
-        public InputAction @Sprint => m_Wrapper.m_CharacterControl_Sprint;
         public InputAction @Pause => m_Wrapper.m_CharacterControl_Pause;
         public InputAction @Shoot => m_Wrapper.m_CharacterControl_Shoot;
         public InputAction @Heal => m_Wrapper.m_CharacterControl_Heal;
         public InputAction @Guard => m_Wrapper.m_CharacterControl_Guard;
         public InputAction @PutAway => m_Wrapper.m_CharacterControl_PutAway;
+        public InputAction @Interact => m_Wrapper.m_CharacterControl_Interact;
+        public InputAction @Jump => m_Wrapper.m_CharacterControl_Jump;
+        public InputAction @Evade => m_Wrapper.m_CharacterControl_Evade;
+        public InputAction @Comment => m_Wrapper.m_CharacterControl_Comment;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -460,12 +542,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Look.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLook;
-                @Comment.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnComment;
-                @Comment.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnComment;
-                @Comment.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnComment;
-                @Jump.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnJump;
                 @Item.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnItem;
                 @Item.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnItem;
                 @Item.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnItem;
@@ -481,9 +557,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @MoveY.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveY;
                 @MoveY.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveY;
                 @MoveY.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveY;
-                @Sprint.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnSprint;
-                @Sprint.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnSprint;
-                @Sprint.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnSprint;
                 @Pause.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPause;
@@ -499,6 +572,18 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @PutAway.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPutAway;
                 @PutAway.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPutAway;
                 @PutAway.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPutAway;
+                @Interact.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnInteract;
+                @Jump.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnJump;
+                @Evade.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnEvade;
+                @Evade.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnEvade;
+                @Evade.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnEvade;
+                @Comment.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnComment;
+                @Comment.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnComment;
+                @Comment.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnComment;
             }
             m_Wrapper.m_CharacterControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -506,12 +591,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
-                @Comment.started += instance.OnComment;
-                @Comment.performed += instance.OnComment;
-                @Comment.canceled += instance.OnComment;
-                @Jump.started += instance.OnJump;
-                @Jump.performed += instance.OnJump;
-                @Jump.canceled += instance.OnJump;
                 @Item.started += instance.OnItem;
                 @Item.performed += instance.OnItem;
                 @Item.canceled += instance.OnItem;
@@ -527,9 +606,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @MoveY.started += instance.OnMoveY;
                 @MoveY.performed += instance.OnMoveY;
                 @MoveY.canceled += instance.OnMoveY;
-                @Sprint.started += instance.OnSprint;
-                @Sprint.performed += instance.OnSprint;
-                @Sprint.canceled += instance.OnSprint;
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
@@ -545,6 +621,18 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @PutAway.started += instance.OnPutAway;
                 @PutAway.performed += instance.OnPutAway;
                 @PutAway.canceled += instance.OnPutAway;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
+                @Evade.started += instance.OnEvade;
+                @Evade.performed += instance.OnEvade;
+                @Evade.canceled += instance.OnEvade;
+                @Comment.started += instance.OnComment;
+                @Comment.performed += instance.OnComment;
+                @Comment.canceled += instance.OnComment;
             }
         }
     }
@@ -583,61 +671,89 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     }
     public MenuControlActions @MenuControl => new MenuControlActions(this);
 
-    // Dragon Control
-    private readonly InputActionMap m_DragonControl;
-    private IDragonControlActions m_DragonControlActionsCallbackInterface;
-    private readonly InputAction m_DragonControl_Turn;
-    public struct DragonControlActions
+    // Dragon Controls
+    private readonly InputActionMap m_DragonControls;
+    private IDragonControlsActions m_DragonControlsActionsCallbackInterface;
+    private readonly InputAction m_DragonControls_LeftWingHold;
+    private readonly InputAction m_DragonControls_RightWingHold;
+    private readonly InputAction m_DragonControls_Look;
+    private readonly InputAction m_DragonControls_StrafeAndElevate;
+    public struct DragonControlsActions
     {
         private @PlayerControls m_Wrapper;
-        public DragonControlActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Turn => m_Wrapper.m_DragonControl_Turn;
-        public InputActionMap Get() { return m_Wrapper.m_DragonControl; }
+        public DragonControlsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @LeftWingHold => m_Wrapper.m_DragonControls_LeftWingHold;
+        public InputAction @RightWingHold => m_Wrapper.m_DragonControls_RightWingHold;
+        public InputAction @Look => m_Wrapper.m_DragonControls_Look;
+        public InputAction @StrafeAndElevate => m_Wrapper.m_DragonControls_StrafeAndElevate;
+        public InputActionMap Get() { return m_Wrapper.m_DragonControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(DragonControlActions set) { return set.Get(); }
-        public void SetCallbacks(IDragonControlActions instance)
+        public static implicit operator InputActionMap(DragonControlsActions set) { return set.Get(); }
+        public void SetCallbacks(IDragonControlsActions instance)
         {
-            if (m_Wrapper.m_DragonControlActionsCallbackInterface != null)
+            if (m_Wrapper.m_DragonControlsActionsCallbackInterface != null)
             {
-                @Turn.started -= m_Wrapper.m_DragonControlActionsCallbackInterface.OnTurn;
-                @Turn.performed -= m_Wrapper.m_DragonControlActionsCallbackInterface.OnTurn;
-                @Turn.canceled -= m_Wrapper.m_DragonControlActionsCallbackInterface.OnTurn;
+                @LeftWingHold.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnLeftWingHold;
+                @LeftWingHold.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnLeftWingHold;
+                @LeftWingHold.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnLeftWingHold;
+                @RightWingHold.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnRightWingHold;
+                @RightWingHold.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnRightWingHold;
+                @RightWingHold.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnRightWingHold;
+                @Look.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnLook;
+                @Look.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnLook;
+                @Look.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnLook;
+                @StrafeAndElevate.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnStrafeAndElevate;
+                @StrafeAndElevate.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnStrafeAndElevate;
+                @StrafeAndElevate.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnStrafeAndElevate;
             }
-            m_Wrapper.m_DragonControlActionsCallbackInterface = instance;
+            m_Wrapper.m_DragonControlsActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Turn.started += instance.OnTurn;
-                @Turn.performed += instance.OnTurn;
-                @Turn.canceled += instance.OnTurn;
+                @LeftWingHold.started += instance.OnLeftWingHold;
+                @LeftWingHold.performed += instance.OnLeftWingHold;
+                @LeftWingHold.canceled += instance.OnLeftWingHold;
+                @RightWingHold.started += instance.OnRightWingHold;
+                @RightWingHold.performed += instance.OnRightWingHold;
+                @RightWingHold.canceled += instance.OnRightWingHold;
+                @Look.started += instance.OnLook;
+                @Look.performed += instance.OnLook;
+                @Look.canceled += instance.OnLook;
+                @StrafeAndElevate.started += instance.OnStrafeAndElevate;
+                @StrafeAndElevate.performed += instance.OnStrafeAndElevate;
+                @StrafeAndElevate.canceled += instance.OnStrafeAndElevate;
             }
         }
     }
-    public DragonControlActions @DragonControl => new DragonControlActions(this);
+    public DragonControlsActions @DragonControls => new DragonControlsActions(this);
     public interface ICharacterControlActions
     {
         void OnLook(InputAction.CallbackContext context);
-        void OnComment(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
         void OnItem(InputAction.CallbackContext context);
         void OnTargetCamera(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnMoveX(InputAction.CallbackContext context);
         void OnMoveY(InputAction.CallbackContext context);
-        void OnSprint(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnHeal(InputAction.CallbackContext context);
         void OnGuard(InputAction.CallbackContext context);
         void OnPutAway(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
+        void OnEvade(InputAction.CallbackContext context);
+        void OnComment(InputAction.CallbackContext context);
     }
     public interface IMenuControlActions
     {
         void OnStart(InputAction.CallbackContext context);
     }
-    public interface IDragonControlActions
+    public interface IDragonControlsActions
     {
-        void OnTurn(InputAction.CallbackContext context);
+        void OnLeftWingHold(InputAction.CallbackContext context);
+        void OnRightWingHold(InputAction.CallbackContext context);
+        void OnLook(InputAction.CallbackContext context);
+        void OnStrafeAndElevate(InputAction.CallbackContext context);
     }
 }
