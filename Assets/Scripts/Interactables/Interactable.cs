@@ -54,7 +54,7 @@ public class Interactable : MonoBehaviour
             if (FacingCheck()) RefreshInteractability(true);
             else RefreshInteractability(false);
         }
-        /*
+        
         if (lockInInteractable)
         {
             if (interactableEngaged)
@@ -68,8 +68,10 @@ public class Interactable : MonoBehaviour
                     if (agentTarget) movement.PerformAgentMove(agentTarget.transform);
                     else if (transformTarget)
                     {
+                        /*
                         playerCharacter.transform.position = transformTarget.position;
                         playerCharacter.transform.rotation = transformTarget.rotation;
+                        */
                         movement.PausePlayerControl();
                         //print("transform movement attempted");
                     }

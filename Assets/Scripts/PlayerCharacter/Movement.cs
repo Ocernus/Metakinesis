@@ -303,6 +303,7 @@ public class Movement : MonoBehaviour
     public void PausePlayerControl()
     {
         transform.position = transform.parent.transform.position;
+        transform.rotation = transform.parent.transform.rotation;
         controlledMovementAllowed = false;
         controller.enabled = false;
         //print("pause player controller called");
