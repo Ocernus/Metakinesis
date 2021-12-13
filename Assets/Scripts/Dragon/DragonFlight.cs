@@ -55,6 +55,9 @@ public class DragonFlight : MonoBehaviour
     private float vertical;
     private float horizontal;
 
+    private float rAxis;
+    private float lAxis;
+
     // // // // // // // //
 
     public static DragonFlight instance;
@@ -125,19 +128,19 @@ public class DragonFlight : MonoBehaviour
     {
         if (leftEngineOn)
         {
-            if (leftPowerCurrent < powerLimit) leftPowerCurrent += responsiveness * Time.deltaTime;
-            print(leftPowerCurrent);
+            if (leftPowerCurrent < powerLimit) leftPowerCurrent += responsiveness * lAxis *  Time.deltaTime;
+            //print(leftPowerCurrent);
         }
         else
         {
-            if (leftPowerCurrent > 0) leftPowerCurrent -= responsiveness * Time.deltaTime;
+            if (leftPowerCurrent > 0) leftPowerCurrent -= responsiveness * rAxis * Time.deltaTime;
             else leftPowerCurrent = 0;
         }
 
         if (rightEngineOn)
         {
             if (rightPowerCurrent < powerLimit) rightPowerCurrent += responsiveness * Time.deltaTime;
-            print(rightPowerCurrent);
+            //print(rightPowerCurrent);
         }
         else
         {
@@ -192,6 +195,7 @@ public class DragonFlight : MonoBehaviour
 
     public void OnRightWing(InputAction.CallbackContext value)
     {
+        rAxis = value.ReadValue<float>();
         if (value.started)
         {
             StartRightEngine();
@@ -204,6 +208,7 @@ public class DragonFlight : MonoBehaviour
 
     public void OnLeftWing(InputAction.CallbackContext value)
     {
+        lAxis = value.ReadValue<float>();
         if (value.started)
         {
             StartLeftEngine();
