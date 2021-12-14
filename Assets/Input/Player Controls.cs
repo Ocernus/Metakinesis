@@ -371,12 +371,28 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Elevate"",
+                    ""name"": ""ZMove"",
                     ""type"": ""Value"",
                     ""id"": ""ff8deeeb-5e37-4c30-8aca-f41770bd4495"",
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Dismount"",
+                    ""type"": ""Value"",
+                    ""id"": ""c9b41124-e50d-43e3-a5ef-6e3c62bc5754"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Boost"",
+                    ""type"": ""Button"",
+                    ""id"": ""20b3f1ba-da3a-4e44-8e18-dddd738906de"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -431,7 +447,29 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Elevate"",
+                    ""action"": ""ZMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f79fd507-e820-4944-996c-3469258dff40"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dismount"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""201f8d45-1860-4abd-b78d-2fb803000727"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Boost"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -466,7 +504,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_DragonControls_RightWingHold = m_DragonControls.FindAction("Right Wing Hold", throwIfNotFound: true);
         m_DragonControls_Look = m_DragonControls.FindAction("Look", throwIfNotFound: true);
         m_DragonControls_Strafe = m_DragonControls.FindAction("Strafe", throwIfNotFound: true);
-        m_DragonControls_Elevate = m_DragonControls.FindAction("Elevate", throwIfNotFound: true);
+        m_DragonControls_ZMove = m_DragonControls.FindAction("ZMove", throwIfNotFound: true);
+        m_DragonControls_Dismount = m_DragonControls.FindAction("Dismount", throwIfNotFound: true);
+        m_DragonControls_Boost = m_DragonControls.FindAction("Boost", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -698,7 +738,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_DragonControls_RightWingHold;
     private readonly InputAction m_DragonControls_Look;
     private readonly InputAction m_DragonControls_Strafe;
-    private readonly InputAction m_DragonControls_Elevate;
+    private readonly InputAction m_DragonControls_ZMove;
+    private readonly InputAction m_DragonControls_Dismount;
+    private readonly InputAction m_DragonControls_Boost;
     public struct DragonControlsActions
     {
         private @PlayerControls m_Wrapper;
@@ -707,7 +749,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @RightWingHold => m_Wrapper.m_DragonControls_RightWingHold;
         public InputAction @Look => m_Wrapper.m_DragonControls_Look;
         public InputAction @Strafe => m_Wrapper.m_DragonControls_Strafe;
-        public InputAction @Elevate => m_Wrapper.m_DragonControls_Elevate;
+        public InputAction @ZMove => m_Wrapper.m_DragonControls_ZMove;
+        public InputAction @Dismount => m_Wrapper.m_DragonControls_Dismount;
+        public InputAction @Boost => m_Wrapper.m_DragonControls_Boost;
         public InputActionMap Get() { return m_Wrapper.m_DragonControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -729,9 +773,15 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Strafe.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnStrafe;
                 @Strafe.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnStrafe;
                 @Strafe.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnStrafe;
-                @Elevate.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnElevate;
-                @Elevate.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnElevate;
-                @Elevate.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnElevate;
+                @ZMove.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnZMove;
+                @ZMove.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnZMove;
+                @ZMove.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnZMove;
+                @Dismount.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnDismount;
+                @Dismount.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnDismount;
+                @Dismount.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnDismount;
+                @Boost.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnBoost;
+                @Boost.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnBoost;
+                @Boost.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnBoost;
             }
             m_Wrapper.m_DragonControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -748,9 +798,15 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Strafe.started += instance.OnStrafe;
                 @Strafe.performed += instance.OnStrafe;
                 @Strafe.canceled += instance.OnStrafe;
-                @Elevate.started += instance.OnElevate;
-                @Elevate.performed += instance.OnElevate;
-                @Elevate.canceled += instance.OnElevate;
+                @ZMove.started += instance.OnZMove;
+                @ZMove.performed += instance.OnZMove;
+                @ZMove.canceled += instance.OnZMove;
+                @Dismount.started += instance.OnDismount;
+                @Dismount.performed += instance.OnDismount;
+                @Dismount.canceled += instance.OnDismount;
+                @Boost.started += instance.OnBoost;
+                @Boost.performed += instance.OnBoost;
+                @Boost.canceled += instance.OnBoost;
             }
         }
     }
@@ -783,6 +839,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnRightWingHold(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnStrafe(InputAction.CallbackContext context);
-        void OnElevate(InputAction.CallbackContext context);
+        void OnZMove(InputAction.CallbackContext context);
+        void OnDismount(InputAction.CallbackContext context);
+        void OnBoost(InputAction.CallbackContext context);
     }
 }

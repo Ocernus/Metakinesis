@@ -73,6 +73,7 @@ public class UIButtonManager : MonoBehaviour
 
     public void HideAllButtonTexts()
     {
+        print("hide all button texts");
         RefreshEastText(true, "");
         RefreshSouthText(true, "");
         RefreshNorthText(true, "");

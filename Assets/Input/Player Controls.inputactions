@@ -358,12 +358,28 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Elevate",
+                    "name": "ZMove",
                     "type": "Value",
                     "id": "ff8deeeb-5e37-4c30-8aca-f41770bd4495",
                     "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Dismount",
+                    "type": "Value",
+                    "id": "c9b41124-e50d-43e3-a5ef-6e3c62bc5754",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "Boost",
+                    "type": "Button",
+                    "id": "20b3f1ba-da3a-4e44-8e18-dddd738906de",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
@@ -418,7 +434,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Elevate",
+                    "action": "ZMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f79fd507-e820-4944-996c-3469258dff40",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dismount",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "201f8d45-1860-4abd-b78d-2fb803000727",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Boost",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

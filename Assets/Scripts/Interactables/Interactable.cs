@@ -59,29 +59,27 @@ public class Interactable : MonoBehaviour
         {
             if (interactableEngaged)
             {
-                if (!initiationCheck)
+                if (!initiationCheck) //Put anything here that you want to happen 
                 {
                     StartCoroutine(InteractionTimer(initialTime));
 
+                    /*
                     if (cam) cam.SetActive(true);
                     else print("no cam");
-                    if (agentTarget) movement.PerformAgentMove(agentTarget.transform);
-                    else if (transformTarget)
-                    {
-                        /*
-                        playerCharacter.transform.position = transformTarget.position;
-                        playerCharacter.transform.rotation = transformTarget.rotation;
-                        */
-                        movement.PausePlayerControl();
-                        //print("transform movement attempted");
-                    }
+                    */
 
-                    //else print("no agent target");
-                    if (movement.rotationIsSet)
+
+                    if (agentTarget)
                     {
-                        initiationCheck = true;
-                        anim.SetTrigger(initialTrigger);
+                        movement.PerformAgentMove(agentTarget.transform);
+                        if (movement.rotationIsSet)
+                        {
+                            initiationCheck = true;
+                            anim.SetTrigger(initialTrigger);
+                        }
                     }
+                    else initiationCheck = true;
+                    
                 }
 
                 if (exitCheck && !timerRunning)
@@ -100,7 +98,7 @@ public class Interactable : MonoBehaviour
                     {
                         controlMapLock = true;
                         //PlayerController.instance.EnableInteractableControl(); // This needs to change to an interactable specific control scheme, like LADDER, DOOR, CHEST, PUZZLE, NPC
-                        PlayerController.instance.EnableFlightControls();
+                        //PlayerController.instance.EnableFlightControls();
                     }
                 }
                 else
@@ -112,6 +110,7 @@ public class Interactable : MonoBehaviour
             {
                 if (shouldReset)
                 {
+                    print("interactable should reset");
                     shouldReset = false;
                     controlMapLock = false;
                     initiationCheck = false;

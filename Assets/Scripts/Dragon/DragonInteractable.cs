@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DragonInteractable : Interactable
 {
@@ -14,6 +15,9 @@ public class DragonInteractable : Interactable
     public Transform mountPoint;
     public GameObject playerChar;
 
+    public GameObject dragonCam;
+    public GameObject charCam;
+
     public override void Start()
     {
         base.Start();
@@ -26,6 +30,7 @@ public class DragonInteractable : Interactable
 
     void SendMountedUIStrings()
     {
+        //print("mounted ui strings sent");
         UIButtonManager.instance.RefreshSouthText(true, mountedSouthText);
         UIButtonManager.instance.RefreshWestText(true, mountedWestText);
     }
@@ -74,29 +79,63 @@ public class DragonInteractable : Interactable
 
     public override void ChoiceSouthDelayedReaction()
     {
-        base.ChoiceWestDelayedReaction();
+        base.ChoiceSouthDelayedReaction();
         
 
         if (mounted)
         {
-            playerCharacter.transform.position = mountPoint.position;
-            playerCharacter.transform.rotation = mountPoint.rotation;
-            movement.ReturnPlayerControl();
-            PlayerController.instance.EnableCharacterControl();
-            playerChar.transform.parent = null;
-
-            
-            mounted = false;
+            Dismount();            
         }
         else
         {
-            playerCharacter.transform.position = mountPoint.position;
-            playerCharacter.transform.rotation = mountPoint.rotation;
-            movement.PausePlayerControl();
-            PlayerController.instance.EnableFlightControls();
-            playerChar.transform.parent = mountPoint.transform;
-            mounted = true;
+            MountUp();            
         }
+    }
+
+    public void Dismount()
+    {
+        print("attempted dismount");
+        charCam.SetActive(true);
+        dragonCam.SetActive(false);
+        playerChar.transform.parent = null;
+        playerCharacter.transform.position = dismountPoint.position;
+        playerCharacter.transform.rotation = dismountPoint.rotation;
+        PlayerController.instance.EnableCharacterControl();
+        movement.ReturnPlayerControl();
+        mounted = false;
+    }
+
+    /*
+    public void Dismount(InputAction.CallbackContext value)
+    {
+        if (value.started)
+        {
+            print("attempted dismount");
+            charCam.SetActive(true);
+            dragonCam.SetActive(false);
+            playerChar.transform.parent = null;
+            playerCharacter.transform.position = dismountPoint.position;
+            playerCharacter.transform.rotation = dismountPoint.rotation;
+            PlayerController.instance.EnableCharacterControl();
+            movement.ReturnPlayerControl();
+            mounted = false;
+        }
+        
+    }
+    */
+
+    public void MountUp()
+    {
+        charCam.SetActive(false);
+        dragonCam.SetActive(true);
+        movement.PausePlayerControl();
+        playerCharacter.transform.position = mountPoint.position;
+        playerCharacter.transform.rotation = mountPoint.rotation;
+        PlayerController.instance.EnableFlightControls();
+        playerChar.transform.parent = mountPoint.transform;
+        mounted = true;
+        RefreshInteractability(true);
+        SendMountedUIStrings();
     }
 
     public override bool ReqCheckWest()

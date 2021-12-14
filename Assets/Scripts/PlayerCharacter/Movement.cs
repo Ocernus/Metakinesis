@@ -115,7 +115,7 @@ public class Movement : MonoBehaviour
         float sprint = performSprint * sprintSpeedMultiplier;
         float speed = walkSpeed + (walkSpeed * sprint);
 
-        //horizontalPush = Vector3.Lerp(currentDirection, inputDirection * speed * movementMultiplier, lerpSpeed); this was laggy when framerate dipped
+        //horizontalPush = Vector3.Lerp(currentDirection, inputDirection * speed * movementMultiplier, lerpSpeed); this was laggy when framerate dipped, felt like slipping on ice
         horizontalPush = inputDirection * speed * movementMultiplier;
 
 
@@ -124,7 +124,16 @@ public class Movement : MonoBehaviour
         Vector3 moveVelocity = vVel + horizontalPush;
         moveVelocity = AdjustVelocityToSlope(moveVelocity);
 
+        //++
         if (controlledMovementAllowed) controller.Move((moveVelocity) * Time.deltaTime);
+        else
+        {
+            //check for AI control here if needed later
+            //might be able to use this functionality to orient player when landing
+            transform.position = transform.parent.position;
+            transform.rotation = transform.parent.rotation;
+        }
+        //++
 
         if (shouldSnapRotation)
         {
