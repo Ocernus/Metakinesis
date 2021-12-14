@@ -215,10 +215,10 @@ public class Interactable : MonoBehaviour
     {
         UIButtonManager.instance.RefreshSouthText(possibility, southText);
         UIButtonManager.instance.RefreshWestText(possibility, westText);
-        /*
+        
         if (possibility) playerCharacter.GetComponent<PlayerInteraction>().activeInteractable = this;
         else playerCharacter.GetComponent<PlayerInteraction>().activeInteractable = null; // This could get a little screwy if interactables are too close or overlapping
-        */
+        
         if (possibility) ActionButtonContextManager.instance.activeInteractable = this;
         else ActionButtonContextManager.instance.activeInteractable = null;
     }

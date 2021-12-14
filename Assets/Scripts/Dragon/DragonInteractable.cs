@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class DragonInteractable : Interactable
 {
-    
-    public GameObject mountPoint;
+    public bool mounted;
+    public string mountedCommentText;
+    public string mountedContextText;
+    public string mountedWestText;
+    public string mountedSouthText;
+
+    public Transform dismountPoint;
+    public Transform mountPoint;
     public GameObject playerChar;
 
     public override void Start()
@@ -18,9 +24,27 @@ public class DragonInteractable : Interactable
         base.SendUIStrings();
     }
 
-    
+    void SendMountedUIStrings()
+    {
+        UIButtonManager.instance.RefreshSouthText(true, mountedSouthText);
+        UIButtonManager.instance.RefreshWestText(true, mountedWestText);
+    }
 
-    
+    public override void RefreshInteractability(bool possibility)
+    {
+        if (possibility)
+        {
+            if (mounted)
+            {
+                if (possibility) ActionButtonContextManager.instance.activeInteractable = this;
+                else ActionButtonContextManager.instance.activeInteractable = null;
+                SendMountedUIStrings();
+            }
+            else base.RefreshInteractability(possibility);
+        }
+        else base.RefreshInteractability(possibility);
+    }
+
 
     public override void ChoiceWestInstantReaction()
     {
@@ -31,7 +55,14 @@ public class DragonInteractable : Interactable
     {
 
         base.ChoiceWestDelayedReaction();
-        print(placeHolderComment);
+        if (mounted)
+        {
+            print(mountedCommentText);
+        }
+        else
+        {
+            print(placeHolderComment);
+        }
     }
 
     public override void ChoiceSouthInstantReaction()
@@ -44,11 +75,28 @@ public class DragonInteractable : Interactable
     public override void ChoiceSouthDelayedReaction()
     {
         base.ChoiceWestDelayedReaction();
-        playerCharacter.transform.position = transformTarget.position;
-        playerCharacter.transform.rotation = transformTarget.rotation;
-        movement.PausePlayerControl();
-        PlayerController.instance.EnableFlightControls();
-        playerChar.transform.parent = mountPoint.transform;
+        
+
+        if (mounted)
+        {
+            playerCharacter.transform.position = mountPoint.position;
+            playerCharacter.transform.rotation = mountPoint.rotation;
+            movement.ReturnPlayerControl();
+            PlayerController.instance.EnableCharacterControl();
+            playerChar.transform.parent = null;
+
+            
+            mounted = false;
+        }
+        else
+        {
+            playerCharacter.transform.position = mountPoint.position;
+            playerCharacter.transform.rotation = mountPoint.rotation;
+            movement.PausePlayerControl();
+            PlayerController.instance.EnableFlightControls();
+            playerChar.transform.parent = mountPoint.transform;
+            mounted = true;
+        }
     }
 
     public override bool ReqCheckWest()
