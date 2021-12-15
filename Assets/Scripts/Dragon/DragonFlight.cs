@@ -12,8 +12,10 @@ public class DragonFlight : MonoBehaviour
     private Rigidbody rb;
     public bool leftEngineOn;
     public bool rightEngineOn;
-    private float powerBalance;
-    private float powerAccumulative;
+    private float powerBalanceY;
+    private float powerBalanceX;
+    private float powerXAccumulative;
+    private float powerYAccumulative;
     private Vector3 bounceDirection;
     public float velocity; // Real-time
     public float maxSpeed; // Derived
@@ -37,6 +39,9 @@ public class DragonFlight : MonoBehaviour
 
     public float leftPowerCurrent;
     public float rightPowerCurrent;
+    public float upPowerCurrent;
+    public float downPowerCurrent;
+
 
     public GameObject leftBlast;
     public GameObject rightBlast;
@@ -50,13 +55,15 @@ public class DragonFlight : MonoBehaviour
 
     // // // //
     
-    public float vertSpeed;
-    public float horzSpeed;
     private float vertical;
     private float horizontal;
 
+    public float power;
+
     private float rAxis;
     private float lAxis;
+    private float uAxis;
+    private float dAxis;
 
     // // // // // // // //
 
@@ -93,8 +100,11 @@ public class DragonFlight : MonoBehaviour
 
         CheckEngineActivation();
 
-        powerBalance = leftPowerCurrent - rightPowerCurrent;
-        powerAccumulative = (leftPowerCurrent / powerLimit) + (rightPowerCurrent / powerLimit);
+        powerBalanceY = leftPowerCurrent - rightPowerCurrent;
+        powerBalanceX = upPowerCurrent - downPowerCurrent;
+
+        powerYAccumulative = (leftPowerCurrent / powerLimit) + (rightPowerCurrent / powerLimit);
+        powerXAccumulative = (upPowerCurrent / powerLimit) + (downPowerCurrent / powerLimit);
 
         //SetEngineAudio();
 
@@ -118,55 +128,23 @@ public class DragonFlight : MonoBehaviour
 
     void CheckInputs()
     {
+        /*
         if (Input.GetButtonDown("Left")) StartLeftEngine();
         if (Input.GetButtonDown("Right")) StartRightEngine();
         if (Input.GetButtonUp("Left")) StopLeftEngine();
         if (Input.GetButtonUp("Right")) StopRightEngine();
+        */
     }
 
     void CheckEngineActivation()
     {
-        if (leftEngineOn)
-        {
-            if (leftPowerCurrent < powerLimit) leftPowerCurrent += responsiveness * lAxis *  Time.deltaTime;
-            //print(leftPowerCurrent);
-        }
-        else
-        {
-            if (leftPowerCurrent > 0) leftPowerCurrent -= responsiveness * rAxis * Time.deltaTime;
-            else leftPowerCurrent = 0;
-        }
+        if (leftPowerCurrent < powerLimit) leftPowerCurrent += responsiveness * horizontal * power * Time.deltaTime;
+        if (leftPowerCurrent > 0) leftPowerCurrent -= responsiveness * horizontal * power * Time.deltaTime;
+        else leftPowerCurrent = 0;
 
-        if (rightEngineOn)
-        {
-            if (rightPowerCurrent < powerLimit) rightPowerCurrent += responsiveness * Time.deltaTime;
-            //print(rightPowerCurrent);
-        }
-        else
-        {
-            if (rightPowerCurrent > 0) rightPowerCurrent -= responsiveness * Time.deltaTime;
-            else rightPowerCurrent = 0;
-        }
-    }
-
-    public void StartLeftEngine()
-    {
-        leftEngineOn = true;
-    }
-
-    public void StopLeftEngine()
-    {
-        leftEngineOn = false;
-    }
-
-    public void StartRightEngine()
-    {
-        rightEngineOn = true;
-    }
-
-    public void StopRightEngine()
-    {
-        rightEngineOn = false;
+        if (rightPowerCurrent < powerLimit) rightPowerCurrent += responsiveness * horizontal * power * Time.deltaTime;
+        if (rightPowerCurrent > 0) rightPowerCurrent -= responsiveness * horizontal * power * Time.deltaTime;
+        else rightPowerCurrent = 0;
     }
 
     void SetEngineAudio()
@@ -193,40 +171,14 @@ public class DragonFlight : MonoBehaviour
 
     //++//
 
-    public void OnRightWing(InputAction.CallbackContext value)
+    public void OnLook(InputAction.CallbackContext value)
     {
-        rAxis = value.ReadValue<float>();
-        if (value.started)
-        {
-            StartRightEngine();
-        }
-        if (value.canceled)
-        {
-            StopRightEngine();
-        }
+        vertical = value.ReadValue<float>();        
     }
 
-    public void OnLeftWing(InputAction.CallbackContext value)
+    public void OnTurn(InputAction.CallbackContext value)
     {
-        lAxis = value.ReadValue<float>();
-        if (value.started)
-        {
-            StartLeftEngine();
-        }
-        if (value.canceled)
-        {
-            StopLeftEngine();
-        }
-    }
-
-    public void OnElevate(InputAction.CallbackContext value)
-    {
-        vertical = value.ReadValue<float>() * vertSpeed;        
-    }
-
-    public void OnStrafe(InputAction.CallbackContext value)
-    {
-        horizontal = value.ReadValue<float>() * horzSpeed;
+        horizontal = value.ReadValue<float>();
     }
 
     // ++ //
@@ -238,8 +190,8 @@ public class DragonFlight : MonoBehaviour
         currentTorque = rb.angularVelocity.magnitude;
 
         //addingforces horizon/linear movement
-        rb.AddTorque(Vector3.up * powerBalance * torque);
-        rb.AddForce((transform.forward * powerAccumulative * force) + (transform.up * vertical) + (transform.right * horizontal));
+        rb.AddTorque((Vector3.up * powerBalanceY * torque) + (Vector3.right * powerBalanceY * torque));
+        rb.AddForce((transform.forward * powerYAccumulative * force) + (transform.up * vertical) + (transform.right * horizontal));
 
     }
 }

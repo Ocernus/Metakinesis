@@ -345,15 +345,15 @@
                     "name": "Look",
                     "type": "Value",
                     "id": "a924822c-719f-4a12-b35e-171e5495fcc7",
-                    "expectedControlType": "Stick",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
                 },
                 {
-                    "name": "Strafe",
+                    "name": "Turn",
                     "type": "Value",
                     "id": "7af4d178-e832-4bb5-beb7-13933e70dd9f",
-                    "expectedControlType": "Axis",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
                 },
@@ -367,7 +367,7 @@
                 },
                 {
                     "name": "Dismount",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "c9b41124-e50d-43e3-a5ef-6e3c62bc5754",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -408,7 +408,7 @@
                 {
                     "name": "",
                     "id": "f3cf5658-d8e5-425e-b11c-c63310d16652",
-                    "path": "<Gamepad>/rightStick",
+                    "path": "<Gamepad>/rightStick/y",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -419,11 +419,11 @@
                 {
                     "name": "",
                     "id": "4da78d37-5203-4996-9fae-3cbb52693891",
-                    "path": "<Gamepad>/leftStick/x",
+                    "path": "<Gamepad>/rightStick/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Strafe",
+                    "action": "Turn",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

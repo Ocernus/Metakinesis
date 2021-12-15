@@ -87,13 +87,14 @@ public class Interactable : MonoBehaviour
                     exitCheck = false;
                     interactableEngaged = false;
                     shouldReset = true;
-                    PlayerController.instance.EnableCharacterControl();
-                    PlayerController.instance.gameObject.GetComponent<Movement>().ReturnPlayerControl();
+                    //PlayerController.instance.EnableCharacterControl();
+                    //PlayerController.instance.gameObject.GetComponent<Movement>().ReturnPlayerControl();
                 }
 
                 if (!exitCheck && !timerRunning)
                 {
                     SendUIStrings();
+                    RefreshInteractability(true);
                     if (!controlMapLock)
                     {
                         controlMapLock = true;

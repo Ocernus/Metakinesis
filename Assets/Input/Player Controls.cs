@@ -358,15 +358,15 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""name"": ""Look"",
                     ""type"": ""Value"",
                     ""id"": ""a924822c-719f-4a12-b35e-171e5495fcc7"",
-                    ""expectedControlType"": ""Stick"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Strafe"",
+                    ""name"": ""Turn"",
                     ""type"": ""Value"",
                     ""id"": ""7af4d178-e832-4bb5-beb7-13933e70dd9f"",
-                    ""expectedControlType"": ""Axis"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
                 },
@@ -380,7 +380,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""Dismount"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""c9b41124-e50d-43e3-a5ef-6e3c62bc5754"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -421,7 +421,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""f3cf5658-d8e5-425e-b11c-c63310d16652"",
-                    ""path"": ""<Gamepad>/rightStick"",
+                    ""path"": ""<Gamepad>/rightStick/y"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -432,11 +432,11 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""4da78d37-5203-4996-9fae-3cbb52693891"",
-                    ""path"": ""<Gamepad>/leftStick/x"",
+                    ""path"": ""<Gamepad>/rightStick/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Strafe"",
+                    ""action"": ""Turn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -503,7 +503,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_DragonControls_LeftWingHold = m_DragonControls.FindAction("Left Wing Hold", throwIfNotFound: true);
         m_DragonControls_RightWingHold = m_DragonControls.FindAction("Right Wing Hold", throwIfNotFound: true);
         m_DragonControls_Look = m_DragonControls.FindAction("Look", throwIfNotFound: true);
-        m_DragonControls_Strafe = m_DragonControls.FindAction("Strafe", throwIfNotFound: true);
+        m_DragonControls_Turn = m_DragonControls.FindAction("Turn", throwIfNotFound: true);
         m_DragonControls_ZMove = m_DragonControls.FindAction("ZMove", throwIfNotFound: true);
         m_DragonControls_Dismount = m_DragonControls.FindAction("Dismount", throwIfNotFound: true);
         m_DragonControls_Boost = m_DragonControls.FindAction("Boost", throwIfNotFound: true);
@@ -737,7 +737,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_DragonControls_LeftWingHold;
     private readonly InputAction m_DragonControls_RightWingHold;
     private readonly InputAction m_DragonControls_Look;
-    private readonly InputAction m_DragonControls_Strafe;
+    private readonly InputAction m_DragonControls_Turn;
     private readonly InputAction m_DragonControls_ZMove;
     private readonly InputAction m_DragonControls_Dismount;
     private readonly InputAction m_DragonControls_Boost;
@@ -748,7 +748,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @LeftWingHold => m_Wrapper.m_DragonControls_LeftWingHold;
         public InputAction @RightWingHold => m_Wrapper.m_DragonControls_RightWingHold;
         public InputAction @Look => m_Wrapper.m_DragonControls_Look;
-        public InputAction @Strafe => m_Wrapper.m_DragonControls_Strafe;
+        public InputAction @Turn => m_Wrapper.m_DragonControls_Turn;
         public InputAction @ZMove => m_Wrapper.m_DragonControls_ZMove;
         public InputAction @Dismount => m_Wrapper.m_DragonControls_Dismount;
         public InputAction @Boost => m_Wrapper.m_DragonControls_Boost;
@@ -770,9 +770,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Look.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnLook;
-                @Strafe.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnStrafe;
-                @Strafe.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnStrafe;
-                @Strafe.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnStrafe;
+                @Turn.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnTurn;
+                @Turn.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnTurn;
+                @Turn.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnTurn;
                 @ZMove.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnZMove;
                 @ZMove.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnZMove;
                 @ZMove.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnZMove;
@@ -795,9 +795,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
-                @Strafe.started += instance.OnStrafe;
-                @Strafe.performed += instance.OnStrafe;
-                @Strafe.canceled += instance.OnStrafe;
+                @Turn.started += instance.OnTurn;
+                @Turn.performed += instance.OnTurn;
+                @Turn.canceled += instance.OnTurn;
                 @ZMove.started += instance.OnZMove;
                 @ZMove.performed += instance.OnZMove;
                 @ZMove.canceled += instance.OnZMove;
@@ -838,7 +838,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnLeftWingHold(InputAction.CallbackContext context);
         void OnRightWingHold(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
-        void OnStrafe(InputAction.CallbackContext context);
+        void OnTurn(InputAction.CallbackContext context);
         void OnZMove(InputAction.CallbackContext context);
         void OnDismount(InputAction.CallbackContext context);
         void OnBoost(InputAction.CallbackContext context);

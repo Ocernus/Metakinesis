@@ -45,7 +45,12 @@ public class DragonInteractable : Interactable
                 else ActionButtonContextManager.instance.activeInteractable = null;
                 SendMountedUIStrings();
             }
-            else base.RefreshInteractability(possibility);
+            else
+            {
+                ActionButtonContextManager.instance.activeInteractable = null;
+                SendUIStrings();
+                base.RefreshInteractability(possibility);
+            }
         }
         else base.RefreshInteractability(possibility);
     }
@@ -95,14 +100,20 @@ public class DragonInteractable : Interactable
     public void Dismount()
     {
         print("attempted dismount");
-        charCam.SetActive(true);
-        dragonCam.SetActive(false);
         playerChar.transform.parent = null;
+
         playerCharacter.transform.position = dismountPoint.position;
         playerCharacter.transform.rotation = dismountPoint.rotation;
+
+        charCam.SetActive(true);
+        dragonCam.SetActive(false);
+        
         PlayerController.instance.EnableCharacterControl();
         movement.ReturnPlayerControl();
+
         mounted = false;
+        RefreshInteractability(true);
+        SendMountedUIStrings();
     }
 
     /*
@@ -126,13 +137,21 @@ public class DragonInteractable : Interactable
 
     public void MountUp()
     {
-        charCam.SetActive(false);
-        dragonCam.SetActive(true);
-        movement.PausePlayerControl();
+        print("mount up");
+        playerChar.transform.parent = mountPoint.transform;
+
+        /*
         playerCharacter.transform.position = mountPoint.position;
         playerCharacter.transform.rotation = mountPoint.rotation;
+        */
+
+        movement.PausePlayerControl();
+
+        charCam.SetActive(false);
+        dragonCam.SetActive(true);
+        
         PlayerController.instance.EnableFlightControls();
-        playerChar.transform.parent = mountPoint.transform;
+
         mounted = true;
         RefreshInteractability(true);
         SendMountedUIStrings();
