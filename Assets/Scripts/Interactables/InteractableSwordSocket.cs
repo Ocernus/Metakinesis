@@ -26,7 +26,7 @@ public class InteractableSwordSocket : Interactable
 
     void SendPoweredUIStrings()
     {
-        UIButtonManager.instance.RefreshNorthText(true, poweredNorthText);
+        UIButtonManager.instance.RefreshSouthText(true, poweredNorthText);
         UIButtonManager.instance.RefreshWestText(true, poweredWestText);
     }
 
@@ -71,7 +71,7 @@ public class InteractableSwordSocket : Interactable
 
     public override void ChoiceSouthDelayedReaction()
     {
-        base.ChoiceWestDelayedReaction();
+        base.ChoiceSouthDelayedReaction();
         if (powered)
         {
             playerCharacter.GetComponent<SwordPlacement>().PickUp();
