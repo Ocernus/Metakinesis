@@ -358,15 +358,15 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""name"": ""Look"",
                     ""type"": ""Value"",
                     ""id"": ""a924822c-719f-4a12-b35e-171e5495fcc7"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": ""Invert"",
                     ""interactions"": """"
                 },
                 {
                     ""name"": ""Turn"",
                     ""type"": ""Value"",
                     ""id"": ""7af4d178-e832-4bb5-beb7-13933e70dd9f"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
