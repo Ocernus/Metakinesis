@@ -75,6 +75,11 @@ public class DragonFlight : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    private void Update()
+    {
+        //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rb.velocity), Time.deltaTime * 40f);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         //impactSound.Play();
@@ -107,7 +112,7 @@ public class DragonFlight : MonoBehaviour
         //addingforces horizon/linear movement
         rb.AddTorque((transform.up * horizontal * torque));
         rb.AddTorque((transform.right * vertical * torque));
-        //rb.AddForce(transform.forward * Mathf.Min(1, Mathf.Abs(horizontal + vertical)) * force);
+        rb.AddForce(transform.forward * Mathf.Min(1, Mathf.Abs(horizontal + vertical)) * force);
 
     }
 }
