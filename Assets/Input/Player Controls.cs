@@ -393,6 +393,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""30881f95-2227-43d4-812a-ab896ba461a2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -472,6 +480,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Boost"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c7507ca4-f417-42a1-bf77-ea0b8869fd79"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -507,6 +526,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_DragonControls_ZMove = m_DragonControls.FindAction("ZMove", throwIfNotFound: true);
         m_DragonControls_Dismount = m_DragonControls.FindAction("Dismount", throwIfNotFound: true);
         m_DragonControls_Boost = m_DragonControls.FindAction("Boost", throwIfNotFound: true);
+        m_DragonControls_Shoot = m_DragonControls.FindAction("Shoot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -741,6 +761,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_DragonControls_ZMove;
     private readonly InputAction m_DragonControls_Dismount;
     private readonly InputAction m_DragonControls_Boost;
+    private readonly InputAction m_DragonControls_Shoot;
     public struct DragonControlsActions
     {
         private @PlayerControls m_Wrapper;
@@ -752,6 +773,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @ZMove => m_Wrapper.m_DragonControls_ZMove;
         public InputAction @Dismount => m_Wrapper.m_DragonControls_Dismount;
         public InputAction @Boost => m_Wrapper.m_DragonControls_Boost;
+        public InputAction @Shoot => m_Wrapper.m_DragonControls_Shoot;
         public InputActionMap Get() { return m_Wrapper.m_DragonControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -782,6 +804,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Boost.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnBoost;
                 @Boost.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnBoost;
                 @Boost.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnBoost;
+                @Shoot.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnShoot;
+                @Shoot.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnShoot;
+                @Shoot.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnShoot;
             }
             m_Wrapper.m_DragonControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -807,6 +832,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Boost.started += instance.OnBoost;
                 @Boost.performed += instance.OnBoost;
                 @Boost.canceled += instance.OnBoost;
+                @Shoot.started += instance.OnShoot;
+                @Shoot.performed += instance.OnShoot;
+                @Shoot.canceled += instance.OnShoot;
             }
         }
     }
@@ -842,5 +870,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnZMove(InputAction.CallbackContext context);
         void OnDismount(InputAction.CallbackContext context);
         void OnBoost(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
     }
 }

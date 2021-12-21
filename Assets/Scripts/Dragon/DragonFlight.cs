@@ -52,6 +52,7 @@ public class DragonFlight : MonoBehaviour
     public AudioSource impactSound;
 
     public ParticleSystem pickupParticle;
+    public ParticleSystem fireParticle;
 
     // // // //
     
@@ -77,7 +78,10 @@ public class DragonFlight : MonoBehaviour
 
     private void Update()
     {
-        //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rb.velocity), Time.deltaTime * 40f);
+        if (Mathf.Abs(vertical+horizontal)>0)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rb.velocity), Time.deltaTime * 1f);
+        }        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -99,6 +103,18 @@ public class DragonFlight : MonoBehaviour
     public void OnTurn(InputAction.CallbackContext value)
     {
         horizontal = value.ReadValue<float>();
+    }
+
+    public void OnShoot(InputAction.CallbackContext value)
+    {
+        if (value.started)
+        {
+            fireParticle.Play();
+        }
+        if (value.canceled)
+        {
+            fireParticle.Stop();
+        }
     }
 
     // ++ //
