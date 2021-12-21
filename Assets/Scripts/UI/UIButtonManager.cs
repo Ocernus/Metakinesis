@@ -7,16 +7,16 @@ using UnityEngine.UI;
 public class UIButtonManager : MonoBehaviour
 {
     public TextMeshProUGUI southText;
-    public string southTextDefaultString;
+    string southTextDefaultString;
 
     public TextMeshProUGUI eastText;
-    public string eastTextDefaultString;
+    string eastTextDefaultString;
 
     public TextMeshProUGUI westText;
-    public string westTextDefaultString;
+    string westTextDefaultString;
 
     public TextMeshProUGUI northText;
-    public string northTextDefaultString;
+    string northTextDefaultString;
 
     public GameObject westRequirementObj;
     public TextMeshProUGUI westRequirementText;
@@ -32,11 +32,20 @@ public class UIButtonManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        SetAllDefaultStrings();
     }
 
     private void Start()
     {
         ResetAllButtonTexts();
+    }
+
+    void SetAllDefaultStrings()
+    {
+        southTextDefaultString = southText.text;
+        eastTextDefaultString = eastText.text;
+        westTextDefaultString = westText.text;
+        northTextDefaultString = northText.text;
     }
 
     public void RefreshSouthText(bool contextExists, string context)
@@ -73,7 +82,7 @@ public class UIButtonManager : MonoBehaviour
 
     public void HideAllButtonTexts()
     {
-        print("hide all button texts");
+
         RefreshEastText(true, "");
         RefreshSouthText(true, "");
         RefreshNorthText(true, "");

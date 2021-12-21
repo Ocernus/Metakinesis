@@ -43,7 +43,6 @@ public class PlayerController : MonoBehaviour
 
     public void EnableFlightControls()
     {
-        print("tried switching to flight mode");
         playerInput.SwitchCurrentActionMap(actionMapFlightControl);
     }
 }

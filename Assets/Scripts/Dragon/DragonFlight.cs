@@ -56,8 +56,12 @@ public class DragonFlight : MonoBehaviour
 
     // // // //
     
-    private float vertical;
-    private float horizontal;
+    private float pitch;
+    private float yaw;
+    private float roll;
+
+    private Vector2 skate;
+
 
     public float power;
 
@@ -78,10 +82,12 @@ public class DragonFlight : MonoBehaviour
 
     private void Update()
     {
-        if (Mathf.Abs(vertical+horizontal)>0)
+        /*
+        if (Mathf.Abs(pitch+yaw)>0)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rb.velocity), Time.deltaTime * 1f);
         }        
+        */
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -97,12 +103,12 @@ public class DragonFlight : MonoBehaviour
 
     public void OnLook(InputAction.CallbackContext value)
     {
-        vertical = value.ReadValue<float>();        
+        pitch = value.ReadValue<float>();        
     }
 
     public void OnTurn(InputAction.CallbackContext value)
     {
-        horizontal = value.ReadValue<float>();
+        yaw = value.ReadValue<float>();
     }
 
     public void OnShoot(InputAction.CallbackContext value)
@@ -117,6 +123,11 @@ public class DragonFlight : MonoBehaviour
         }
     }
 
+    public void OnSkate(InputAction.CallbackContext value)
+    {
+        skate = value.ReadValue<Vector2>();
+    }
+
     // ++ //
 
     private void FixedUpdate()
@@ -126,9 +137,10 @@ public class DragonFlight : MonoBehaviour
         //currentTorque = rb.angularVelocity.magnitude;
 
         //addingforces horizon/linear movement
-        rb.AddTorque((transform.up * horizontal * torque));
-        rb.AddTorque((transform.right * vertical * torque));
-        rb.AddForce(transform.forward * Mathf.Min(1, Mathf.Abs(horizontal + vertical)) * force);
+        rb.AddTorque((transform.up * yaw * torque));
+        rb.AddTorque((transform.right * pitch * torque));
+
+        rb.AddForce((transform.forward * skate.y * force) + (transform.right * skate.x * force));
 
     }
 }

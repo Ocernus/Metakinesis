@@ -325,6 +325,7 @@ public class Movement : MonoBehaviour
         controller.enabled = true;
         agent.enabled = false;
         rotationIsSet = false;
+        //anim.SetTrigger();
     }
 
     public void Step()

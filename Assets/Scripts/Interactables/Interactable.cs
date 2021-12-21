@@ -37,7 +37,7 @@ public class Interactable : MonoBehaviour
     public bool lockInInteractable;
 
     protected GameObject playerCharacter;
-    Animator anim;
+    protected Animator anim;
     protected Movement movement;
        
     public virtual void Start()
@@ -104,7 +104,8 @@ public class Interactable : MonoBehaviour
                 }
                 else
                 {
-                    UIButtonManager.instance.HideAllButtonTexts();
+                    UIButtonManager.instance.RefreshSouthText(true, "");
+                    UIButtonManager.instance.RefreshWestText(true, "");
                 }
             }
             else
@@ -150,7 +151,7 @@ public class Interactable : MonoBehaviour
         //print("placeholder delayed reaction B"); //PFI and possible inventory change
     }   
 
-    public void InteractionChooseWest()
+    public virtual void InteractionChooseWest()
     {
         if (ReqCheckWest())
         {
@@ -160,7 +161,7 @@ public class Interactable : MonoBehaviour
         }        
     }
 
-    public void InteractionChooseSouth()
+    public virtual void InteractionChooseSouth()
     {
         if (ReqCheckSouth())
         {
@@ -196,7 +197,7 @@ public class Interactable : MonoBehaviour
         ChoiceWestDelayedReaction();
     }
 
-    IEnumerator ChoiceSouthReactionTimer()
+    protected IEnumerator ChoiceSouthReactionTimer()
     {
         ChoiceSouthInstantReaction();
         yield return new WaitForSeconds(choiceSouthTime);

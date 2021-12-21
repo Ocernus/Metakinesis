@@ -358,10 +358,10 @@
                     "interactions": ""
                 },
                 {
-                    "name": "ZMove",
+                    "name": "Skate",
                     "type": "Value",
                     "id": "ff8deeeb-5e37-4c30-8aca-f41770bd4495",
-                    "expectedControlType": "Axis",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 },
@@ -438,11 +438,11 @@
                 {
                     "name": "",
                     "id": "8d6c2943-31e7-40c7-8adf-8576b20fb96f",
-                    "path": "<Gamepad>/leftStick/y",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ZMove",
+                    "action": "Skate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -482,5 +482,17 @@
             ]
         }
     ],
-    "controlSchemes": []
+    "controlSchemes": [
+        {
+            "name": "Standard",
+            "bindingGroup": "Standard",
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
 }

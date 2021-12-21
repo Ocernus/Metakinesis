@@ -371,10 +371,10 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""ZMove"",
+                    ""name"": ""Skate"",
                     ""type"": ""Value"",
                     ""id"": ""ff8deeeb-5e37-4c30-8aca-f41770bd4495"",
-                    ""expectedControlType"": ""Axis"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
@@ -451,11 +451,11 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""8d6c2943-31e7-40c7-8adf-8576b20fb96f"",
-                    ""path"": ""<Gamepad>/leftStick/y"",
+                    ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ZMove"",
+                    ""action"": ""Skate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -495,7 +495,19 @@ public class @PlayerControls : IInputActionCollection, IDisposable
             ]
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""Standard"",
+            ""bindingGroup"": ""Standard"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Gamepad>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        }
+    ]
 }");
         // Character Control
         m_CharacterControl = asset.FindActionMap("Character Control", throwIfNotFound: true);
@@ -523,7 +535,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_DragonControls_RightWingHold = m_DragonControls.FindAction("Right Wing Hold", throwIfNotFound: true);
         m_DragonControls_Look = m_DragonControls.FindAction("Look", throwIfNotFound: true);
         m_DragonControls_Turn = m_DragonControls.FindAction("Turn", throwIfNotFound: true);
-        m_DragonControls_ZMove = m_DragonControls.FindAction("ZMove", throwIfNotFound: true);
+        m_DragonControls_Skate = m_DragonControls.FindAction("Skate", throwIfNotFound: true);
         m_DragonControls_Dismount = m_DragonControls.FindAction("Dismount", throwIfNotFound: true);
         m_DragonControls_Boost = m_DragonControls.FindAction("Boost", throwIfNotFound: true);
         m_DragonControls_Shoot = m_DragonControls.FindAction("Shoot", throwIfNotFound: true);
@@ -758,7 +770,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_DragonControls_RightWingHold;
     private readonly InputAction m_DragonControls_Look;
     private readonly InputAction m_DragonControls_Turn;
-    private readonly InputAction m_DragonControls_ZMove;
+    private readonly InputAction m_DragonControls_Skate;
     private readonly InputAction m_DragonControls_Dismount;
     private readonly InputAction m_DragonControls_Boost;
     private readonly InputAction m_DragonControls_Shoot;
@@ -770,7 +782,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @RightWingHold => m_Wrapper.m_DragonControls_RightWingHold;
         public InputAction @Look => m_Wrapper.m_DragonControls_Look;
         public InputAction @Turn => m_Wrapper.m_DragonControls_Turn;
-        public InputAction @ZMove => m_Wrapper.m_DragonControls_ZMove;
+        public InputAction @Skate => m_Wrapper.m_DragonControls_Skate;
         public InputAction @Dismount => m_Wrapper.m_DragonControls_Dismount;
         public InputAction @Boost => m_Wrapper.m_DragonControls_Boost;
         public InputAction @Shoot => m_Wrapper.m_DragonControls_Shoot;
@@ -795,9 +807,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Turn.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnTurn;
                 @Turn.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnTurn;
                 @Turn.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnTurn;
-                @ZMove.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnZMove;
-                @ZMove.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnZMove;
-                @ZMove.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnZMove;
+                @Skate.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnSkate;
+                @Skate.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnSkate;
+                @Skate.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnSkate;
                 @Dismount.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnDismount;
                 @Dismount.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnDismount;
                 @Dismount.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnDismount;
@@ -823,9 +835,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Turn.started += instance.OnTurn;
                 @Turn.performed += instance.OnTurn;
                 @Turn.canceled += instance.OnTurn;
-                @ZMove.started += instance.OnZMove;
-                @ZMove.performed += instance.OnZMove;
-                @ZMove.canceled += instance.OnZMove;
+                @Skate.started += instance.OnSkate;
+                @Skate.performed += instance.OnSkate;
+                @Skate.canceled += instance.OnSkate;
                 @Dismount.started += instance.OnDismount;
                 @Dismount.performed += instance.OnDismount;
                 @Dismount.canceled += instance.OnDismount;
@@ -839,6 +851,15 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         }
     }
     public DragonControlsActions @DragonControls => new DragonControlsActions(this);
+    private int m_StandardSchemeIndex = -1;
+    public InputControlScheme StandardScheme
+    {
+        get
+        {
+            if (m_StandardSchemeIndex == -1) m_StandardSchemeIndex = asset.FindControlSchemeIndex("Standard");
+            return asset.controlSchemes[m_StandardSchemeIndex];
+        }
+    }
     public interface ICharacterControlActions
     {
         void OnLook(InputAction.CallbackContext context);
@@ -867,7 +888,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnRightWingHold(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnTurn(InputAction.CallbackContext context);
-        void OnZMove(InputAction.CallbackContext context);
+        void OnSkate(InputAction.CallbackContext context);
         void OnDismount(InputAction.CallbackContext context);
         void OnBoost(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);

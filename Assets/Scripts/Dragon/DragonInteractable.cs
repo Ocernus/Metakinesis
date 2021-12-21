@@ -18,6 +18,8 @@ public class DragonInteractable : Interactable
     public GameObject dragonCam;
     public GameObject charCam;
 
+    public string mountedContextTrigger;
+
     public override void Start()
     {
         base.Start();
@@ -30,7 +32,6 @@ public class DragonInteractable : Interactable
 
     void SendMountedUIStrings()
     {
-        //print("mounted ui strings sent");
         UIButtonManager.instance.RefreshSouthText(true, mountedSouthText);
         UIButtonManager.instance.RefreshWestText(true, mountedWestText);
     }
@@ -41,18 +42,22 @@ public class DragonInteractable : Interactable
         {
             if (mounted)
             {
-                if (possibility) ActionButtonContextManager.instance.activeInteractable = this;
-                else ActionButtonContextManager.instance.activeInteractable = null;
+                ActionButtonContextManager.instance.activeInteractable = this;
                 SendMountedUIStrings();
             }
             else
             {
+                
                 ActionButtonContextManager.instance.activeInteractable = null;
                 SendUIStrings();
                 base.RefreshInteractability(possibility);
             }
         }
-        else base.RefreshInteractability(possibility);
+        else
+        {
+            ActionButtonContextManager.instance.activeInteractable = null;
+            base.RefreshInteractability(possibility);
+        }
     }
 
 
@@ -78,8 +83,8 @@ public class DragonInteractable : Interactable
     public override void ChoiceSouthInstantReaction()
     {
         base.ChoiceSouthInstantReaction();
-        interactableEngaged = true;
-        if (cam) cam.SetActive(true);
+        interactableEngaged = !interactableEngaged;
+        
     }
 
     public override void ChoiceSouthDelayedReaction()
@@ -113,31 +118,10 @@ public class DragonInteractable : Interactable
 
         mounted = false;
         RefreshInteractability(true);
-        SendMountedUIStrings();
     }
-
-    /*
-    public void Dismount(InputAction.CallbackContext value)
-    {
-        if (value.started)
-        {
-            print("attempted dismount");
-            charCam.SetActive(true);
-            dragonCam.SetActive(false);
-            playerChar.transform.parent = null;
-            playerCharacter.transform.position = dismountPoint.position;
-            playerCharacter.transform.rotation = dismountPoint.rotation;
-            PlayerController.instance.EnableCharacterControl();
-            movement.ReturnPlayerControl();
-            mounted = false;
-        }
-        
-    }
-    */
 
     public void MountUp()
     {
-        print("mount up");
         playerChar.transform.parent = mountPoint.transform;
 
         /*
@@ -154,7 +138,6 @@ public class DragonInteractable : Interactable
 
         mounted = true;
         RefreshInteractability(true);
-        SendMountedUIStrings();
     }
 
     public override bool ReqCheckWest()
@@ -165,5 +148,19 @@ public class DragonInteractable : Interactable
     public override bool ReqCheckSouth()
     {
         return true;
+    }
+
+    public override void InteractionChooseSouth()
+    {
+        if (!mounted) base.InteractionChooseSouth();
+        else
+        {
+            if (ReqCheckSouth())
+            {
+                StartCoroutine(InteractionTimer(choiceSouthTime)); //
+                StartCoroutine(ChoiceSouthReactionTimer());
+                anim.SetTrigger(mountedContextTrigger);
+            }
+        }
     }
 }
