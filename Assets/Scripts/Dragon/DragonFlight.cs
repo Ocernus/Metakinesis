@@ -62,6 +62,8 @@ public class DragonFlight : MonoBehaviour
 
     private Vector2 skate;
 
+    private bool boostSwitch;
+    public float boostPower;
 
     public float power;
 
@@ -78,16 +80,6 @@ public class DragonFlight : MonoBehaviour
     {
         instance = this;
         rb = GetComponent<Rigidbody>();
-    }
-
-    private void Update()
-    {
-        /*
-        if (Mathf.Abs(pitch+yaw)>0)
-        {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rb.velocity), Time.deltaTime * 1f);
-        }        
-        */
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -128,6 +120,12 @@ public class DragonFlight : MonoBehaviour
         skate = value.ReadValue<Vector2>();
     }
 
+    public void OnBoost(InputAction.CallbackContext value)
+    {
+        if (value.started) boostSwitch = true;
+        if (value.canceled) boostSwitch = false;
+    }
+
     // ++ //
 
     private void FixedUpdate()
@@ -141,6 +139,6 @@ public class DragonFlight : MonoBehaviour
         rb.AddTorque((transform.right * pitch * torque));
 
         rb.AddForce((transform.forward * skate.y * force) + (transform.right * skate.x * force));
-
+        if (boostSwitch) rb.AddForce(transform.up * boostPower);
     }
 }
