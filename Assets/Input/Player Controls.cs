@@ -75,17 +75,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": ""Press""
                 },
                 {
-                    ""name"": ""Shoot"",
+                    ""name"": ""Charge"",
                     ""type"": ""Button"",
                     ""id"": ""a6c30df0-c5ae-4617-87ee-3f1fc652b6af"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
-                },
-                {
-                    ""name"": ""Heal"",
-                    ""type"": ""Button"",
-                    ""id"": ""84b6f580-8160-4abf-b126-5e5e7352bc76"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
@@ -177,7 +169,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""b03d1699-5d1e-4239-b93b-b1a692251c6c"",
                     ""path"": ""<Gamepad>/leftShoulder"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Attack"",
@@ -224,18 +216,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Shoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0e646f32-3079-4fc1-8311-f2be718b5ff5"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Heal"",
+                    ""action"": ""Charge"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -243,7 +224,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""d9178b30-e7eb-4022-a313-c0cf3e97e754"",
                     ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Guard"",
@@ -339,7 +320,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
             ""id"": ""e1ec2fcd-e3cd-4eb3-88e6-510137ac68a1"",
             ""actions"": [
                 {
-                    ""name"": ""Left Wing Hold"",
+                    ""name"": ""Special"",
                     ""type"": ""Value"",
                     ""id"": ""3e2844f6-b16e-4a1a-88db-5d665a111d50"",
                     ""expectedControlType"": ""Axis"",
@@ -347,7 +328,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Right Wing Hold"",
+                    ""name"": ""Charge"",
                     ""type"": ""Value"",
                     ""id"": ""9d10239a-8335-4074-be83-4f61dc0f82e2"",
                     ""expectedControlType"": ""Axis"",
@@ -387,7 +368,15 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": ""Press""
                 },
                 {
-                    ""name"": ""Boost"",
+                    ""name"": ""Sink"",
+                    ""type"": ""Button"",
+                    ""id"": ""6b45a554-1278-48f1-8ef7-3f2c05e2f797"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Elevate"",
                     ""type"": ""Button"",
                     ""id"": ""20b3f1ba-da3a-4e44-8e18-dddd738906de"",
                     ""expectedControlType"": ""Button"",
@@ -411,7 +400,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Left Wing Hold"",
+                    ""action"": ""Special"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -422,7 +411,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Right Wing Hold"",
+                    ""action"": ""Charge"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -477,7 +466,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Boost"",
+                    ""action"": ""Elevate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -489,6 +478,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bbac3f1d-832a-4ca7-b76e-bcfde94db9ba"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sink"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -518,8 +518,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_CharacterControl_MoveX = m_CharacterControl.FindAction("MoveX", throwIfNotFound: true);
         m_CharacterControl_MoveY = m_CharacterControl.FindAction("MoveY", throwIfNotFound: true);
         m_CharacterControl_Pause = m_CharacterControl.FindAction("Pause", throwIfNotFound: true);
-        m_CharacterControl_Shoot = m_CharacterControl.FindAction("Shoot", throwIfNotFound: true);
-        m_CharacterControl_Heal = m_CharacterControl.FindAction("Heal", throwIfNotFound: true);
+        m_CharacterControl_Charge = m_CharacterControl.FindAction("Charge", throwIfNotFound: true);
         m_CharacterControl_Guard = m_CharacterControl.FindAction("Guard", throwIfNotFound: true);
         m_CharacterControl_PutAway = m_CharacterControl.FindAction("Put Away", throwIfNotFound: true);
         m_CharacterControl_Interact = m_CharacterControl.FindAction("Interact", throwIfNotFound: true);
@@ -531,13 +530,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_MenuControl_Start = m_MenuControl.FindAction("Start", throwIfNotFound: true);
         // Dragon Controls
         m_DragonControls = asset.FindActionMap("Dragon Controls", throwIfNotFound: true);
-        m_DragonControls_LeftWingHold = m_DragonControls.FindAction("Left Wing Hold", throwIfNotFound: true);
-        m_DragonControls_RightWingHold = m_DragonControls.FindAction("Right Wing Hold", throwIfNotFound: true);
+        m_DragonControls_Special = m_DragonControls.FindAction("Special", throwIfNotFound: true);
+        m_DragonControls_Charge = m_DragonControls.FindAction("Charge", throwIfNotFound: true);
         m_DragonControls_Look = m_DragonControls.FindAction("Look", throwIfNotFound: true);
         m_DragonControls_Turn = m_DragonControls.FindAction("Turn", throwIfNotFound: true);
         m_DragonControls_Skate = m_DragonControls.FindAction("Skate", throwIfNotFound: true);
         m_DragonControls_Dismount = m_DragonControls.FindAction("Dismount", throwIfNotFound: true);
-        m_DragonControls_Boost = m_DragonControls.FindAction("Boost", throwIfNotFound: true);
+        m_DragonControls_Sink = m_DragonControls.FindAction("Sink", throwIfNotFound: true);
+        m_DragonControls_Elevate = m_DragonControls.FindAction("Elevate", throwIfNotFound: true);
         m_DragonControls_Shoot = m_DragonControls.FindAction("Shoot", throwIfNotFound: true);
     }
 
@@ -595,8 +595,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_CharacterControl_MoveX;
     private readonly InputAction m_CharacterControl_MoveY;
     private readonly InputAction m_CharacterControl_Pause;
-    private readonly InputAction m_CharacterControl_Shoot;
-    private readonly InputAction m_CharacterControl_Heal;
+    private readonly InputAction m_CharacterControl_Charge;
     private readonly InputAction m_CharacterControl_Guard;
     private readonly InputAction m_CharacterControl_PutAway;
     private readonly InputAction m_CharacterControl_Interact;
@@ -614,8 +613,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @MoveX => m_Wrapper.m_CharacterControl_MoveX;
         public InputAction @MoveY => m_Wrapper.m_CharacterControl_MoveY;
         public InputAction @Pause => m_Wrapper.m_CharacterControl_Pause;
-        public InputAction @Shoot => m_Wrapper.m_CharacterControl_Shoot;
-        public InputAction @Heal => m_Wrapper.m_CharacterControl_Heal;
+        public InputAction @Charge => m_Wrapper.m_CharacterControl_Charge;
         public InputAction @Guard => m_Wrapper.m_CharacterControl_Guard;
         public InputAction @PutAway => m_Wrapper.m_CharacterControl_PutAway;
         public InputAction @Interact => m_Wrapper.m_CharacterControl_Interact;
@@ -652,12 +650,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Pause.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPause;
-                @Shoot.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnShoot;
-                @Shoot.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnShoot;
-                @Shoot.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnShoot;
-                @Heal.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnHeal;
-                @Heal.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnHeal;
-                @Heal.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnHeal;
+                @Charge.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnCharge;
+                @Charge.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnCharge;
+                @Charge.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnCharge;
                 @Guard.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnGuard;
                 @Guard.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnGuard;
                 @Guard.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnGuard;
@@ -701,12 +696,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
-                @Shoot.started += instance.OnShoot;
-                @Shoot.performed += instance.OnShoot;
-                @Shoot.canceled += instance.OnShoot;
-                @Heal.started += instance.OnHeal;
-                @Heal.performed += instance.OnHeal;
-                @Heal.canceled += instance.OnHeal;
+                @Charge.started += instance.OnCharge;
+                @Charge.performed += instance.OnCharge;
+                @Charge.canceled += instance.OnCharge;
                 @Guard.started += instance.OnGuard;
                 @Guard.performed += instance.OnGuard;
                 @Guard.canceled += instance.OnGuard;
@@ -766,25 +758,27 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     // Dragon Controls
     private readonly InputActionMap m_DragonControls;
     private IDragonControlsActions m_DragonControlsActionsCallbackInterface;
-    private readonly InputAction m_DragonControls_LeftWingHold;
-    private readonly InputAction m_DragonControls_RightWingHold;
+    private readonly InputAction m_DragonControls_Special;
+    private readonly InputAction m_DragonControls_Charge;
     private readonly InputAction m_DragonControls_Look;
     private readonly InputAction m_DragonControls_Turn;
     private readonly InputAction m_DragonControls_Skate;
     private readonly InputAction m_DragonControls_Dismount;
-    private readonly InputAction m_DragonControls_Boost;
+    private readonly InputAction m_DragonControls_Sink;
+    private readonly InputAction m_DragonControls_Elevate;
     private readonly InputAction m_DragonControls_Shoot;
     public struct DragonControlsActions
     {
         private @PlayerControls m_Wrapper;
         public DragonControlsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @LeftWingHold => m_Wrapper.m_DragonControls_LeftWingHold;
-        public InputAction @RightWingHold => m_Wrapper.m_DragonControls_RightWingHold;
+        public InputAction @Special => m_Wrapper.m_DragonControls_Special;
+        public InputAction @Charge => m_Wrapper.m_DragonControls_Charge;
         public InputAction @Look => m_Wrapper.m_DragonControls_Look;
         public InputAction @Turn => m_Wrapper.m_DragonControls_Turn;
         public InputAction @Skate => m_Wrapper.m_DragonControls_Skate;
         public InputAction @Dismount => m_Wrapper.m_DragonControls_Dismount;
-        public InputAction @Boost => m_Wrapper.m_DragonControls_Boost;
+        public InputAction @Sink => m_Wrapper.m_DragonControls_Sink;
+        public InputAction @Elevate => m_Wrapper.m_DragonControls_Elevate;
         public InputAction @Shoot => m_Wrapper.m_DragonControls_Shoot;
         public InputActionMap Get() { return m_Wrapper.m_DragonControls; }
         public void Enable() { Get().Enable(); }
@@ -795,12 +789,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_DragonControlsActionsCallbackInterface != null)
             {
-                @LeftWingHold.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnLeftWingHold;
-                @LeftWingHold.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnLeftWingHold;
-                @LeftWingHold.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnLeftWingHold;
-                @RightWingHold.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnRightWingHold;
-                @RightWingHold.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnRightWingHold;
-                @RightWingHold.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnRightWingHold;
+                @Special.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnSpecial;
+                @Special.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnSpecial;
+                @Special.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnSpecial;
+                @Charge.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnCharge;
+                @Charge.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnCharge;
+                @Charge.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnCharge;
                 @Look.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnLook;
@@ -813,9 +807,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Dismount.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnDismount;
                 @Dismount.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnDismount;
                 @Dismount.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnDismount;
-                @Boost.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnBoost;
-                @Boost.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnBoost;
-                @Boost.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnBoost;
+                @Sink.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnSink;
+                @Sink.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnSink;
+                @Sink.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnSink;
+                @Elevate.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnElevate;
+                @Elevate.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnElevate;
+                @Elevate.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnElevate;
                 @Shoot.started -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_DragonControlsActionsCallbackInterface.OnShoot;
@@ -823,12 +820,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
             m_Wrapper.m_DragonControlsActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @LeftWingHold.started += instance.OnLeftWingHold;
-                @LeftWingHold.performed += instance.OnLeftWingHold;
-                @LeftWingHold.canceled += instance.OnLeftWingHold;
-                @RightWingHold.started += instance.OnRightWingHold;
-                @RightWingHold.performed += instance.OnRightWingHold;
-                @RightWingHold.canceled += instance.OnRightWingHold;
+                @Special.started += instance.OnSpecial;
+                @Special.performed += instance.OnSpecial;
+                @Special.canceled += instance.OnSpecial;
+                @Charge.started += instance.OnCharge;
+                @Charge.performed += instance.OnCharge;
+                @Charge.canceled += instance.OnCharge;
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
@@ -841,9 +838,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Dismount.started += instance.OnDismount;
                 @Dismount.performed += instance.OnDismount;
                 @Dismount.canceled += instance.OnDismount;
-                @Boost.started += instance.OnBoost;
-                @Boost.performed += instance.OnBoost;
-                @Boost.canceled += instance.OnBoost;
+                @Sink.started += instance.OnSink;
+                @Sink.performed += instance.OnSink;
+                @Sink.canceled += instance.OnSink;
+                @Elevate.started += instance.OnElevate;
+                @Elevate.performed += instance.OnElevate;
+                @Elevate.canceled += instance.OnElevate;
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
@@ -869,8 +869,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnMoveX(InputAction.CallbackContext context);
         void OnMoveY(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
-        void OnShoot(InputAction.CallbackContext context);
-        void OnHeal(InputAction.CallbackContext context);
+        void OnCharge(InputAction.CallbackContext context);
         void OnGuard(InputAction.CallbackContext context);
         void OnPutAway(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
@@ -884,13 +883,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     }
     public interface IDragonControlsActions
     {
-        void OnLeftWingHold(InputAction.CallbackContext context);
-        void OnRightWingHold(InputAction.CallbackContext context);
+        void OnSpecial(InputAction.CallbackContext context);
+        void OnCharge(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnTurn(InputAction.CallbackContext context);
         void OnSkate(InputAction.CallbackContext context);
         void OnDismount(InputAction.CallbackContext context);
-        void OnBoost(InputAction.CallbackContext context);
+        void OnSink(InputAction.CallbackContext context);
+        void OnElevate(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
     }
 }

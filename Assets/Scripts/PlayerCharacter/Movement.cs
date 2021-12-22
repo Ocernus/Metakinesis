@@ -54,6 +54,7 @@ public class Movement : MonoBehaviour
     private Vector3 horizontalPush;
 
     private Vector3 vVel;
+    public bool parentingLock;
 
     private CharacterController controller;
     private Camera cam;
@@ -120,7 +121,8 @@ public class Movement : MonoBehaviour
 
 
 
-        vVel.y += gravity * Time.deltaTime;
+        if (!parentingLock) vVel.y += gravity * Time.deltaTime;
+
         Vector3 moveVelocity = vVel + horizontalPush;
         moveVelocity = AdjustVelocityToSlope(moveVelocity);
 

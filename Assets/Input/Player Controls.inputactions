@@ -62,17 +62,9 @@
                     "interactions": "Press"
                 },
                 {
-                    "name": "Shoot",
+                    "name": "Charge",
                     "type": "Button",
                     "id": "a6c30df0-c5ae-4617-87ee-3f1fc652b6af",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press"
-                },
-                {
-                    "name": "Heal",
-                    "type": "Button",
-                    "id": "84b6f580-8160-4abf-b126-5e5e7352bc76",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press"
@@ -164,7 +156,7 @@
                     "name": "",
                     "id": "b03d1699-5d1e-4239-b93b-b1a692251c6c",
                     "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
@@ -211,18 +203,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0e646f32-3079-4fc1-8311-f2be718b5ff5",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Heal",
+                    "action": "Charge",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -230,7 +211,7 @@
                     "name": "",
                     "id": "d9178b30-e7eb-4022-a313-c0cf3e97e754",
                     "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "Guard",
@@ -326,7 +307,7 @@
             "id": "e1ec2fcd-e3cd-4eb3-88e6-510137ac68a1",
             "actions": [
                 {
-                    "name": "Left Wing Hold",
+                    "name": "Special",
                     "type": "Value",
                     "id": "3e2844f6-b16e-4a1a-88db-5d665a111d50",
                     "expectedControlType": "Axis",
@@ -334,7 +315,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Right Wing Hold",
+                    "name": "Charge",
                     "type": "Value",
                     "id": "9d10239a-8335-4074-be83-4f61dc0f82e2",
                     "expectedControlType": "Axis",
@@ -374,7 +355,15 @@
                     "interactions": "Press"
                 },
                 {
-                    "name": "Boost",
+                    "name": "Sink",
+                    "type": "Button",
+                    "id": "6b45a554-1278-48f1-8ef7-3f2c05e2f797",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "Elevate",
                     "type": "Button",
                     "id": "20b3f1ba-da3a-4e44-8e18-dddd738906de",
                     "expectedControlType": "Button",
@@ -398,7 +387,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Left Wing Hold",
+                    "action": "Special",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -409,7 +398,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Right Wing Hold",
+                    "action": "Charge",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -464,7 +453,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Boost",
+                    "action": "Elevate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -476,6 +465,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bbac3f1d-832a-4ca7-b76e-bcfde94db9ba",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sink",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
