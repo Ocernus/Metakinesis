@@ -55,6 +55,7 @@ public class Movement : MonoBehaviour
 
     private Vector3 vVel;
     public bool parentingLock;
+    Vector3 moveVelocity;
 
     private CharacterController controller;
     private Camera cam;
@@ -119,12 +120,21 @@ public class Movement : MonoBehaviour
         //horizontalPush = Vector3.Lerp(currentDirection, inputDirection * speed * movementMultiplier, lerpSpeed); this was laggy when framerate dipped, felt like slipping on ice
         horizontalPush = inputDirection * speed * movementMultiplier;
 
+        if (!parentingLock)
+        {            
+            vVel.y += gravity * Time.deltaTime;
 
-
-        if (!parentingLock) vVel.y += gravity * Time.deltaTime;
-
-        Vector3 moveVelocity = vVel + horizontalPush;
-        moveVelocity = AdjustVelocityToSlope(moveVelocity);
+            moveVelocity = vVel + horizontalPush;
+            moveVelocity = AdjustVelocityToSlope(moveVelocity);
+        }
+        else
+        {
+            //vVel.y += gravity * Time.deltaTime + transform.parent.GetComponent<Rigidbody>().velocity.y;
+            vVel.y += gravity * Time.deltaTime;
+            moveVelocity = vVel + horizontalPush;
+            moveVelocity = AdjustVelocityToSlope(moveVelocity);
+        }
+        
 
         //++
         if (controlledMovementAllowed) controller.Move((moveVelocity) * Time.deltaTime);

@@ -78,7 +78,7 @@
                     "interactions": "Press"
                 },
                 {
-                    "name": "Put Away",
+                    "name": "Left Item",
                     "type": "Button",
                     "id": "bb16b92b-3199-438c-902a-1c2a08038b33",
                     "expectedControlType": "Button",
@@ -221,11 +221,11 @@
                 {
                     "name": "",
                     "id": "03d949f2-1420-4390-b82a-c031b546adb5",
-                    "path": "<Gamepad>/dpad/down",
+                    "path": "<Gamepad>/dpad/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Put Away",
+                    "action": "Left Item",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

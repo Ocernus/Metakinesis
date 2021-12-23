@@ -5,15 +5,24 @@ using UnityEngine;
 public class TaxiMovement : MonoBehaviour
 {
     bool present;
-    public Transform target;
-    public float speed;
+
+    Rigidbody rb;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
     private void Update()
+    {
+        
+    }
+
+    void FixedUpdate()
     {
         if (present)
         {
-            float step = speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, TaxiManager.instance.taxiHubs[0].transform.position, step);
-            //Vector3.MoveTowards(transform.position, TaxiManager.instance.taxiHubs[0].transform.position, 0);
+            FollowTargetWitouthRotation(TaxiManager.instance.taxiHubs[0].transform, 10, 10);
         }
     }
 
@@ -23,7 +32,7 @@ public class TaxiMovement : MonoBehaviour
         if (movement)
         {
             movement.parentingLock = true;
-            other.transform.parent = this.transform;
+            other.transform.parent = transform;
             present = true;
         }
     }
@@ -36,6 +45,16 @@ public class TaxiMovement : MonoBehaviour
             movement.parentingLock = false;
             other.transform.parent = null;
             present = false;
+        }
+    }
+
+    void FollowTargetWitouthRotation(Transform target, float distanceToStop, float speed)
+    {
+        var direction = Vector3.zero;
+        if (Vector3.Distance(transform.position, target.position) > distanceToStop)
+        {
+            direction = target.position - transform.position;
+            rb.AddRelativeForce(direction.normalized * speed, ForceMode.Force);
         }
     }
 }

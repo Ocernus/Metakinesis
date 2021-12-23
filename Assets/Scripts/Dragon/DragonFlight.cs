@@ -59,18 +59,16 @@ public class DragonFlight : MonoBehaviour
     private float pitch;
     private float yaw;
     private float roll;
+    private bool rollR;
+    private bool rollL;
+    private float tempRoll;
 
     private Vector2 skate;
 
-    private bool boostSwitch;
-    public float boostPower;
+    private bool elevateSwitch;
+    public float elevatePower;
 
     public float power;
-
-    private float rAxis;
-    private float lAxis;
-    private float uAxis;
-    private float dAxis;
 
     // // // // // // // //
 
@@ -92,6 +90,20 @@ public class DragonFlight : MonoBehaviour
     }
 
     //++//
+
+    public void OnRollLeft(InputAction.CallbackContext value)
+    {
+        //tempRoll = value.ReadValue<float>();
+        if (value.started)
+        {
+
+        }
+    }
+
+    public void OnRollRight(InputAction.CallbackContext value)
+    {
+        //tempRoll = value.ReadValue<float>();
+    }
 
     public void OnLook(InputAction.CallbackContext value)
     {
@@ -120,13 +132,45 @@ public class DragonFlight : MonoBehaviour
         skate = value.ReadValue<Vector2>();
     }
 
-    public void OnBoost(InputAction.CallbackContext value)
+    public void OnElevate(InputAction.CallbackContext value)
     {
-        if (value.started) boostSwitch = true;
-        if (value.canceled) boostSwitch = false;
+        if (value.started) elevateSwitch = true;
+        if (value.canceled) elevateSwitch = false;
+    }
+    /*
+    public void OnElevate(InputAction.CallbackContext value)
+    {
+        if (value.started) elevateSwitch = true;
+        if (value.canceled) elevateSwitch = false;
+    }
+    */
+    // ++ //
+
+    private void StartRoll()
+    {
+        roll = tempRoll;
     }
 
-    // ++ //
+    private void StopRoll()
+    {
+        roll = 0f;
+    }
+
+    private void Update()
+    {
+        if (rollL && !rollR)
+        {
+            StartRoll();
+        }
+        if (rollR && !rollL)
+        {
+            StartRoll();
+        }
+        if (rollL && rollR)
+        {
+            StopRoll();
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -137,8 +181,9 @@ public class DragonFlight : MonoBehaviour
         //addingforces horizon/linear movement
         rb.AddTorque((transform.up * yaw * torque));
         rb.AddTorque((transform.right * pitch * torque));
+        rb.AddTorque((transform.forward * roll * torque));
 
         rb.AddForce((transform.forward * skate.y * force) + (transform.right * skate.x * force));
-        if (boostSwitch) rb.AddForce(transform.up * boostPower);
+        if (elevateSwitch) rb.AddForce(transform.up * elevatePower);
     }
 }

@@ -91,7 +91,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": ""Press""
                 },
                 {
-                    ""name"": ""Put Away"",
+                    ""name"": ""Left Item"",
                     ""type"": ""Button"",
                     ""id"": ""bb16b92b-3199-438c-902a-1c2a08038b33"",
                     ""expectedControlType"": ""Button"",
@@ -234,11 +234,11 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""03d949f2-1420-4390-b82a-c031b546adb5"",
-                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""path"": ""<Gamepad>/dpad/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Put Away"",
+                    ""action"": ""Left Item"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -520,7 +520,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_CharacterControl_Pause = m_CharacterControl.FindAction("Pause", throwIfNotFound: true);
         m_CharacterControl_Charge = m_CharacterControl.FindAction("Charge", throwIfNotFound: true);
         m_CharacterControl_Guard = m_CharacterControl.FindAction("Guard", throwIfNotFound: true);
-        m_CharacterControl_PutAway = m_CharacterControl.FindAction("Put Away", throwIfNotFound: true);
+        m_CharacterControl_LeftItem = m_CharacterControl.FindAction("Left Item", throwIfNotFound: true);
         m_CharacterControl_Interact = m_CharacterControl.FindAction("Interact", throwIfNotFound: true);
         m_CharacterControl_Jump = m_CharacterControl.FindAction("Jump", throwIfNotFound: true);
         m_CharacterControl_Evade = m_CharacterControl.FindAction("Evade", throwIfNotFound: true);
@@ -597,7 +597,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_CharacterControl_Pause;
     private readonly InputAction m_CharacterControl_Charge;
     private readonly InputAction m_CharacterControl_Guard;
-    private readonly InputAction m_CharacterControl_PutAway;
+    private readonly InputAction m_CharacterControl_LeftItem;
     private readonly InputAction m_CharacterControl_Interact;
     private readonly InputAction m_CharacterControl_Jump;
     private readonly InputAction m_CharacterControl_Evade;
@@ -615,7 +615,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Pause => m_Wrapper.m_CharacterControl_Pause;
         public InputAction @Charge => m_Wrapper.m_CharacterControl_Charge;
         public InputAction @Guard => m_Wrapper.m_CharacterControl_Guard;
-        public InputAction @PutAway => m_Wrapper.m_CharacterControl_PutAway;
+        public InputAction @LeftItem => m_Wrapper.m_CharacterControl_LeftItem;
         public InputAction @Interact => m_Wrapper.m_CharacterControl_Interact;
         public InputAction @Jump => m_Wrapper.m_CharacterControl_Jump;
         public InputAction @Evade => m_Wrapper.m_CharacterControl_Evade;
@@ -656,9 +656,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Guard.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnGuard;
                 @Guard.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnGuard;
                 @Guard.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnGuard;
-                @PutAway.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPutAway;
-                @PutAway.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPutAway;
-                @PutAway.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPutAway;
+                @LeftItem.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLeftItem;
+                @LeftItem.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLeftItem;
+                @LeftItem.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLeftItem;
                 @Interact.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnInteract;
@@ -702,9 +702,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Guard.started += instance.OnGuard;
                 @Guard.performed += instance.OnGuard;
                 @Guard.canceled += instance.OnGuard;
-                @PutAway.started += instance.OnPutAway;
-                @PutAway.performed += instance.OnPutAway;
-                @PutAway.canceled += instance.OnPutAway;
+                @LeftItem.started += instance.OnLeftItem;
+                @LeftItem.performed += instance.OnLeftItem;
+                @LeftItem.canceled += instance.OnLeftItem;
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
@@ -871,7 +871,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnCharge(InputAction.CallbackContext context);
         void OnGuard(InputAction.CallbackContext context);
-        void OnPutAway(InputAction.CallbackContext context);
+        void OnLeftItem(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnEvade(InputAction.CallbackContext context);
