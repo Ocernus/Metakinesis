@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class BoglingTrigger : MonoBehaviour
 {
-    public BoglingBehavior bogling;
+    public BoglingBehavior[] boglings;
 
     private void OnTriggerEnter(Collider other)
     {
         PlayerInteraction player = other.GetComponent<PlayerInteraction>();
-        if (player) bogling.TriggerAmbush();
+        if (player)
+        {
+            foreach(BoglingBehavior bb in boglings)bb.TriggerAmbush();
+        }
     }
 }
