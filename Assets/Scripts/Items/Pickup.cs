@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pickup : MonoBehaviour
 {
     public int index;
+    // ? index 
     public int magicRechargeAmount;
 
     public GameObject soundObject;
