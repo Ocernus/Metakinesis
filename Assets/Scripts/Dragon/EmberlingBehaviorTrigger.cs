@@ -13,6 +13,6 @@ public class EmberlingBehaviorTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        emberling.TriggerBehavior();
+        emberling.EnableBehavior(true);
     }
 }

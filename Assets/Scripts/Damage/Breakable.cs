@@ -6,23 +6,23 @@ public class Breakable : Damageable
 {
     public int maxHits;
     public GameObject particle;
-    public Collider pickupTrigger;
+    public Collider pairedCollider;
     public GameObject breakSound;
 
     private void Start()
     {
-        if (pickupTrigger) pickupTrigger.enabled = false;
+        if (pairedCollider) pairedCollider.enabled = false;
     }
 
     public override void TakeDamage(int amount)
     {
         base.TakeDamage(amount);
         maxHits -= amount;
-        Instantiate(particle, transform.position, transform.rotation);
-        Instantiate(breakSound, transform.position, transform.rotation);
+        if (particle) Instantiate(particle, transform.position, transform.rotation);
+        if (breakSound) Instantiate(breakSound, transform.position, transform.rotation);
         if (maxHits <= 0)
         {
-            if (pickupTrigger) pickupTrigger.enabled = true;
+            if (pairedCollider) pairedCollider.enabled = true;
             Destroy(gameObject);
         }
     }
