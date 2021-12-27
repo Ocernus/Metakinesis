@@ -15,11 +15,25 @@ public class EmberlingBehavior : MonoBehaviour
     public float dashSpeed;
     public float moveDistanceTolerance;
     public float dashDistanceTolerance;
+    public float fallenFruitLingerTime;
 
     public Fruit targetFruit;
     Vector3 destination;
     float moveDistance;
     float dashDistance;
+    bool timerRunning;
+
+    // -- //
+
+    public int focusLimit;
+    public int usedFocus;
+    public int hardFruitFocus;
+    public int charFocus;
+    public int skyWormFocus;
+
+    public bool hardFruitSensed;
+
+    // -- //
 
 
     public enum Behaviors
@@ -51,9 +65,11 @@ public class EmberlingBehavior : MonoBehaviour
     }
 
     //**
-        
 
-    private void Update()
+
+    
+
+    private void Update() // mostly a behavior web/state machine, can jump around between states
     {
         if (behaviorEnabled)
         {
@@ -61,6 +77,33 @@ public class EmberlingBehavior : MonoBehaviour
             {
                 case Behaviors.idleHover:
                     {
+                        InterestCheck();
+
+                    }
+                    break;
+
+                    // Fruit behaviors start //
+
+                case Behaviors.movingToFruitSetupPoint: 
+                    {
+                        moveDistance = Vector3.Distance(transform.position, destination);
+
+                        stem = targetFruit.stem;
+                        SetDestination(targetFruit.attackSetupPosition.position);
+
+                        if (moveDistance > moveDistanceTolerance)
+                        {
+                            // smell fruit chirp
+                            transform.LookAt(destination);
+                            // sighted chirp
+                            rb.AddForce(transform.forward * moveSpeed);
+                        }
+                        else
+                        {
+                            rb.velocity = Vector3.zero;
+                            transform.LookAt(stem.position);
+                            behavior = Behaviors.attackStem; 
+                        }
 
                     }
                     break;
@@ -75,23 +118,22 @@ public class EmberlingBehavior : MonoBehaviour
                                 transform.LookAt(stem);
                                 rb.AddForce(transform.forward * dashSpeed);
                             }
-                            else
-                            {
-                                rb.velocity = Vector3.zero;
-                                transform.LookAt(targetFruit.transform.position);
-                                //behavior = Behaviors.attackStem; // should be context sensitive
-                            }
+                            
                         }
                         else
                         {
                             rb.velocity = Vector3.zero;
                             transform.LookAt(targetFruit.transform.position);
-                            //behavior = Behaviors.attackStem; // should be context sensitive
+                            if (!timerRunning) StartCoroutine(WaitTimer(fallenFruitLingerTime));
+
                         }
 
 
                     }
                     break;
+
+                    // Fruit behaviors end //
+
                 case Behaviors.followPlayer:
                     {
 
@@ -102,27 +144,32 @@ public class EmberlingBehavior : MonoBehaviour
 
                     }
                     break;
-                case Behaviors.movingToFruitSetupPoint: // should be context sensitive
-                    {
-                        moveDistance = Vector3.Distance(transform.position, destination);
-                        if (moveDistance > moveDistanceTolerance)
-                        {
-                            // smell fruit chirp
-                            transform.LookAt(destination);
-                            // sighted chirp
-                            rb.AddForce(transform.forward * moveSpeed);
-                        }
-                        else
-                        {
-                            rb.velocity = Vector3.zero;
-                            transform.LookAt(stem.position);
-                            behavior = Behaviors.attackStem; // should be context sensitive
-                        }
-                        
-                    }
-                    break;
+                
             }
-        }      
+        }
+    }
+
+    
+
+    public void InterestCheck() //switches behaviors based on interest levels and focus levels
+    {
+        if (hardFruitFocus > 0)
+        {
+            if (hardFruitSensed)
+            {
+                behavior = Behaviors.movingToFruitSetupPoint;
+            }
+        }
+    }
+
+    
+
+    public void GainInterestInHardFruit()
+    {
+        if (hardFruitFocus < 1)
+        {
+            hardFruitFocus += 1;
+        }
     }
 
     public void TriggerBehaviorWithFollowUp(Behaviors a, Behaviors b)
@@ -143,5 +190,12 @@ public class EmberlingBehavior : MonoBehaviour
     public void SetDestination(Vector3 position)
     {
         destination = position;
+    }
+
+    public IEnumerator WaitTimer(float t)
+    {
+        timerRunning = true;
+        yield return new WaitForSeconds(t);
+        timerRunning = false;
     }
 }

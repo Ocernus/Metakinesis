@@ -8,7 +8,10 @@ public class Fruit : MonoBehaviour
     Rigidbody rb;
     bool targetAttracted;
     public Transform stem;
-    bool updateLock;
+    bool physicsLock;
+    bool emberlingPresent;
+    EmberlingBehavior targetEmberling;
+    bool stayCheck;
 
     private void Start()
     {
@@ -17,40 +20,65 @@ public class Fruit : MonoBehaviour
 
     private void Update()
     {
-        if (!updateLock)
+        if (!physicsLock)
         {
             if (stem == null)
             {
                 rb.useGravity = true;
-                updateLock = true;
+                physicsLock = true;
             }
-        }    
+        }
+
+
+        if (emberlingPresent)
+        {
+            if (!targetAttracted) AttractEmberling();             
+        }
+    }
+
+    void AttractEmberling()
+    {
+        targetEmberling.GainInterestInHardFruit();
+        targetEmberling.hardFruitSensed = true;
+        targetEmberling.targetFruit = this;
         
+        targetAttracted = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        EmberlingBehavior tempEmberling = other.GetComponent<EmberlingBehavior>();
+        if (tempEmberling!=null)
+        {
+            emberlingPresent = true;
+            targetEmberling = tempEmberling;
+        }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (!targetAttracted)
+        if (!stayCheck)
         {
-            EmberlingBehavior emberling = other.GetComponent<EmberlingBehavior>();
-            if (emberling)
+            EmberlingBehavior tempEmberling = other.GetComponent<EmberlingBehavior>();
+            if (tempEmberling!=null)
             {
-                emberling.targetFruit = this;
-                emberling.stem = stem;
-                emberling.SetDestination(attackSetupPosition.position);
-                emberling.TriggerBehavior(EmberlingBehavior.Behaviors.movingToFruitSetupPoint);
-                targetAttracted = true;
+                emberlingPresent = true;
+                targetEmberling = tempEmberling;
             }
-        }        
+            stayCheck = true;
+        }
+        
     }
 
     private void OnTriggerExit(Collider other)
     {
-        targetAttracted = false;
-    }
-
-    private void Fall()
-    {
-
+        EmberlingBehavior tempEmberling = other.GetComponent<EmberlingBehavior>();
+        if (tempEmberling!=null)
+        {
+            emberlingPresent = false;
+            targetEmberling = null;
+            targetAttracted = false;
+        }
+            
     }
 }
