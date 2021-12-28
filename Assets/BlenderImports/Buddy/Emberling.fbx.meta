@@ -40,6 +40,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Vest
+    second: {fileID: 2100000, guid: 2b782d5aaff82554581e7c46ccc45b1b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Wing
     second: {fileID: 2100000, guid: 7bae5bb9188a3e64aa0a4276b3847b5a, type: 2}
   materials:
