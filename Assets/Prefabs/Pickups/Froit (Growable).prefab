@@ -2393,7 +2393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aed5e2bf64c88c44b58c4b517ee2c86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 1
+  index: 0
   magicRechargeAmount: 1
   soundObject: {fileID: 2831866188565159760, guid: 32cfa0fd9e738fc428c532a5e697ed42, type: 3}
 --- !u!198 &8990123625604257765

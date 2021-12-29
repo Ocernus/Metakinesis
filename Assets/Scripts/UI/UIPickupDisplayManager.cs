@@ -9,6 +9,8 @@ public class UIPickupDisplayManager : MonoBehaviour
     public TextMeshProUGUI ingotsText;
     public TextMeshProUGUI crystalsText;
 
+    public TextMeshProUGUI[] itemCountTexts;
+
     public static UIPickupDisplayManager instance;
 
     private void Awake()
@@ -29,5 +31,10 @@ public class UIPickupDisplayManager : MonoBehaviour
     public void RefreshCrystals(int value)
     {
         crystalsText.text = value.ToString();
+    }
+
+    public void RefreshItemCount(int index, int amount)
+    {
+        itemCountTexts[index].text = amount.ToString();
     }
 }

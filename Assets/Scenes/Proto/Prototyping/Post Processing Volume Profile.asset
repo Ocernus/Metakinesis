@@ -116,7 +116,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   color:
     m_OverrideState: 1
-    m_Value: {r: 0.0036406456, g: 0.0035154943, b: 0.009433985, a: 1}
+    m_Value: {r: 0.07449269, g: 0.07449269, b: 0.16981131, a: 1}
     hdr: 0
     showAlpha: 0
     showEyeDropper: 1
@@ -135,7 +135,7 @@ MonoBehaviour:
     max: 1
   rounded:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
 --- !u!114 &-4952470908271919783
 MonoBehaviour:
   m_ObjectHideFlags: 3

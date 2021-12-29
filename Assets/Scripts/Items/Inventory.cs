@@ -6,14 +6,24 @@ using UnityEngine.InputSystem;
 public class Inventory : MonoBehaviour 
 {
     /*
+    
     ITEM INDEX HELPER
-    money      = 0
-    bottles    = 1
-    potion     = 2
-    sanity-    = 3
-    sanity+    = 4
-    ingots     = 5
-    crystals   = 6
+
+    herb     = 0 //  
+    fungus   = 1 //
+    fruit    = 2 //
+
+    potion   = 3
+    poison   = 4
+    oil      = 5
+
+    secret   = 6
+    dread    = 7
+    remnant  = 8
+
+    coin     = 9
+    scrap    = 10
+    gemstone = 11
 
     */
 
@@ -60,6 +70,8 @@ public class Inventory : MonoBehaviour
 
     void UpdateUI(int index, int value)
     {
+        UIPickupDisplayManager.instance.RefreshItemCount(index, value);
+        /*
         switch (index)
         {
             case 0:
@@ -97,7 +109,9 @@ public class Inventory : MonoBehaviour
                     UIPickupDisplayManager.instance.RefreshCrystals(value);
                 }
                 break;
+                
         }
+        */
     }
 
     public void OnPlayerItemAbiltyUse(InputAction.CallbackContext value)
