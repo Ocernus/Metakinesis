@@ -17,7 +17,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Carapace Material
-    second: {fileID: 2100000, guid: 13f9dff356fce304288d0816d170eabd, type: 2}
+    second: {fileID: 2100000, guid: 2d7ca2df20c096341a192808047ded0d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -32,7 +32,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Underbody Material
-    second: {fileID: 2100000, guid: b769b20060709e94c85dc504aa91bff0, type: 2}
+    second: {fileID: 2100000, guid: 9b64747073ef259488f85ad0259e9fc1, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
