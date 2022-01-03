@@ -39,7 +39,9 @@ public class BugginVariants : MonoBehaviour
 
     public GameObject wings;
 
-    GameObject[] components = new GameObject[17];
+    public GameObject kneeArmor;
+
+    GameObject[] components = new GameObject[18];
 
     void Start()
     {
@@ -78,6 +80,7 @@ public class BugginVariants : MonoBehaviour
         components[15] = crusherBlade;
 
         components[16] = wings;
+        components[17] = kneeArmor;
     }
 
     public void ClearAll()
@@ -153,6 +156,7 @@ public class BugginVariants : MonoBehaviour
         components[8].SetActive(true);
         components[14].SetActive(true);
         components[15].SetActive(true);
+        components[17].SetActive(true);
     }
 
     void ActivateMageKit()

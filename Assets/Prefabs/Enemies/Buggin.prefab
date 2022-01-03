@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e27b73db5f9feb4e878d380c67de902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  variant: 0
   maskMandibles: {fileID: 1811815282103358894}
   maskArmored: {fileID: 5370955170941551750}
   maskHooded: {fileID: 2586876894772947586}
@@ -106,6 +107,7 @@ MonoBehaviour:
   crusherHandle: {fileID: 3352366582436051459}
   crusherBlade: {fileID: 7811800337857782729}
   wings: {fileID: 883289699179516205}
+  kneeArmor: {fileID: 6419073165255724549}
 --- !u!1 &5983216510257449975
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,6 +194,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bugman
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 6db9906b55f6bbb4cb38140701382538, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fb5e92c8d5d55034e9134ce3394eb116, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6db9906b55f6bbb4cb38140701382538, type: 3}
 --- !u!4 &2858775438178963038 stripped
@@ -242,6 +248,11 @@ GameObject:
 --- !u!1 &298091735726595371 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2595719056200774814, guid: 6db9906b55f6bbb4cb38140701382538, type: 3}
+  m_PrefabInstance: {fileID: 2316768169801918901}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6419073165255724549 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -489782503029676112, guid: 6db9906b55f6bbb4cb38140701382538, type: 3}
   m_PrefabInstance: {fileID: 2316768169801918901}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1811815282103358894 stripped
