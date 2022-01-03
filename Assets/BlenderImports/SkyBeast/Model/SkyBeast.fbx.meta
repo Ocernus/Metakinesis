@@ -9,12 +9,50 @@ ModelImporter:
   - first:
       74: 4094966266578240011
     second: Armature|Perch
+  - first:
+      74: 3461402299353232527
+    second: Armature|FlyForward
   externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Accent Material
+    second: {fileID: 2100000, guid: d0d2ae2290bceae4c9ee32a8423f9966, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Base Material
+    second: {fileID: 2100000, guid: e5505ef1140b33d4ab9a3f8710d2fc04, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyes
+    second: {fileID: 2100000, guid: 8372ed0f8f8e4874d9b05aed47e87b03, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fang Material
+    second: {fileID: 2100000, guid: 4996327e565315249ae413a670e53a4d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fuzz Material
+    second: {fileID: 2100000, guid: 9da028c09d224094cba08c5f686ab364, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Inner Material
+    second: {fileID: 2100000, guid: fa246e75c52488b49bbfbb3264ba62ef, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material
     second: {fileID: 2100000, guid: 10711b3b58dcd4742b67929999c77329, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wing Material
+    second: {fileID: 2100000, guid: db5b4a6d33a8b3940b070d6fe58fb0d1, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -77,6 +115,35 @@ ModelImporter:
       internalID: 0
       firstFrame: 0
       lastFrame: 239
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|FlyForward
+      takeName: Armature|FlyForward
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 79
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
