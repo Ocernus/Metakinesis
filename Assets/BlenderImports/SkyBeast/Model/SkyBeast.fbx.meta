@@ -17,27 +17,27 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Accent Material
-    second: {fileID: 2100000, guid: d0d2ae2290bceae4c9ee32a8423f9966, type: 2}
+    second: {fileID: 2100000, guid: dc107d6877d7c4040b0af017200fd201, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Base Material
-    second: {fileID: 2100000, guid: e5505ef1140b33d4ab9a3f8710d2fc04, type: 2}
+    second: {fileID: 2100000, guid: ce26d20f04a0452409d703c679000b1e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Eyes
-    second: {fileID: 2100000, guid: 8372ed0f8f8e4874d9b05aed47e87b03, type: 2}
+    second: {fileID: 2100000, guid: 3b6b958168f99594fb1f51d4c86fbc34, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Fang Material
-    second: {fileID: 2100000, guid: 4996327e565315249ae413a670e53a4d, type: 2}
+    second: {fileID: 2100000, guid: dc107d6877d7c4040b0af017200fd201, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Fuzz Material
-    second: {fileID: 2100000, guid: 9da028c09d224094cba08c5f686ab364, type: 2}
+    second: {fileID: 2100000, guid: b4453fb185592e8479bc8cfa1735a3af, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -52,7 +52,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Wing Material
-    second: {fileID: 2100000, guid: db5b4a6d33a8b3940b070d6fe58fb0d1, type: 2}
+    second: {fileID: 2100000, guid: 90dd9f61f58829e41962d110c92ab59d, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
