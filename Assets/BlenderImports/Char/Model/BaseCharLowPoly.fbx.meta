@@ -103,6 +103,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Leather
+    second: {fileID: 2100000, guid: e1895fe091c4d194082dd84d10b61029, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: PonchoMaterial
     second: {fileID: 2100000, guid: 833d4f4cfdcfd444f8ba303f68071a5c, type: 2}
   - first:
