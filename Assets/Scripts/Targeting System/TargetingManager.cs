@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class TargetingManager : MonoBehaviour
 {
@@ -34,9 +33,9 @@ public class TargetingManager : MonoBehaviour
         TargetSphere();
     }
 
-    public void OnPlayerCameraLock(InputAction.CallbackContext value)
+    public void LockOnToggle(bool state)
     {
-        if (value.started)
+        if (state)
         {
             if (foundTarget)
             {
@@ -46,7 +45,7 @@ public class TargetingManager : MonoBehaviour
             }            
         }
 
-        if (value.canceled)
+        if (!state)
         {
             CancelLockOn();
         }

@@ -22,14 +22,6 @@
                     "interactions": "Press"
                 },
                 {
-                    "name": "Target Camera",
-                    "type": "Button",
-                    "id": "896fa234-0289-4174-bef4-f969e6e80d5c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press"
-                },
-                {
                     "name": "MoveX",
                     "type": "Value",
                     "id": "ac374dd5-a36a-4629-a711-4e4b332f6566",
@@ -110,14 +102,6 @@
                     "interactions": "Press"
                 },
                 {
-                    "name": "Evade",
-                    "type": "Button",
-                    "id": "ded6cb03-a634-4b86-b7c7-2ca0988a28e2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press"
-                },
-                {
                     "name": "Comment",
                     "type": "Button",
                     "id": "fd991d62-f023-43dd-b1c2-dbc59b312116",
@@ -146,17 +130,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Item",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b81b0450-e7e2-4fdf-bec9-1bd643d94963",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Target Camera",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -250,17 +223,6 @@
                 },
                 {
                     "name": "",
-                    "id": "150c25e3-285e-48e3-abe4-4a510ef62e4c",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Evade",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "36a717a0-e86c-4d80-a52e-17f5822ceed4",
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",
@@ -284,7 +246,7 @@
                 {
                     "name": "",
                     "id": "5f761cb0-2bfc-4db1-a105-c4a090ae64e3",
-                    "path": "<Gamepad>/leftShoulder",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

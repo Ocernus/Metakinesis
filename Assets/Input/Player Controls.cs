@@ -35,14 +35,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": ""Press""
                 },
                 {
-                    ""name"": ""Target Camera"",
-                    ""type"": ""Button"",
-                    ""id"": ""896fa234-0289-4174-bef4-f969e6e80d5c"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
-                },
-                {
                     ""name"": ""MoveX"",
                     ""type"": ""Value"",
                     ""id"": ""ac374dd5-a36a-4629-a711-4e4b332f6566"",
@@ -123,14 +115,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": ""Press""
                 },
                 {
-                    ""name"": ""Evade"",
-                    ""type"": ""Button"",
-                    ""id"": ""ded6cb03-a634-4b86-b7c7-2ca0988a28e2"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
-                },
-                {
                     ""name"": ""Comment"",
                     ""type"": ""Button"",
                     ""id"": ""fd991d62-f023-43dd-b1c2-dbc59b312116"",
@@ -159,17 +143,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Item"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b81b0450-e7e2-4fdf-bec9-1bd643d94963"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Target Camera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -263,17 +236,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""150c25e3-285e-48e3-abe4-4a510ef62e4c"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Evade"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""36a717a0-e86c-4d80-a52e-17f5822ceed4"",
                     ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
@@ -297,7 +259,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""5f761cb0-2bfc-4db1-a105-c4a090ae64e3"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -532,7 +494,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_CharacterControl = asset.FindActionMap("Character Control", throwIfNotFound: true);
         m_CharacterControl_Look = m_CharacterControl.FindAction("Look", throwIfNotFound: true);
         m_CharacterControl_Item = m_CharacterControl.FindAction("Item", throwIfNotFound: true);
-        m_CharacterControl_TargetCamera = m_CharacterControl.FindAction("Target Camera", throwIfNotFound: true);
         m_CharacterControl_MoveX = m_CharacterControl.FindAction("MoveX", throwIfNotFound: true);
         m_CharacterControl_MoveY = m_CharacterControl.FindAction("MoveY", throwIfNotFound: true);
         m_CharacterControl_Pause = m_CharacterControl.FindAction("Pause", throwIfNotFound: true);
@@ -543,7 +504,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_CharacterControl_LeftItem = m_CharacterControl.FindAction("Left Item", throwIfNotFound: true);
         m_CharacterControl_Interact = m_CharacterControl.FindAction("Interact", throwIfNotFound: true);
         m_CharacterControl_Jump = m_CharacterControl.FindAction("Jump", throwIfNotFound: true);
-        m_CharacterControl_Evade = m_CharacterControl.FindAction("Evade", throwIfNotFound: true);
         m_CharacterControl_Comment = m_CharacterControl.FindAction("Comment", throwIfNotFound: true);
         // Menu Control
         m_MenuControl = asset.FindActionMap("Menu Control", throwIfNotFound: true);
@@ -610,7 +570,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private ICharacterControlActions m_CharacterControlActionsCallbackInterface;
     private readonly InputAction m_CharacterControl_Look;
     private readonly InputAction m_CharacterControl_Item;
-    private readonly InputAction m_CharacterControl_TargetCamera;
     private readonly InputAction m_CharacterControl_MoveX;
     private readonly InputAction m_CharacterControl_MoveY;
     private readonly InputAction m_CharacterControl_Pause;
@@ -621,7 +580,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_CharacterControl_LeftItem;
     private readonly InputAction m_CharacterControl_Interact;
     private readonly InputAction m_CharacterControl_Jump;
-    private readonly InputAction m_CharacterControl_Evade;
     private readonly InputAction m_CharacterControl_Comment;
     public struct CharacterControlActions
     {
@@ -629,7 +587,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public CharacterControlActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Look => m_Wrapper.m_CharacterControl_Look;
         public InputAction @Item => m_Wrapper.m_CharacterControl_Item;
-        public InputAction @TargetCamera => m_Wrapper.m_CharacterControl_TargetCamera;
         public InputAction @MoveX => m_Wrapper.m_CharacterControl_MoveX;
         public InputAction @MoveY => m_Wrapper.m_CharacterControl_MoveY;
         public InputAction @Pause => m_Wrapper.m_CharacterControl_Pause;
@@ -640,7 +597,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @LeftItem => m_Wrapper.m_CharacterControl_LeftItem;
         public InputAction @Interact => m_Wrapper.m_CharacterControl_Interact;
         public InputAction @Jump => m_Wrapper.m_CharacterControl_Jump;
-        public InputAction @Evade => m_Wrapper.m_CharacterControl_Evade;
         public InputAction @Comment => m_Wrapper.m_CharacterControl_Comment;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControl; }
         public void Enable() { Get().Enable(); }
@@ -657,9 +613,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Item.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnItem;
                 @Item.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnItem;
                 @Item.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnItem;
-                @TargetCamera.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnTargetCamera;
-                @TargetCamera.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnTargetCamera;
-                @TargetCamera.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnTargetCamera;
                 @MoveX.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveX;
                 @MoveX.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveX;
                 @MoveX.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveX;
@@ -690,9 +643,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Jump.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnJump;
-                @Evade.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnEvade;
-                @Evade.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnEvade;
-                @Evade.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnEvade;
                 @Comment.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnComment;
                 @Comment.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnComment;
                 @Comment.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnComment;
@@ -706,9 +656,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Item.started += instance.OnItem;
                 @Item.performed += instance.OnItem;
                 @Item.canceled += instance.OnItem;
-                @TargetCamera.started += instance.OnTargetCamera;
-                @TargetCamera.performed += instance.OnTargetCamera;
-                @TargetCamera.canceled += instance.OnTargetCamera;
                 @MoveX.started += instance.OnMoveX;
                 @MoveX.performed += instance.OnMoveX;
                 @MoveX.canceled += instance.OnMoveX;
@@ -739,9 +686,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
-                @Evade.started += instance.OnEvade;
-                @Evade.performed += instance.OnEvade;
-                @Evade.canceled += instance.OnEvade;
                 @Comment.started += instance.OnComment;
                 @Comment.performed += instance.OnComment;
                 @Comment.canceled += instance.OnComment;
@@ -892,7 +836,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     {
         void OnLook(InputAction.CallbackContext context);
         void OnItem(InputAction.CallbackContext context);
-        void OnTargetCamera(InputAction.CallbackContext context);
         void OnMoveX(InputAction.CallbackContext context);
         void OnMoveY(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
@@ -903,7 +846,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnLeftItem(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnEvade(InputAction.CallbackContext context);
         void OnComment(InputAction.CallbackContext context);
     }
     public interface IMenuControlActions
