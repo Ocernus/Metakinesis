@@ -30,14 +30,6 @@
                     "interactions": "Press"
                 },
                 {
-                    "name": "Attack",
-                    "type": "Button",
-                    "id": "6aa9a7be-9b78-49c4-84b9-80047da5c588",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press"
-                },
-                {
                     "name": "MoveX",
                     "type": "Value",
                     "id": "ac374dd5-a36a-4629-a711-4e4b332f6566",
@@ -62,7 +54,23 @@
                     "interactions": "Press"
                 },
                 {
-                    "name": "Charge",
+                    "name": "Bash",
+                    "type": "Button",
+                    "id": "2e402cf8-4049-40cd-ae76-a62fae373884",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "Slash",
+                    "type": "Button",
+                    "id": "6aa9a7be-9b78-49c4-84b9-80047da5c588",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "Stab",
                     "type": "Button",
                     "id": "a6c30df0-c5ae-4617-87ee-3f1fc652b6af",
                     "expectedControlType": "Button",
@@ -154,17 +162,6 @@
                 },
                 {
                     "name": "",
-                    "id": "b03d1699-5d1e-4239-b93b-b1a692251c6c",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "4aa4f6ba-ea63-4036-9b7d-2c1040912f95",
                     "path": "<Gamepad>/leftStick/x",
                     "interactions": "",
@@ -199,11 +196,11 @@
                 {
                     "name": "",
                     "id": "23f06bf7-c29d-4013-9385-91ed10b98cc3",
-                    "path": "<Gamepad>/rightTrigger",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Charge",
+                    "action": "Stab",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -270,6 +267,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Comment",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b03d1699-5d1e-4239-b93b-b1a692251c6c",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Slash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5f761cb0-2bfc-4db1-a105-c4a090ae64e3",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Bash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

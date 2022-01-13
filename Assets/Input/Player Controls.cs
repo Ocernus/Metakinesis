@@ -43,14 +43,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": ""Press""
                 },
                 {
-                    ""name"": ""Attack"",
-                    ""type"": ""Button"",
-                    ""id"": ""6aa9a7be-9b78-49c4-84b9-80047da5c588"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
-                },
-                {
                     ""name"": ""MoveX"",
                     ""type"": ""Value"",
                     ""id"": ""ac374dd5-a36a-4629-a711-4e4b332f6566"",
@@ -75,7 +67,23 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": ""Press""
                 },
                 {
-                    ""name"": ""Charge"",
+                    ""name"": ""Bash"",
+                    ""type"": ""Button"",
+                    ""id"": ""2e402cf8-4049-40cd-ae76-a62fae373884"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Slash"",
+                    ""type"": ""Button"",
+                    ""id"": ""6aa9a7be-9b78-49c4-84b9-80047da5c588"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Stab"",
                     ""type"": ""Button"",
                     ""id"": ""a6c30df0-c5ae-4617-87ee-3f1fc652b6af"",
                     ""expectedControlType"": ""Button"",
@@ -167,17 +175,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b03d1699-5d1e-4239-b93b-b1a692251c6c"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
-                    ""interactions"": ""Press"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""4aa4f6ba-ea63-4036-9b7d-2c1040912f95"",
                     ""path"": ""<Gamepad>/leftStick/x"",
                     ""interactions"": """",
@@ -212,11 +209,11 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""23f06bf7-c29d-4013-9385-91ed10b98cc3"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Charge"",
+                    ""action"": ""Stab"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -283,6 +280,28 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Comment"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b03d1699-5d1e-4239-b93b-b1a692251c6c"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Slash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5f761cb0-2bfc-4db1-a105-c4a090ae64e3"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Bash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -514,11 +533,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_CharacterControl_Look = m_CharacterControl.FindAction("Look", throwIfNotFound: true);
         m_CharacterControl_Item = m_CharacterControl.FindAction("Item", throwIfNotFound: true);
         m_CharacterControl_TargetCamera = m_CharacterControl.FindAction("Target Camera", throwIfNotFound: true);
-        m_CharacterControl_Attack = m_CharacterControl.FindAction("Attack", throwIfNotFound: true);
         m_CharacterControl_MoveX = m_CharacterControl.FindAction("MoveX", throwIfNotFound: true);
         m_CharacterControl_MoveY = m_CharacterControl.FindAction("MoveY", throwIfNotFound: true);
         m_CharacterControl_Pause = m_CharacterControl.FindAction("Pause", throwIfNotFound: true);
-        m_CharacterControl_Charge = m_CharacterControl.FindAction("Charge", throwIfNotFound: true);
+        m_CharacterControl_Bash = m_CharacterControl.FindAction("Bash", throwIfNotFound: true);
+        m_CharacterControl_Slash = m_CharacterControl.FindAction("Slash", throwIfNotFound: true);
+        m_CharacterControl_Stab = m_CharacterControl.FindAction("Stab", throwIfNotFound: true);
         m_CharacterControl_Guard = m_CharacterControl.FindAction("Guard", throwIfNotFound: true);
         m_CharacterControl_LeftItem = m_CharacterControl.FindAction("Left Item", throwIfNotFound: true);
         m_CharacterControl_Interact = m_CharacterControl.FindAction("Interact", throwIfNotFound: true);
@@ -591,11 +611,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_CharacterControl_Look;
     private readonly InputAction m_CharacterControl_Item;
     private readonly InputAction m_CharacterControl_TargetCamera;
-    private readonly InputAction m_CharacterControl_Attack;
     private readonly InputAction m_CharacterControl_MoveX;
     private readonly InputAction m_CharacterControl_MoveY;
     private readonly InputAction m_CharacterControl_Pause;
-    private readonly InputAction m_CharacterControl_Charge;
+    private readonly InputAction m_CharacterControl_Bash;
+    private readonly InputAction m_CharacterControl_Slash;
+    private readonly InputAction m_CharacterControl_Stab;
     private readonly InputAction m_CharacterControl_Guard;
     private readonly InputAction m_CharacterControl_LeftItem;
     private readonly InputAction m_CharacterControl_Interact;
@@ -609,11 +630,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Look => m_Wrapper.m_CharacterControl_Look;
         public InputAction @Item => m_Wrapper.m_CharacterControl_Item;
         public InputAction @TargetCamera => m_Wrapper.m_CharacterControl_TargetCamera;
-        public InputAction @Attack => m_Wrapper.m_CharacterControl_Attack;
         public InputAction @MoveX => m_Wrapper.m_CharacterControl_MoveX;
         public InputAction @MoveY => m_Wrapper.m_CharacterControl_MoveY;
         public InputAction @Pause => m_Wrapper.m_CharacterControl_Pause;
-        public InputAction @Charge => m_Wrapper.m_CharacterControl_Charge;
+        public InputAction @Bash => m_Wrapper.m_CharacterControl_Bash;
+        public InputAction @Slash => m_Wrapper.m_CharacterControl_Slash;
+        public InputAction @Stab => m_Wrapper.m_CharacterControl_Stab;
         public InputAction @Guard => m_Wrapper.m_CharacterControl_Guard;
         public InputAction @LeftItem => m_Wrapper.m_CharacterControl_LeftItem;
         public InputAction @Interact => m_Wrapper.m_CharacterControl_Interact;
@@ -638,9 +660,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @TargetCamera.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnTargetCamera;
                 @TargetCamera.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnTargetCamera;
                 @TargetCamera.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnTargetCamera;
-                @Attack.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnAttack;
-                @Attack.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnAttack;
-                @Attack.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnAttack;
                 @MoveX.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveX;
                 @MoveX.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveX;
                 @MoveX.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveX;
@@ -650,9 +669,15 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Pause.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnPause;
-                @Charge.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnCharge;
-                @Charge.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnCharge;
-                @Charge.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnCharge;
+                @Bash.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnBash;
+                @Bash.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnBash;
+                @Bash.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnBash;
+                @Slash.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnSlash;
+                @Slash.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnSlash;
+                @Slash.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnSlash;
+                @Stab.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnStab;
+                @Stab.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnStab;
+                @Stab.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnStab;
                 @Guard.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnGuard;
                 @Guard.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnGuard;
                 @Guard.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnGuard;
@@ -684,9 +709,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @TargetCamera.started += instance.OnTargetCamera;
                 @TargetCamera.performed += instance.OnTargetCamera;
                 @TargetCamera.canceled += instance.OnTargetCamera;
-                @Attack.started += instance.OnAttack;
-                @Attack.performed += instance.OnAttack;
-                @Attack.canceled += instance.OnAttack;
                 @MoveX.started += instance.OnMoveX;
                 @MoveX.performed += instance.OnMoveX;
                 @MoveX.canceled += instance.OnMoveX;
@@ -696,9 +718,15 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
-                @Charge.started += instance.OnCharge;
-                @Charge.performed += instance.OnCharge;
-                @Charge.canceled += instance.OnCharge;
+                @Bash.started += instance.OnBash;
+                @Bash.performed += instance.OnBash;
+                @Bash.canceled += instance.OnBash;
+                @Slash.started += instance.OnSlash;
+                @Slash.performed += instance.OnSlash;
+                @Slash.canceled += instance.OnSlash;
+                @Stab.started += instance.OnStab;
+                @Stab.performed += instance.OnStab;
+                @Stab.canceled += instance.OnStab;
                 @Guard.started += instance.OnGuard;
                 @Guard.performed += instance.OnGuard;
                 @Guard.canceled += instance.OnGuard;
@@ -865,11 +893,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnItem(InputAction.CallbackContext context);
         void OnTargetCamera(InputAction.CallbackContext context);
-        void OnAttack(InputAction.CallbackContext context);
         void OnMoveX(InputAction.CallbackContext context);
         void OnMoveY(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
-        void OnCharge(InputAction.CallbackContext context);
+        void OnBash(InputAction.CallbackContext context);
+        void OnSlash(InputAction.CallbackContext context);
+        void OnStab(InputAction.CallbackContext context);
         void OnGuard(InputAction.CallbackContext context);
         void OnLeftItem(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
