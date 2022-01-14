@@ -234,7 +234,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""b03d1699-5d1e-4239-b93b-b1a692251c6c"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",

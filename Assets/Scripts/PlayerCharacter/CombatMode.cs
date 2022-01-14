@@ -12,6 +12,8 @@ public class CombatMode : MonoBehaviour
     Animator anim;
     EquipmentGraphicsManager equipGraphics;
 
+    bool engaged;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -34,9 +36,19 @@ public class CombatMode : MonoBehaviour
     {
         if (value.started)
         {
-            anim.SetTrigger("Sheath Weapons");
-            shield.shouldRetract = true;
-            sheathTimerRunning = true;
+            engaged = !engaged;
+            if (!engaged)
+            {
+                equipGraphics.ShowSword(true);
+                shield.shouldProject = true;
+            }
+            else
+            {
+                anim.SetTrigger("Sheath Weapons");
+                shield.shouldRetract = true;
+                sheathTimerRunning = true;
+            }
+            
         }
     }
 

@@ -389,9 +389,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.056442976
+  m_TransitionDuration: 0.03817299
   m_TransitionOffset: 0
-  m_ExitTime: 0.6567467
+  m_ExitTime: 0.7877209
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -414,9 +414,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.09
-  m_TransitionOffset: 0
-  m_ExitTime: 0.75
+  m_TransitionDuration: 0.09000006
+  m_TransitionOffset: 0.14236294
+  m_ExitTime: 0.49944058
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -1122,7 +1122,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Slash 2
+  m_Name: Stab
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1139,7 +1139,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -117033308138959451, guid: 35dd330f80ee65f47bf10a8bfb66706b, type: 3}
+  m_Motion: {fileID: 4475962873232210025, guid: 35dd330f80ee65f47bf10a8bfb66706b, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -1351,8 +1351,8 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.112788886
-  m_TransitionOffset: 0
+  m_TransitionDuration: 0.040305644
+  m_TransitionOffset: 0.19328853
   m_ExitTime: 0.7897715
   m_HasExitTime: 0
   m_HasFixedDuration: 1
