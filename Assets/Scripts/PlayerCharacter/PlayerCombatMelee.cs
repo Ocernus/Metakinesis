@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerCombatMelee : MonoBehaviour
 {
-    private bool onGuard;
     private Animator animator;
 
     private void Start()
@@ -17,18 +16,11 @@ public class PlayerCombatMelee : MonoBehaviour
     {
         if (value.started)
         {
-            onGuard = true;
-            //draw sword
-            //hold shield
-            //change movement style to slow
-            TargetingManager.instance.LockOnToggle(true);
-            
+            animator.SetBool("Guarding", true);            
         }
         if (value.canceled)
         {
-            onGuard = false;
-            //change movement style to normal
-            TargetingManager.instance.LockOnToggle(true);
+            animator.SetBool("Guarding", false);
         }
     }
 
@@ -36,8 +28,7 @@ public class PlayerCombatMelee : MonoBehaviour
     {
         if (value.started)
         {
-            // do slash attack
-            print("slash");
+            SetTrigger("Slash");
         }
         if (value.canceled)
         {
@@ -49,8 +40,7 @@ public class PlayerCombatMelee : MonoBehaviour
     {
         if (value.started)
         {
-            // do stab attack
-            print("stab");
+            SetTrigger("Stab");
         }
         if (value.canceled)
         {
@@ -62,12 +52,16 @@ public class PlayerCombatMelee : MonoBehaviour
     {
         if (value.started)
         {
-            // do bash attack
-            print("bash");
+            SetTrigger("Bash");
         }
         if (value.canceled)
         {
 
         }
+    }
+
+    void SetTrigger(string trigger)
+    {
+        animator.SetTrigger(trigger);
     }
 }

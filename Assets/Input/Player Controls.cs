@@ -27,14 +27,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Item"",
-                    ""type"": ""Button"",
-                    ""id"": ""fe35991f-2705-4ab6-a472-58474a8a3376"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
-                },
-                {
                     ""name"": ""MoveX"",
                     ""type"": ""Value"",
                     ""id"": ""ac374dd5-a36a-4629-a711-4e4b332f6566"",
@@ -91,7 +83,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": ""Press""
                 },
                 {
-                    ""name"": ""Left Item"",
+                    ""name"": ""Quick Menu"",
                     ""type"": ""Button"",
                     ""id"": ""bb16b92b-3199-438c-902a-1c2a08038b33"",
                     ""expectedControlType"": ""Button"",
@@ -121,6 +113,22 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Evade"",
+                    ""type"": ""Button"",
+                    ""id"": ""5497fa0d-e5c1-4d41-acc5-04f72bf7a506"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Lock On"",
+                    ""type"": ""Button"",
+                    ""id"": ""1842bcf8-3110-4f78-95ed-5ae8cd21d7d8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -132,17 +140,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8020e0ec-f08f-4f38-a8cb-7acd5b32dc2a"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Item"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -203,17 +200,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""03d949f2-1420-4390-b82a-c031b546adb5"",
-                    ""path"": ""<Gamepad>/dpad/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Left Item"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""28602f39-76cf-4bb0-b059-ca68eb565104"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
@@ -259,11 +245,88 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""5f761cb0-2bfc-4db1-a105-c4a090ae64e3"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Bash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7d4d4399-bdc4-4a09-8fa8-82c7e82707dd"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Evade"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""DPad"",
+                    ""id"": ""2ddca75b-048d-4b5c-928d-83c6ee89e569"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Quick Menu"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""deb80af8-afdc-4418-b3d5-09c0a5183b9d"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Quick Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""73fb239d-e542-419b-ba4e-c362f0703a85"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Quick Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""ea3eb875-1269-4cc3-9fed-4fb844c2acc1"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Quick Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""1e66c7c6-e06a-447d-81a9-a474295c893d"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Quick Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ce1ee72d-8b6b-441d-bf98-aec1ab6b8f57"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Lock On"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -493,7 +556,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         // Character Control
         m_CharacterControl = asset.FindActionMap("Character Control", throwIfNotFound: true);
         m_CharacterControl_Look = m_CharacterControl.FindAction("Look", throwIfNotFound: true);
-        m_CharacterControl_Item = m_CharacterControl.FindAction("Item", throwIfNotFound: true);
         m_CharacterControl_MoveX = m_CharacterControl.FindAction("MoveX", throwIfNotFound: true);
         m_CharacterControl_MoveY = m_CharacterControl.FindAction("MoveY", throwIfNotFound: true);
         m_CharacterControl_Pause = m_CharacterControl.FindAction("Pause", throwIfNotFound: true);
@@ -501,10 +563,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_CharacterControl_Slash = m_CharacterControl.FindAction("Slash", throwIfNotFound: true);
         m_CharacterControl_Stab = m_CharacterControl.FindAction("Stab", throwIfNotFound: true);
         m_CharacterControl_Guard = m_CharacterControl.FindAction("Guard", throwIfNotFound: true);
-        m_CharacterControl_LeftItem = m_CharacterControl.FindAction("Left Item", throwIfNotFound: true);
+        m_CharacterControl_QuickMenu = m_CharacterControl.FindAction("Quick Menu", throwIfNotFound: true);
         m_CharacterControl_Interact = m_CharacterControl.FindAction("Interact", throwIfNotFound: true);
         m_CharacterControl_Jump = m_CharacterControl.FindAction("Jump", throwIfNotFound: true);
         m_CharacterControl_Comment = m_CharacterControl.FindAction("Comment", throwIfNotFound: true);
+        m_CharacterControl_Evade = m_CharacterControl.FindAction("Evade", throwIfNotFound: true);
+        m_CharacterControl_LockOn = m_CharacterControl.FindAction("Lock On", throwIfNotFound: true);
         // Menu Control
         m_MenuControl = asset.FindActionMap("Menu Control", throwIfNotFound: true);
         m_MenuControl_Start = m_MenuControl.FindAction("Start", throwIfNotFound: true);
@@ -569,7 +633,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_CharacterControl;
     private ICharacterControlActions m_CharacterControlActionsCallbackInterface;
     private readonly InputAction m_CharacterControl_Look;
-    private readonly InputAction m_CharacterControl_Item;
     private readonly InputAction m_CharacterControl_MoveX;
     private readonly InputAction m_CharacterControl_MoveY;
     private readonly InputAction m_CharacterControl_Pause;
@@ -577,16 +640,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_CharacterControl_Slash;
     private readonly InputAction m_CharacterControl_Stab;
     private readonly InputAction m_CharacterControl_Guard;
-    private readonly InputAction m_CharacterControl_LeftItem;
+    private readonly InputAction m_CharacterControl_QuickMenu;
     private readonly InputAction m_CharacterControl_Interact;
     private readonly InputAction m_CharacterControl_Jump;
     private readonly InputAction m_CharacterControl_Comment;
+    private readonly InputAction m_CharacterControl_Evade;
+    private readonly InputAction m_CharacterControl_LockOn;
     public struct CharacterControlActions
     {
         private @PlayerControls m_Wrapper;
         public CharacterControlActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Look => m_Wrapper.m_CharacterControl_Look;
-        public InputAction @Item => m_Wrapper.m_CharacterControl_Item;
         public InputAction @MoveX => m_Wrapper.m_CharacterControl_MoveX;
         public InputAction @MoveY => m_Wrapper.m_CharacterControl_MoveY;
         public InputAction @Pause => m_Wrapper.m_CharacterControl_Pause;
@@ -594,10 +658,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Slash => m_Wrapper.m_CharacterControl_Slash;
         public InputAction @Stab => m_Wrapper.m_CharacterControl_Stab;
         public InputAction @Guard => m_Wrapper.m_CharacterControl_Guard;
-        public InputAction @LeftItem => m_Wrapper.m_CharacterControl_LeftItem;
+        public InputAction @QuickMenu => m_Wrapper.m_CharacterControl_QuickMenu;
         public InputAction @Interact => m_Wrapper.m_CharacterControl_Interact;
         public InputAction @Jump => m_Wrapper.m_CharacterControl_Jump;
         public InputAction @Comment => m_Wrapper.m_CharacterControl_Comment;
+        public InputAction @Evade => m_Wrapper.m_CharacterControl_Evade;
+        public InputAction @LockOn => m_Wrapper.m_CharacterControl_LockOn;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -610,9 +676,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Look.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLook;
-                @Item.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnItem;
-                @Item.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnItem;
-                @Item.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnItem;
                 @MoveX.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveX;
                 @MoveX.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveX;
                 @MoveX.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMoveX;
@@ -634,9 +697,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Guard.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnGuard;
                 @Guard.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnGuard;
                 @Guard.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnGuard;
-                @LeftItem.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLeftItem;
-                @LeftItem.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLeftItem;
-                @LeftItem.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLeftItem;
+                @QuickMenu.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnQuickMenu;
+                @QuickMenu.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnQuickMenu;
+                @QuickMenu.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnQuickMenu;
                 @Interact.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnInteract;
@@ -646,6 +709,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Comment.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnComment;
                 @Comment.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnComment;
                 @Comment.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnComment;
+                @Evade.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnEvade;
+                @Evade.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnEvade;
+                @Evade.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnEvade;
+                @LockOn.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLockOn;
+                @LockOn.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLockOn;
+                @LockOn.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLockOn;
             }
             m_Wrapper.m_CharacterControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -653,9 +722,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
-                @Item.started += instance.OnItem;
-                @Item.performed += instance.OnItem;
-                @Item.canceled += instance.OnItem;
                 @MoveX.started += instance.OnMoveX;
                 @MoveX.performed += instance.OnMoveX;
                 @MoveX.canceled += instance.OnMoveX;
@@ -677,9 +743,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Guard.started += instance.OnGuard;
                 @Guard.performed += instance.OnGuard;
                 @Guard.canceled += instance.OnGuard;
-                @LeftItem.started += instance.OnLeftItem;
-                @LeftItem.performed += instance.OnLeftItem;
-                @LeftItem.canceled += instance.OnLeftItem;
+                @QuickMenu.started += instance.OnQuickMenu;
+                @QuickMenu.performed += instance.OnQuickMenu;
+                @QuickMenu.canceled += instance.OnQuickMenu;
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
@@ -689,6 +755,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Comment.started += instance.OnComment;
                 @Comment.performed += instance.OnComment;
                 @Comment.canceled += instance.OnComment;
+                @Evade.started += instance.OnEvade;
+                @Evade.performed += instance.OnEvade;
+                @Evade.canceled += instance.OnEvade;
+                @LockOn.started += instance.OnLockOn;
+                @LockOn.performed += instance.OnLockOn;
+                @LockOn.canceled += instance.OnLockOn;
             }
         }
     }
@@ -835,7 +907,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     public interface ICharacterControlActions
     {
         void OnLook(InputAction.CallbackContext context);
-        void OnItem(InputAction.CallbackContext context);
         void OnMoveX(InputAction.CallbackContext context);
         void OnMoveY(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
@@ -843,10 +914,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnSlash(InputAction.CallbackContext context);
         void OnStab(InputAction.CallbackContext context);
         void OnGuard(InputAction.CallbackContext context);
-        void OnLeftItem(InputAction.CallbackContext context);
+        void OnQuickMenu(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnComment(InputAction.CallbackContext context);
+        void OnEvade(InputAction.CallbackContext context);
+        void OnLockOn(InputAction.CallbackContext context);
     }
     public interface IMenuControlActions
     {

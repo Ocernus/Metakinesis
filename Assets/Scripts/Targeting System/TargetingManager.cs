@@ -21,6 +21,7 @@ public class TargetingManager : MonoBehaviour
     private int targetCount;
 
     private bool foundTarget;
+    private bool state;
 
     public static TargetingManager instance;
     private void Awake()
@@ -33,8 +34,9 @@ public class TargetingManager : MonoBehaviour
         TargetSphere();
     }
 
-    public void LockOnToggle(bool state)
+    public void LockOnToggle()
     {
+        state = !state;
         if (state)
         {
             if (foundTarget)
