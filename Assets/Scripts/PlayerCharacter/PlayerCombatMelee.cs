@@ -6,21 +6,25 @@ using UnityEngine.InputSystem;
 public class PlayerCombatMelee : MonoBehaviour
 {
     private Animator animator;
+    private PlayerGuard guard;
+    private SwordAttack attack;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+        guard = GetComponent<PlayerGuard>();
+        attack = GetComponent<SwordAttack>();
     }
 
     public void OnGuard(InputAction.CallbackContext value)
     {
         if (value.started)
         {
-            animator.SetBool("Guarding", true);            
+            guard.ToggleGuard(true);            
         }
         if (value.canceled)
         {
-            animator.SetBool("Guarding", false);
+            guard.ToggleGuard(false);
         }
     }
 
@@ -28,7 +32,7 @@ public class PlayerCombatMelee : MonoBehaviour
     {
         if (value.started)
         {
-            SetTrigger("Slash");
+            attack.Attack();
         }
         if (value.canceled)
         {

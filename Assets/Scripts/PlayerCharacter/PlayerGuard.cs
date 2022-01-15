@@ -11,15 +11,17 @@ public class PlayerGuard : MonoBehaviour
     EquipmentGraphicsManager equip;
     public Shield shield;
 
+    bool guarding;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
         equip = GetComponent<EquipmentGraphicsManager>();
     }
 
-    public void OnGuard(InputAction.CallbackContext value)
+    public void ToggleGuard(bool guarding)
     {
-        if (value.started)
+        if (guarding)
         {
             anim.SetBool("Guarding", true);
             anim.SetBool("Offset Swing", true);
@@ -28,7 +30,7 @@ public class PlayerGuard : MonoBehaviour
             equip.ShowSword(true);//new
         }
 
-        if (value.canceled)
+        if (!guarding)
         {
             anim.SetBool("Guarding", false);
         }

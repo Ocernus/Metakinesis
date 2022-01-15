@@ -29,6 +29,7 @@ public class SwordAttack : MonoBehaviour
     Movement movement;
 
     public Shield shield;
+    private int slashIndex;
 
     private void Start()
     {
@@ -78,27 +79,41 @@ public class SwordAttack : MonoBehaviour
     public void Attack()
     {
         if (!inputTimerRunning)
-        {/*
-            if (movement.state == Movement.States.onGround)
-            {*/
-                anim.SetTrigger("Slash");
-                swordSwingSound.Play();
+        {
+            anim.SetTrigger("Slash");
+            anim.SetFloat("SlashValue", slashIndex);
 
-                inputTimerRunning = true;
-                inputTimeCurrent = 0;
-                /*sheathTimerRunning = true;
-                sheathTimeCurrent = 0;*/
-                moveLockTimerRunning = true;
-                moveLockTimeCurrent = 0;
-                damageTimerRunning = true;
-                damageTimeCurrent = 0;
-            
+            switch (slashIndex)
+            {
+                case 0:
+                    {
+                        slashIndex = 1;
+                    }
+                    break;
+                case 1:
+                    {
+                        slashIndex = 0;
+                    }
+                    break;
+            }
+
+
+            swordSwingSound.Play();
+
+            inputTimerRunning = true;
+            inputTimeCurrent = 0;
+            /*sheathTimerRunning = true;
+            sheathTimeCurrent = 0;*/
+            moveLockTimerRunning = true;
+            moveLockTimeCurrent = 0;
+            damageTimerRunning = true;
+            damageTimeCurrent = 0;
+
             equipGraphics.ShowSword(true);
 
             shield.shouldProject = true;
-                movement.movementMultiplier = 0;
-                slashAttackVolume.SetActive(false);/*
-            }*/
+            movement.movementMultiplier = 0;
+            slashAttackVolume.SetActive(false);
         }
     }
 

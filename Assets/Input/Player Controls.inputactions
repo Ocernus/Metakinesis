@@ -70,14 +70,6 @@
                     "interactions": "Press"
                 },
                 {
-                    "name": "Quick Menu",
-                    "type": "Button",
-                    "id": "bb16b92b-3199-438c-902a-1c2a08038b33",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press"
-                },
-                {
                     "name": "Interact",
                     "type": "Button",
                     "id": "6a66afbb-e3ee-46c0-96af-3bd81aab29c7",
@@ -113,6 +105,14 @@
                     "name": "Lock On",
                     "type": "Button",
                     "id": "1842bcf8-3110-4f78-95ed-5ae8cd21d7d8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "CombatToggle",
+                    "type": "Button",
+                    "id": "95139fa3-7104-449c-aaf1-1a3afca62f5d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press"
@@ -252,61 +252,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "DPad",
-                    "id": "2ddca75b-048d-4b5c-928d-83c6ee89e569",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Quick Menu",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "deb80af8-afdc-4418-b3d5-09c0a5183b9d",
-                    "path": "<Gamepad>/dpad/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Quick Menu",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "73fb239d-e542-419b-ba4e-c362f0703a85",
-                    "path": "<Gamepad>/dpad/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Quick Menu",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "ea3eb875-1269-4cc3-9fed-4fb844c2acc1",
-                    "path": "<Gamepad>/dpad/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Quick Menu",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "1e66c7c6-e06a-447d-81a9-a474295c893d",
-                    "path": "<Gamepad>/dpad/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Quick Menu",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "ce1ee72d-8b6b-441d-bf98-aec1ab6b8f57",
                     "path": "<Gamepad>/rightStickPress",
@@ -314,6 +259,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Lock On",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d907f6d0-ab49-452b-8694-c487d1877e31",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CombatToggle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

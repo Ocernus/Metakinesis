@@ -32,25 +32,7 @@ public class CombatMode : MonoBehaviour
         }
     }
 
-    public void SheathWeapons(InputAction.CallbackContext value)
-    {
-        if (value.started)
-        {
-            engaged = !engaged;
-            if (!engaged)
-            {
-                equipGraphics.ShowSword(true);
-                shield.shouldProject = true;
-            }
-            else
-            {
-                anim.SetTrigger("Sheath Weapons");
-                shield.shouldRetract = true;
-                sheathTimerRunning = true;
-            }
-            
-        }
-    }
+    
 
     void ResetSheathTimer()
     {

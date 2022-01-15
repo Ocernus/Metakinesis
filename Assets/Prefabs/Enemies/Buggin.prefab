@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1823393095130917730}
   - component: {fileID: 6864382590746188194}
   - component: {fileID: 6346505781063082246}
+  - component: {fileID: 2146006209232519595}
   m_Layer: 0
   m_Name: Buggin
   m_TagString: Untagged
@@ -124,6 +125,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraTarget: {fileID: 3729456318226908020}
   screenPosition: {x: 0, y: 0}
+--- !u!114 &2146006209232519595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3494739514640321425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca5af9fe628eba43943a638d6b4cd07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3729456318226908020
 GameObject:
   m_ObjectHideFlags: 0

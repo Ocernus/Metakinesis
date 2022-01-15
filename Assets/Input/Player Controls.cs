@@ -83,14 +83,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": ""Press""
                 },
                 {
-                    ""name"": ""Quick Menu"",
-                    ""type"": ""Button"",
-                    ""id"": ""bb16b92b-3199-438c-902a-1c2a08038b33"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press""
-                },
-                {
                     ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""6a66afbb-e3ee-46c0-96af-3bd81aab29c7"",
@@ -126,6 +118,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""name"": ""Lock On"",
                     ""type"": ""Button"",
                     ""id"": ""1842bcf8-3110-4f78-95ed-5ae8cd21d7d8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""CombatToggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""95139fa3-7104-449c-aaf1-1a3afca62f5d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
@@ -265,61 +265,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""DPad"",
-                    ""id"": ""2ddca75b-048d-4b5c-928d-83c6ee89e569"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Quick Menu"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""deb80af8-afdc-4418-b3d5-09c0a5183b9d"",
-                    ""path"": ""<Gamepad>/dpad/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Quick Menu"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""73fb239d-e542-419b-ba4e-c362f0703a85"",
-                    ""path"": ""<Gamepad>/dpad/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Quick Menu"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""ea3eb875-1269-4cc3-9fed-4fb844c2acc1"",
-                    ""path"": ""<Gamepad>/dpad/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Quick Menu"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""1e66c7c6-e06a-447d-81a9-a474295c893d"",
-                    ""path"": ""<Gamepad>/dpad/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Quick Menu"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": """",
                     ""id"": ""ce1ee72d-8b6b-441d-bf98-aec1ab6b8f57"",
                     ""path"": ""<Gamepad>/rightStickPress"",
@@ -327,6 +272,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Lock On"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d907f6d0-ab49-452b-8694-c487d1877e31"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CombatToggle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -563,12 +519,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_CharacterControl_Slash = m_CharacterControl.FindAction("Slash", throwIfNotFound: true);
         m_CharacterControl_Stab = m_CharacterControl.FindAction("Stab", throwIfNotFound: true);
         m_CharacterControl_Guard = m_CharacterControl.FindAction("Guard", throwIfNotFound: true);
-        m_CharacterControl_QuickMenu = m_CharacterControl.FindAction("Quick Menu", throwIfNotFound: true);
         m_CharacterControl_Interact = m_CharacterControl.FindAction("Interact", throwIfNotFound: true);
         m_CharacterControl_Jump = m_CharacterControl.FindAction("Jump", throwIfNotFound: true);
         m_CharacterControl_Comment = m_CharacterControl.FindAction("Comment", throwIfNotFound: true);
         m_CharacterControl_Evade = m_CharacterControl.FindAction("Evade", throwIfNotFound: true);
         m_CharacterControl_LockOn = m_CharacterControl.FindAction("Lock On", throwIfNotFound: true);
+        m_CharacterControl_CombatToggle = m_CharacterControl.FindAction("CombatToggle", throwIfNotFound: true);
         // Menu Control
         m_MenuControl = asset.FindActionMap("Menu Control", throwIfNotFound: true);
         m_MenuControl_Start = m_MenuControl.FindAction("Start", throwIfNotFound: true);
@@ -640,12 +596,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_CharacterControl_Slash;
     private readonly InputAction m_CharacterControl_Stab;
     private readonly InputAction m_CharacterControl_Guard;
-    private readonly InputAction m_CharacterControl_QuickMenu;
     private readonly InputAction m_CharacterControl_Interact;
     private readonly InputAction m_CharacterControl_Jump;
     private readonly InputAction m_CharacterControl_Comment;
     private readonly InputAction m_CharacterControl_Evade;
     private readonly InputAction m_CharacterControl_LockOn;
+    private readonly InputAction m_CharacterControl_CombatToggle;
     public struct CharacterControlActions
     {
         private @PlayerControls m_Wrapper;
@@ -658,12 +614,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Slash => m_Wrapper.m_CharacterControl_Slash;
         public InputAction @Stab => m_Wrapper.m_CharacterControl_Stab;
         public InputAction @Guard => m_Wrapper.m_CharacterControl_Guard;
-        public InputAction @QuickMenu => m_Wrapper.m_CharacterControl_QuickMenu;
         public InputAction @Interact => m_Wrapper.m_CharacterControl_Interact;
         public InputAction @Jump => m_Wrapper.m_CharacterControl_Jump;
         public InputAction @Comment => m_Wrapper.m_CharacterControl_Comment;
         public InputAction @Evade => m_Wrapper.m_CharacterControl_Evade;
         public InputAction @LockOn => m_Wrapper.m_CharacterControl_LockOn;
+        public InputAction @CombatToggle => m_Wrapper.m_CharacterControl_CombatToggle;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -697,9 +653,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Guard.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnGuard;
                 @Guard.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnGuard;
                 @Guard.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnGuard;
-                @QuickMenu.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnQuickMenu;
-                @QuickMenu.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnQuickMenu;
-                @QuickMenu.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnQuickMenu;
                 @Interact.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnInteract;
@@ -715,6 +668,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @LockOn.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLockOn;
                 @LockOn.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLockOn;
                 @LockOn.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnLockOn;
+                @CombatToggle.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnCombatToggle;
+                @CombatToggle.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnCombatToggle;
+                @CombatToggle.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnCombatToggle;
             }
             m_Wrapper.m_CharacterControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -743,9 +699,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Guard.started += instance.OnGuard;
                 @Guard.performed += instance.OnGuard;
                 @Guard.canceled += instance.OnGuard;
-                @QuickMenu.started += instance.OnQuickMenu;
-                @QuickMenu.performed += instance.OnQuickMenu;
-                @QuickMenu.canceled += instance.OnQuickMenu;
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
@@ -761,6 +714,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @LockOn.started += instance.OnLockOn;
                 @LockOn.performed += instance.OnLockOn;
                 @LockOn.canceled += instance.OnLockOn;
+                @CombatToggle.started += instance.OnCombatToggle;
+                @CombatToggle.performed += instance.OnCombatToggle;
+                @CombatToggle.canceled += instance.OnCombatToggle;
             }
         }
     }
@@ -914,12 +870,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnSlash(InputAction.CallbackContext context);
         void OnStab(InputAction.CallbackContext context);
         void OnGuard(InputAction.CallbackContext context);
-        void OnQuickMenu(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnComment(InputAction.CallbackContext context);
         void OnEvade(InputAction.CallbackContext context);
         void OnLockOn(InputAction.CallbackContext context);
+        void OnCombatToggle(InputAction.CallbackContext context);
     }
     public interface IMenuControlActions
     {
